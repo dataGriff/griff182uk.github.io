@@ -20,21 +20,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Deploying Hexo]]></title>
-      <url>www.datagriff.com/2016/06/DeployingHexo/</url>
-      <content type="html"><![CDATA[<h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
-<p><img src="../images/HexoGenerate.png" alt="Hexo Generate Output"></p>
-<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file).</p>
-<p><img src="../images/HexoOutputFiles.png" alt="Hexo Generate Output"></p>
-<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
-<p><img src="../images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Using Git Hub for Web Hosting]]></title>
       <url>www.datagriff.com/2016/06/UsingGitHubForWebHosting/</url>
       <content type="html"><![CDATA[<h2 id="Creating-a-Git-Hub-io-Repo"><a href="#Creating-a-Git-Hub-io-Repo" class="headerlink" title="Creating a Git Hub io Repo"></a>Creating a Git Hub io Repo</h2><p><strong><a href="https://github.com/" title="GitHub" target="_blank" rel="external">GitHub</a></strong> allows you each user to host one website as part of their service using a <a href="https://pages.github.com/" title="Github pages" target="_blank" rel="external">github “io” repoistory</a>.</p>
@@ -46,6 +31,21 @@
 <p><strong>Important Note:</strong> In order for this CNAME file to persist, you should create it in your local output folder (with no file name extension), with the name of your custom domain. I found that if I didn’t do this everytime I pushed from my local folder the CNAME file would disappear and the connection from my github URL to my custom domain would disappear and I’d get a 404 error, so be aware of this!</p>
 <p><img src="/images/CNAMEFolder.png" alt="CNAME File in Source Folder">)</p>
 <p><img src="/images/CNAMEContent.png" alt="CNAME Content">)</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Deploying Hexo]]></title>
+      <url>www.datagriff.com/2016/06/DeployingHexo/</url>
+      <content type="html"><![CDATA[<h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
+<p><img src="../images/HexoGenerate.png" alt="Hexo Generate Output"></p>
+<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file).</p>
+<p><img src="../images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
+<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
+<p><img src="../images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
 ]]></content>
     </entry>
     
