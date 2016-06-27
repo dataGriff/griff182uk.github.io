@@ -108,7 +108,58 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="cipy782qn0000mokavroatmk8" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="cipy7clye0000qcka389jjx5t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-DeployingHexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/DeployingHexo/" class="article-date">
+  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/DeployingHexo/">Deploying Hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
+<p><img src="../images/HexoGenerate.png" alt="Hexo Generate Output"></p>
+<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file). The output folder should look something to below. </p>
+<p><img src="../images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
+<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
+<p><img src="../images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="www.datagriff.com/2016/06/DeployingHexo/" data-id="cipy7clyh0001qcka3sd82rkw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
@@ -159,61 +210,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/UsingGitHubForWebHosting/" data-id="cipy782qr0001moka2llc2pfh" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/UsingGitHubForWebHosting/" data-id="cipy7clyn0007qcka9l4vd10p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DeployingHexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/DeployingHexo/" class="article-date">
-  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/DeployingHexo/">Deploying Hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
-<p><img src="../images/HexoGenerate.png" alt="Hexo Generate Output"></p>
-<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file).</p>
-<p><img src="../images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
-<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
-<p><img src="../images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/DeployingHexo/" data-id="cipy782qw0005moka5e429yow" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
 
     </footer>
   </div>
@@ -276,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/InstallAndInitaliseHexo/" data-id="cipy782qv0004moka9vb91rul" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/InstallAndInitaliseHexo/" data-id="cipy7clyl0004qcka8fw8vepu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
@@ -346,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/YAMLAndMarkdown/" data-id="cipy782qw0007mokabhhlm9ky" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/YAMLAndMarkdown/" data-id="cipy7clym0005qckan89a2hbd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/YAML/">YAML</a></li></ul>
@@ -374,11 +374,11 @@
           </li>
         
           <li>
-            <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
+            <a href="/2016/06/DeployingHexo/">Deploying Hexo</a>
           </li>
         
           <li>
-            <a href="/2016/06/DeployingHexo/">Deploying Hexo</a>
+            <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
           </li>
         
           <li>
