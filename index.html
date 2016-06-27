@@ -108,10 +108,61 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="cipy7clye0000qcka389jjx5t" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="cipy7evl50001pckauivrrovc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-UsingGitHubForWebHosting" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/UsingGitHubForWebHosting/" class="article-date">
+  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Github/">Github</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Creating-a-Git-Hub-io-Repo"><a href="#Creating-a-Git-Hub-io-Repo" class="headerlink" title="Creating a Git Hub io Repo"></a>Creating a Git Hub io Repo</h2><p><strong><a href="https://github.com/" title="GitHub" target="_blank" rel="external">GitHub</a></strong> allows you each user to host one website as part of their service using a <a href="https://pages.github.com/" title="Github pages" target="_blank" rel="external">github “io” repoistory</a>.</p>
+<p>To do this create a new github repository called [YourUserName]/[YourUserName].github.io.</p>
+<p><img src="../images/GitHubIORepo.png" alt="My IO GitHub Repo"></p>
+<p>I used this for my blog and so the URL for the github repository above was what I used in my Hexo _config.yml file in the deployment section.</p>
+<p>Once you have deployed to the github repository you can view the site using the URL [YourUserName].github.io.</p>
+<p>If you have a custom domain you want to use then you need to go to settings of your repo and where it says “Custom Domain” - add your custom domain name and save. This will add a CNAME file to your repository with the name of your custom domain in there.</p>
+<p><strong>Important Note:</strong> In order for this CNAME file to persist, you should create it in your local output folder (with no file name extension), with the name of your custom domain. I found that if I didn’t do this everytime I pushed from my local folder the CNAME file would disappear and the connection from my github URL to my custom domain would disappear and I’d get a 404 error, so be aware of this!</p>
+<p><img src="/images/CNAMEFolder.png" alt="CNAME File in Source Folder"></p>
+<p><img src="/images/CNAMEContent.png" alt="CNAME Content"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="www.datagriff.com/2016/06/UsingGitHubForWebHosting/" data-id="cipy7evl90005pckayy2vc3ya" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
 
     </footer>
   </div>
@@ -159,61 +210,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/DeployingHexo/" data-id="cipy7clyh0001qcka3sd82rkw" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/DeployingHexo/" data-id="cipy7evla0007pcka6inbhynl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-UsingGitHubForWebHosting" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/UsingGitHubForWebHosting/" class="article-date">
-  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Github/">Github</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Creating-a-Git-Hub-io-Repo"><a href="#Creating-a-Git-Hub-io-Repo" class="headerlink" title="Creating a Git Hub io Repo"></a>Creating a Git Hub io Repo</h2><p><strong><a href="https://github.com/" title="GitHub" target="_blank" rel="external">GitHub</a></strong> allows you each user to host one website as part of their service using a <a href="https://pages.github.com/" title="Github pages" target="_blank" rel="external">github “io” repoistory</a>.</p>
-<p>To do this create a new github repository called [YourUserName]/[YourUserName].github.io.</p>
-<p><img src="../images/GitHubIORepo.png" alt="My IO GitHub Repo"></p>
-<p>I used this for my blog and so the URL for the github repository above was what I used in my Hexo _config.yml file in the deployment section.</p>
-<p>Once you have deployed to the github repository you can view the site using the URL [YourUserName].github.io.</p>
-<p>If you have a custom domain you want to use then you need to go to settings of your repo and where it says “Custom Domain” - add your custom domain name and save. This will add a CNAME file to your repository with the name of your custom domain in there.</p>
-<p><strong>Important Note:</strong> In order for this CNAME file to persist, you should create it in your local output folder (with no file name extension), with the name of your custom domain. I found that if I didn’t do this everytime I pushed from my local folder the CNAME file would disappear and the connection from my github URL to my custom domain would disappear and I’d get a 404 error, so be aware of this!</p>
-<p><img src="/images/CNAMEFolder.png" alt="CNAME File in Source Folder">)</p>
-<p><img src="/images/CNAMEContent.png" alt="CNAME Content">)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/UsingGitHubForWebHosting/" data-id="cipy7clyn0007qcka9l4vd10p" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
 
     </footer>
   </div>
@@ -276,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/InstallAndInitaliseHexo/" data-id="cipy7clyl0004qcka8fw8vepu" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/InstallAndInitaliseHexo/" data-id="cipy7evl10000pckabvatgdjs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
@@ -346,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/YAMLAndMarkdown/" data-id="cipy7clym0005qckan89a2hbd" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/YAMLAndMarkdown/" data-id="cipy7evl80004pckatqao15j9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/YAML/">YAML</a></li></ul>
@@ -374,11 +374,11 @@
           </li>
         
           <li>
-            <a href="/2016/06/DeployingHexo/">Deploying Hexo</a>
+            <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
           </li>
         
           <li>
-            <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
+            <a href="/2016/06/DeployingHexo/">Deploying Hexo</a>
           </li>
         
           <li>
