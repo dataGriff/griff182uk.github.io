@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title><![CDATA[Hexo Quick New Post and Deploy]]></title>
+      <url>www.datagriff.com/2016/06/HexoQuickNewPostAndDeploy/</url>
+      <content type="html"><![CDATA[<p>Below shows the quick process of creating and deploying a new post, while keeping everything under source control. This post assumes you already have the source folder initialised with git and linked to a standard repository, and the output folder initialised with git, linked to your io repository.  </p>
+<p>Navigate to your hexo source folder in node.js command prompt.<br>In my case this is E:\Documents\Projects\DataGriff\Raw.</p>
+<p><img src="\images\HexoSourceFolder.png" alt="Hexo Source Folder in Node.js Command Prompt"></p>
+<p>Enter the command<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post test</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\HexoNewPost.png" alt="Hexo New Post Command in Node.js Command Prompt"></p>
+<p>which will create a new post file called test.md. Don’t close the node.js command prompt as you use it again at the end to deploy.</p>
+<p>Start Git bash on your source folder and check the status by using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitStatusChange.png" alt="Git Status New Post Added"><br>This will show a new file called test.md has been added.</p>
+<p>Use the command below to add all the changed or new files.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitAddAll.png" alt="Git Add All Files Using Git Bash"><br>Use the command below to commit the changes with a message.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;new post added&quot;</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitCommit.png" alt="Git Commit with Message  Using Git Bash"><br>Check the status again and you will see there are no changes now as you have committed them.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitStatusClean.png" alt="Git Status Clean  Using Git Bash"><br>To keep your remote repository up to date, use the command below.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitPushOriginMaster.png" alt="Git Sync with Remote Using Git Bash"><br>Revert back to the node.js command prompt and use the following command to generate the output files<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\HexoGenerate.png" alt="Hexo Generate Command in Node.js"><br>Still in the node.js command prompt use the following command to deploy the output files to your github io repo and so your website.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\HexoDeploy.png" alt="Hexo Deploy Command in Node.js"><br>You should then be able to see the new post if you refresh the page.<br><img src="\images\HexoTestPost.png" alt="Hexo New Post"></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[test]]></title>
       <url>www.datagriff.com/2016/06/test/</url>
       <content type="html"></content>

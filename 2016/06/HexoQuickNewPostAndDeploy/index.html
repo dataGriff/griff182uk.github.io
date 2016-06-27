@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Deploying Hexo | dataGriff</title>
+  <title>Hexo Quick New Post and Deploy | dataGriff</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Generating the FilesWhen in node.js command prompt, navigate to your source folder where you initialised hexo, and type1hexo generate
-This will deploy all the html files to the output path you designa">
+  <meta name="description" content="Below shows the quick process of creating and deploying a new post, while keeping everything under source control. This post assumes you already have the source folder initialised with git and linked">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Deploying Hexo">
-<meta property="og:url" content="www.datagriff.com/2016/06/DeployingHexo/index.html">
+<meta property="og:title" content="Hexo Quick New Post and Deploy">
+<meta property="og:url" content="www.datagriff.com/2016/06/HexoQuickNewPostAndDeploy/index.html">
 <meta property="og:site_name" content="dataGriff">
-<meta property="og:description" content="Generating the FilesWhen in node.js command prompt, navigate to your source folder where you initialised hexo, and type1hexo generate
-This will deploy all the html files to the output path you designa">
-<meta property="og:image" content="www.datagriff.com/images/HexoGenerate.png">
-<meta property="og:image" content="www.datagriff.com/images/HexoOutputFiles.png">
-<meta property="og:image" content="www.datagriff.com/images/HexoDeploy.png">
-<meta property="og:updated_time" content="2016-06-27T16:03:45.096Z">
+<meta property="og:description" content="Below shows the quick process of creating and deploying a new post, while keeping everything under source control. This post assumes you already have the source folder initialised with git and linked">
+<meta property="og:image" content="www.datagriff.com/\images\HexoSourceFolder.png">
+<meta property="og:image" content="www.datagriff.com/\images\HexoNewPost.png">
+<meta property="og:image" content="www.datagriff.com/\images\GitStatusChange.png">
+<meta property="og:image" content="www.datagriff.com/\images\GitAddAll.png">
+<meta property="og:image" content="www.datagriff.com/\images\GitCommit.png">
+<meta property="og:image" content="www.datagriff.com/\images\GitStatusClean.png">
+<meta property="og:image" content="www.datagriff.com/\images\GitPushOriginMaster.png">
+<meta property="og:image" content="www.datagriff.com/\images\HexoGenerate.png">
+<meta property="og:image" content="www.datagriff.com/\images\HexoDeploy.png">
+<meta property="og:image" content="www.datagriff.com/\images\HexoTestPost.png">
+<meta property="og:updated_time" content="2016-06-27T17:33:19.002Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deploying Hexo">
-<meta name="twitter:description" content="Generating the FilesWhen in node.js command prompt, navigate to your source folder where you initialised hexo, and type1hexo generate
-This will deploy all the html files to the output path you designa">
-<meta name="twitter:image" content="www.datagriff.com/images/HexoGenerate.png">
+<meta name="twitter:title" content="Hexo Quick New Post and Deploy">
+<meta name="twitter:description" content="Below shows the quick process of creating and deploying a new post, while keeping everything under source control. This post assumes you already have the source folder initialised with git and linked">
+<meta name="twitter:image" content="www.datagriff.com/\images\HexoSourceFolder.png">
   
     <link rel="alternate" href="/atom.xml" title="dataGriff" type="application/atom+xml">
   
@@ -74,10 +78,10 @@ This will deploy all the html files to the output path you designa">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-DeployingHexo" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-HexoQuickNewPostAndDeploy" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/06/DeployingHexo/" class="article-date">
-  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
+    <a href="/2016/06/HexoQuickNewPostAndDeploy/" class="article-date">
+  <time datetime="2016-06-27T18:11:55.000Z" itemprop="datePublished">2016-06-27</time>
 </a>
     
   <div class="article-category">
@@ -92,7 +96,7 @@ This will deploy all the html files to the output path you designa">
         
   
     <h1 class="article-title" itemprop="name">
-      Deploying Hexo
+      Hexo Quick New Post and Deploy
     </h1>
   
 
@@ -100,23 +104,29 @@ This will deploy all the html files to the output path you designa">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
-<p><img src="/images/HexoGenerate.png" alt="Hexo Generate Output"></p>
-<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file). The output folder should look something to below.</p>
-<p><img src="/images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
-<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
-<p><img src="/images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
+        <p>Below shows the quick process of creating and deploying a new post, while keeping everything under source control. This post assumes you already have the source folder initialised with git and linked to a standard repository, and the output folder initialised with git, linked to your io repository.  </p>
+<p>Navigate to your hexo source folder in node.js command prompt.<br>In my case this is E:\Documents\Projects\DataGriff\Raw.</p>
+<p><img src="\images\HexoSourceFolder.png" alt="Hexo Source Folder in Node.js Command Prompt"></p>
+<p>Enter the command<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post test</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\HexoNewPost.png" alt="Hexo New Post Command in Node.js Command Prompt"></p>
+<p>which will create a new post file called test.md. Don’t close the node.js command prompt as you use it again at the end to deploy.</p>
+<p>Start Git bash on your source folder and check the status by using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitStatusChange.png" alt="Git Status New Post Added"><br>This will show a new file called test.md has been added.</p>
+<p>Use the command below to add all the changed or new files.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitAddAll.png" alt="Git Add All Files Using Git Bash"><br>Use the command below to commit the changes with a message.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;new post added&quot;</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitCommit.png" alt="Git Commit with Message  Using Git Bash"><br>Check the status again and you will see there are no changes now as you have committed them.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitStatusClean.png" alt="Git Status Clean  Using Git Bash"><br>To keep your remote repository up to date, use the command below.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitPushOriginMaster.png" alt="Git Sync with Remote Using Git Bash"><br>Revert back to the node.js command prompt and use the following command to generate the output files<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\HexoGenerate.png" alt="Hexo Generate Command in Node.js"><br>Still in the node.js command prompt use the following command to deploy the output files to your github io repo and so your website.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\HexoDeploy.png" alt="Hexo Deploy Command in Node.js"><br>You should then be able to see the new post if you refresh the page.<br><img src="\images\HexoTestPost.png" alt="Hexo New Post"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/DeployingHexo/" data-id="cipyb046p0001lkkank8ok2xk" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/HexoQuickNewPostAndDeploy/" data-id="cipyb046t0004lkka7zicqrzb" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
 
     </footer>
   </div>
@@ -124,19 +134,10 @@ This will deploy all the html files to the output path you designa">
     
 <nav id="article-nav">
   
-    <a href="/2016/06/ConfigureHexo/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Configure Hexo
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/06/UsingGitHubForWebHosting/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/06/test/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Using Git Hub for Web Hosting</div>
+      <div class="article-nav-title">test</div>
     </a>
   
 </nav>
