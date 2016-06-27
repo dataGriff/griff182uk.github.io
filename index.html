@@ -68,6 +68,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SQLAggregateAcrossColumns" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/SQLAggregateAcrossColumns/" class="article-date">
+  <time datetime="2016-06-27T17:54:53.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/SQLAggregateAcrossColumns/">SQLAggregateAcrossColumns</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In order to aggregate across columns in SQL you can use the following syntax.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">Aggregate</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (ColA), (ColB), (ColC),...) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [AggregateCol]</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Object</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Aggregate-Dates-Across-Columns-Example"><a href="#Aggregate-Dates-Across-Columns-Example" class="headerlink" title="Aggregate Dates Across Columns Example"></a>Aggregate Dates Across Columns Example</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Example 1: Dates Min and Max Across Columns</span></span><br><span class="line">WITH CTE AS (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(<span class="string">'01-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateA, <span class="keyword">CAST</span>(<span class="string">'10-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateB, <span class="keyword">CAST</span>(<span class="string">'15-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="string">'05-Jan-2016'</span> <span class="keyword">AS</span> DateA, <span class="string">'04-Jan-2016'</span> <span class="keyword">AS</span> DateB, <span class="string">'16-Jan-2016'</span> <span class="keyword">AS</span> DateC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="string">'08-Jan-2016'</span> <span class="keyword">AS</span> DateA, <span class="string">'31-Dec-2015'</span> <span class="keyword">AS</span> DateB, <span class="string">'10-Jan-2016'</span> <span class="keyword">AS</span> DateC</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (DateA), (DateB), (DateC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [MaxDate]</span><br><span class="line">  ,  (<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (DateA), (DateB), (DateC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [MinDate]</span><br><span class="line"><span class="keyword">FROM</span> CTE;</span><br></pre></td></tr></table></figure>
+<h2 id="Aggregate-Numeric-Across-Columns-Example"><a href="#Aggregate-Numeric-Across-Columns-Example" class="headerlink" title="Aggregate Numeric Across Columns Example"></a>Aggregate Numeric Across Columns Example</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Example 2: Sum and Average Numbers Across Columns</span></span><br><span class="line">WITH CTE AS (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">5</span> <span class="keyword">AS</span> NumA, <span class="number">10</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">15</span> <span class="keyword">AS</span> NumC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="number">20</span> <span class="keyword">AS</span> NumA, <span class="number">40</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">60</span> <span class="keyword">AS</span> NumC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="number">25</span> <span class="keyword">AS</span> NumA, <span class="number">50</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">75</span> <span class="keyword">AS</span> NumC</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">SUM</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (NumA), (<span class="keyword">NumB</span>), (NumC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [SumNum]</span><br><span class="line">  ,  (<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (NumA), (<span class="keyword">NumB</span>), (NumC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [AvgNum]</span><br><span class="line"> <span class="keyword">FROM</span> CTE;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="www.datagriff.com/2016/06/SQLAggregateAcrossColumns/" data-id="cipy9rxrc0009i0kau55xpp01" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/06/test/" class="article-date">
@@ -94,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/test/" data-id="cipy7t4ub0009l4kaw7ljde4n" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/test/" data-id="cipy9rxra0007i0kasvl8pyns" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="cipy7t4ty0000l4kaasth8alk" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="cipy9rxr00000i0ka0klkfsik" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
@@ -195,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/DeployingHexo/" data-id="cipy7t4u20001l4ka23ul4sj7" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/DeployingHexo/" data-id="cipy9rxr40001i0ka1dhigl8s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
@@ -246,10 +292,76 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/UsingGitHubForWebHosting/" data-id="cipy7t4u70004l4kayrqd6ns4" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/UsingGitHubForWebHosting/" data-id="cipy9rxr90005i0kabb725j1o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-InstallAndInitaliseHexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/InstallAndInitaliseHexo/" class="article-date">
+  <time datetime="2016-06-23T00:00:00.000Z" itemprop="datePublished">2016-06-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/InstallAndInitaliseHexo/">Install and Initialise Hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Inspired by the awesome <strong><a href="https://www.pluralsight.com/" title="Pluralsight" target="_blank" rel="external">Pluralsight</a></strong> and it’s course on <a href="http://www.staticgen.com/" title="Title" target="_blank" rel="external">static site generators</a>, I decided to implement a blog using hexo.</p>
+<p>The steps shown below are what you need to install and initalise Hexo locally.</p>
+<h2 id="Required-Applications-and-Installations"><a href="#Required-Applications-and-Installations" class="headerlink" title="Required Applications and Installations"></a>Required Applications and Installations</h2><p>The following items were required to create my blog, which I either already had or required to install.</p>
+<ul>
+<li><strong><a href="https://git-scm.com/downloads" title="Git" target="_blank" rel="external">Git</a></strong>  - Of course I already had it installed! Git will provide the methods of source control and also in my case, provide the host for my blog web page.</li>
+<li><strong><a href="https://nodejs.org/en/" title="Node.js" target="_blank" rel="external">Node.js</a></strong> - Downloaded this for windows X64, as I have a 64 bit machine, chose all the defaults and so “Next Next Nexted” until Finish.</li>
+<li><strong>NPM</strong> - This installed with the latest version of Node.js above anyway so I didn’t need to do anything here.</li>
+<li><strong><a href="https://atom.io/" title="Atom" target="_blank" rel="external">Atom</a></strong>  - Even though I’d used notepad++ as my text editor up until this point, it didn’t have any native markdown features so I got converted to atom. It has appropriate syntax highlighting for markdown and has a useful live HTML preview feature (CTRL+Shift+M). Therefore my first blog post (this one) was written with atom and I’m likely to stick with it…</li>
+<li><strong><a href="https://hexo.io/" title="Hexo" target="_blank" rel="external">Hexo</a></strong> - Is a static site generator application and the main application I have used to implement my blog. The home page of Hexo gives you the command to install, so I opened up my command prompt and typed it in. At the time of my implementation of my blog this was…<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>Note:</strong> I actually used the node.js command prompt when performing these tasks, not windows command prompt, in case windows command prompt doesn’t work!</p>
+<p>Then type in hexo into the command prompt and if the installation was a success you’ll get a load of hexo details back in the command window. Tidy!</p>
+<h2 id="Using-Hexo-to-Initiate-my-Folders-and-Files"><a href="#Using-Hexo-to-Initiate-my-Folders-and-Files" class="headerlink" title="Using Hexo to Initiate my Folders and Files"></a>Using Hexo to Initiate my Folders and Files</h2><p>I created a folder in the desired location for my dataGriff blog by typing in the command (replace [My Path] with your folder path)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mrkdir //[My Path]/dataGriff</span><br></pre></td></tr></table></figure></p>
+<p>Then I changed directory to this folder using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd //[My Path]/dataGriff</span><br></pre></td></tr></table></figure></p>
+<p>Finally I initialised hexo on the folder using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
+<p>There was a little message at the end of the command prompt output that stated<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO Start blogging with hexo</span><br></pre></td></tr></table></figure></p>
+<p>So I thought I must be on the right track!</p>
+<p><img src="/images/HexoStartBlogging.png" alt="Hexo Start Blogging"></p>
+<h2 id="Viewing-Hexos-Startup-Template"><a href="#Viewing-Hexos-Startup-Template" class="headerlink" title="Viewing Hexos Startup Template"></a>Viewing Hexos Startup Template</h2><p>In command prompt, in my dataGriff directory, I typed<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure></p>
+<p>Again I got the satisfying message of<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO hexo is running at http://localhost:4000/.</span><br></pre></td></tr></table></figure></p>
+<p>So with trepidation I went to the <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> link in a browser and…<br>Hey presto! I could see hexos startup template! Success!<br>To stop the page running you can just press CTRL+C in the command prompt and confirm the termination.</p>
+<p><img src="/images/HexoDefault.png" alt="Hexo Default Startup Page"></p>
+<p>Using the hexo server command is a good way of testing your site locally before deployment.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="www.datagriff.com/2016/06/InstallAndInitaliseHexo/" data-id="cipy9rxr80004i0kaljq5vhxq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
 
     </footer>
   </div>
@@ -316,76 +428,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/YAMLAndMarkdown/" data-id="cipy7t4u80005l4ka1ook3uac" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/YAMLAndMarkdown/" data-id="cipy9rxre000bi0karfe6k5t4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/YAML/">YAML</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-InstallAndInitaliseHexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/InstallAndInitaliseHexo/" class="article-date">
-  <time datetime="2016-06-23T00:00:00.000Z" itemprop="datePublished">2016-06-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/InstallAndInitaliseHexo/">Install and Initialise Hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Inspired by the awesome <strong><a href="https://www.pluralsight.com/" title="Pluralsight" target="_blank" rel="external">Pluralsight</a></strong> and it’s course on <a href="http://www.staticgen.com/" title="Title" target="_blank" rel="external">static site generators</a>, I decided to implement a blog using hexo.</p>
-<p>The steps shown below are what you need to install and initalise Hexo locally.</p>
-<h2 id="Required-Applications-and-Installations"><a href="#Required-Applications-and-Installations" class="headerlink" title="Required Applications and Installations"></a>Required Applications and Installations</h2><p>The following items were required to create my blog, which I either already had or required to install.</p>
-<ul>
-<li><strong><a href="https://git-scm.com/downloads" title="Git" target="_blank" rel="external">Git</a></strong>  - Of course I already had it installed! Git will provide the methods of source control and also in my case, provide the host for my blog web page.</li>
-<li><strong><a href="https://nodejs.org/en/" title="Node.js" target="_blank" rel="external">Node.js</a></strong> - Downloaded this for windows X64, as I have a 64 bit machine, chose all the defaults and so “Next Next Nexted” until Finish.</li>
-<li><strong>NPM</strong> - This installed with the latest version of Node.js above anyway so I didn’t need to do anything here.</li>
-<li><strong><a href="https://atom.io/" title="Atom" target="_blank" rel="external">Atom</a></strong>  - Even though I’d used notepad++ as my text editor up until this point, it didn’t have any native markdown features so I got converted to atom. It has appropriate syntax highlighting for markdown and has a useful live HTML preview feature (CTRL+Shift+M). Therefore my first blog post (this one) was written with atom and I’m likely to stick with it…</li>
-<li><strong><a href="https://hexo.io/" title="Hexo" target="_blank" rel="external">Hexo</a></strong> - Is a static site generator application and the main application I have used to implement my blog. The home page of Hexo gives you the command to install, so I opened up my command prompt and typed it in. At the time of my implementation of my blog this was…<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>Note:</strong> I actually used the node.js command prompt when performing these tasks, not windows command prompt, in case windows command prompt doesn’t work!</p>
-<p>Then type in hexo into the command prompt and if the installation was a success you’ll get a load of hexo details back in the command window. Tidy!</p>
-<h2 id="Using-Hexo-to-Initiate-my-Folders-and-Files"><a href="#Using-Hexo-to-Initiate-my-Folders-and-Files" class="headerlink" title="Using Hexo to Initiate my Folders and Files"></a>Using Hexo to Initiate my Folders and Files</h2><p>I created a folder in the desired location for my dataGriff blog by typing in the command (replace [My Path] with your folder path)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mrkdir //[My Path]/dataGriff</span><br></pre></td></tr></table></figure></p>
-<p>Then I changed directory to this folder using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd //[My Path]/dataGriff</span><br></pre></td></tr></table></figure></p>
-<p>Finally I initialised hexo on the folder using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
-<p>There was a little message at the end of the command prompt output that stated<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO Start blogging with hexo</span><br></pre></td></tr></table></figure></p>
-<p>So I thought I must be on the right track!</p>
-<p><img src="/images/HexoStartBlogging.png" alt="Hexo Start Blogging"></p>
-<h2 id="Viewing-Hexos-Startup-Template"><a href="#Viewing-Hexos-Startup-Template" class="headerlink" title="Viewing Hexos Startup Template"></a>Viewing Hexos Startup Template</h2><p>In command prompt, in my dataGriff directory, I typed<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure></p>
-<p>Again I got the satisfying message of<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO hexo is running at http://localhost:4000/.</span><br></pre></td></tr></table></figure></p>
-<p>So with trepidation I went to the <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> link in a browser and…<br>Hey presto! I could see hexos startup template! Success!<br>To stop the page running you can just press CTRL+C in the command prompt and confirm the termination.</p>
-<p><img src="/images/HexoDefault.png" alt="Hexo Default Startup Page"></p>
-<p>Using the hexo server command is a good way of testing your site locally before deployment.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/InstallAndInitaliseHexo/" data-id="cipy7t4u90007l4ka32werc8p" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
 
     </footer>
   </div>
@@ -406,6 +452,10 @@
       <ul>
         
           <li>
+            <a href="/2016/06/SQLAggregateAcrossColumns/">SQLAggregateAcrossColumns</a>
+          </li>
+        
+          <li>
             <a href="/2016/06/test/">test</a>
           </li>
         
@@ -421,10 +471,6 @@
             <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
           </li>
         
-          <li>
-            <a href="/2016/06/YAMLAndMarkdown/">YAML And Markdown Example</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -434,7 +480,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -444,7 +490,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -454,7 +500,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Blogging/" style="font-size: 20px;">Blogging</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Starting-Up/" style="font-size: 20px;">Starting Up</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+      <a href="/tags/Blogging/" style="font-size: 20px;">Blogging</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Starting-Up/" style="font-size: 20px;">Starting Up</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
     </div>
   </div>
 
@@ -463,7 +509,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 

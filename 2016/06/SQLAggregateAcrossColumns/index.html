@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SQLAggregateAcrossColumns | dataGriff</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="In order to aggregate across columns in SQL you can use the following syntax.
+123SELECT  (SELECT Aggregate(v) FROM (VALUES (ColA), (ColB), (ColC),...) AS value(v)) as [AggregateCol]FROM Object;
+Aggreg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQLAggregateAcrossColumns">
+<meta property="og:url" content="www.datagriff.com/2016/06/SQLAggregateAcrossColumns/index.html">
+<meta property="og:site_name" content="dataGriff">
+<meta property="og:description" content="In order to aggregate across columns in SQL you can use the following syntax.
+123SELECT  (SELECT Aggregate(v) FROM (VALUES (ColA), (ColB), (ColC),...) AS value(v)) as [AggregateCol]FROM Object;
+Aggreg">
+<meta property="og:updated_time" content="2016-06-27T16:58:30.142Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQLAggregateAcrossColumns">
+<meta name="twitter:description" content="In order to aggregate across columns in SQL you can use the following syntax.
+123SELECT  (SELECT Aggregate(v) FROM (VALUES (ColA), (ColB), (ColC),...) AS value(v)) as [AggregateCol]FROM Object;
+Aggreg">
+  
+    <link rel="alternate" href="/atom.xml" title="dataGriff" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dataGriff</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A blog about data from a guy named Griff</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="www.datagriff.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-SQLAggregateAcrossColumns" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/SQLAggregateAcrossColumns/" class="article-date">
+  <time datetime="2016-06-27T17:54:53.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQLAggregateAcrossColumns
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In order to aggregate across columns in SQL you can use the following syntax.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">Aggregate</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (ColA), (ColB), (ColC),...) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [AggregateCol]</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Object</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Aggregate-Dates-Across-Columns-Example"><a href="#Aggregate-Dates-Across-Columns-Example" class="headerlink" title="Aggregate Dates Across Columns Example"></a>Aggregate Dates Across Columns Example</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Example 1: Dates Min and Max Across Columns</span></span><br><span class="line">WITH CTE AS (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(<span class="string">'01-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateA, <span class="keyword">CAST</span>(<span class="string">'10-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateB, <span class="keyword">CAST</span>(<span class="string">'15-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="string">'05-Jan-2016'</span> <span class="keyword">AS</span> DateA, <span class="string">'04-Jan-2016'</span> <span class="keyword">AS</span> DateB, <span class="string">'16-Jan-2016'</span> <span class="keyword">AS</span> DateC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="string">'08-Jan-2016'</span> <span class="keyword">AS</span> DateA, <span class="string">'31-Dec-2015'</span> <span class="keyword">AS</span> DateB, <span class="string">'10-Jan-2016'</span> <span class="keyword">AS</span> DateC</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (DateA), (DateB), (DateC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [MaxDate]</span><br><span class="line">  ,  (<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (DateA), (DateB), (DateC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [MinDate]</span><br><span class="line"><span class="keyword">FROM</span> CTE;</span><br></pre></td></tr></table></figure>
+<h2 id="Aggregate-Numeric-Across-Columns-Example"><a href="#Aggregate-Numeric-Across-Columns-Example" class="headerlink" title="Aggregate Numeric Across Columns Example"></a>Aggregate Numeric Across Columns Example</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Example 2: Sum and Average Numbers Across Columns</span></span><br><span class="line">WITH CTE AS (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">5</span> <span class="keyword">AS</span> NumA, <span class="number">10</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">15</span> <span class="keyword">AS</span> NumC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="number">20</span> <span class="keyword">AS</span> NumA, <span class="number">40</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">60</span> <span class="keyword">AS</span> NumC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="number">25</span> <span class="keyword">AS</span> NumA, <span class="number">50</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">75</span> <span class="keyword">AS</span> NumC</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">SUM</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (NumA), (<span class="keyword">NumB</span>), (NumC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [SumNum]</span><br><span class="line">  ,  (<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (NumA), (<span class="keyword">NumB</span>), (NumC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [AvgNum]</span><br><span class="line"> <span class="keyword">FROM</span> CTE;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="www.datagriff.com/2016/06/SQLAggregateAcrossColumns/" data-id="cipy9rxrc0009i0kau55xpp01" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/test/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">test</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/SQLAggregateAcrossColumns/">SQLAggregateAcrossColumns</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/ConfigureHexo/">Configure Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/DeployingHexo/">Deploying Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Blogging/" style="font-size: 20px;">Blogging</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Starting-Up/" style="font-size: 20px;">Starting Up</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Richard Griffiths<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
