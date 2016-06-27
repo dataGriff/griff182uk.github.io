@@ -15,7 +15,7 @@ Aggreg">
 <meta property="og:description" content="In order to aggregate across columns in SQL you can use the following syntax.
 123SELECT  (SELECT Aggregate(v) FROM (VALUES (ColA), (ColB), (ColC),...) AS value(v)) as [AggregateCol]FROM Object;
 Aggreg">
-<meta property="og:updated_time" content="2016-06-27T17:04:44.407Z">
+<meta property="og:updated_time" content="2016-06-27T17:06:32.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL Aggregate Across Columns">
 <meta name="twitter:description" content="In order to aggregate across columns in SQL you can use the following syntax.
@@ -102,7 +102,7 @@ Aggreg">
         <p>In order to aggregate across columns in SQL you can use the following syntax.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">Aggregate</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (ColA), (ColB), (ColC),...) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [AggregateCol]</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Object</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="Aggregate-Dates-Across-Columns-Example"><a href="#Aggregate-Dates-Across-Columns-Example" class="headerlink" title="Aggregate Dates Across Columns Example"></a>Aggregate Dates Across Columns Example</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Example 1: Dates Min and Max Across Columns</span></span><br><span class="line">WITH CTE AS (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(<span class="string">'01-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateA, <span class="keyword">CAST</span>(<span class="string">'10-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateB, <span class="keyword">CAST</span>(<span class="string">'15-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="string">'05-Jan-2016'</span> <span class="keyword">AS</span> DateA, <span class="string">'04-Jan-2016'</span> <span class="keyword">AS</span> DateB, <span class="string">'16-Jan-2016'</span> <span class="keyword">AS</span> DateC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="string">'08-Jan-2016'</span> <span class="keyword">AS</span> DateA, <span class="string">'31-Dec-2015'</span> <span class="keyword">AS</span> DateB, <span class="string">'10-Jan-2016'</span> <span class="keyword">AS</span> DateC</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (DateA), (DateB), (DateC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [MaxDate]</span><br><span class="line">  ,  (<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (DateA), (DateB), (DateC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [MinDate]</span><br><span class="line"><span class="keyword">FROM</span> CTE;</span><br></pre></td></tr></table></figure>
-<p>Outputs</p>
+<p><strong>Outputs</strong></p>
 <table>
 <thead>
 <tr>
@@ -126,6 +126,7 @@ Aggreg">
 </tbody>
 </table>
 <h2 id="Aggregate-Numeric-Across-Columns-Example"><a href="#Aggregate-Numeric-Across-Columns-Example" class="headerlink" title="Aggregate Numeric Across Columns Example"></a>Aggregate Numeric Across Columns Example</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Example 2: Sum and Average Numbers Across Columns</span></span><br><span class="line">WITH CTE AS (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">5</span> <span class="keyword">AS</span> NumA, <span class="number">10</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">15</span> <span class="keyword">AS</span> NumC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="number">20</span> <span class="keyword">AS</span> NumA, <span class="number">40</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">60</span> <span class="keyword">AS</span> NumC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="number">25</span> <span class="keyword">AS</span> NumA, <span class="number">50</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">75</span> <span class="keyword">AS</span> NumC</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">SUM</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (NumA), (<span class="keyword">NumB</span>), (NumC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [SumNum]</span><br><span class="line">  ,  (<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (NumA), (<span class="keyword">NumB</span>), (NumC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [AvgNum]</span><br><span class="line"> <span class="keyword">FROM</span> CTE;</span><br></pre></td></tr></table></figure>
+<p><strong>Outputs</strong></p>
 <table>
 <thead>
 <tr>
@@ -152,7 +153,7 @@ Aggreg">
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/SQLAggregateAcrossColumns/" data-id="cipy9zrtz0007cskaptk6womg" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/SQLAggregateAcrossColumns/" data-id="cipya1nzx0007m0kaaicbguhd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -197,11 +198,11 @@ Aggreg">
           </li>
         
           <li>
-            <a href="/2016/06/DeployingHexo/">Deploying Hexo</a>
+            <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
           </li>
         
           <li>
-            <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
+            <a href="/2016/06/DeployingHexo/">Deploying Hexo</a>
           </li>
         
       </ul>

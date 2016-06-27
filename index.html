@@ -97,7 +97,7 @@
         <p>In order to aggregate across columns in SQL you can use the following syntax.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">Aggregate</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (ColA), (ColB), (ColC),...) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [AggregateCol]</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Object</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="Aggregate-Dates-Across-Columns-Example"><a href="#Aggregate-Dates-Across-Columns-Example" class="headerlink" title="Aggregate Dates Across Columns Example"></a>Aggregate Dates Across Columns Example</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Example 1: Dates Min and Max Across Columns</span></span><br><span class="line">WITH CTE AS (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(<span class="string">'01-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateA, <span class="keyword">CAST</span>(<span class="string">'10-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateB, <span class="keyword">CAST</span>(<span class="string">'15-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="string">'05-Jan-2016'</span> <span class="keyword">AS</span> DateA, <span class="string">'04-Jan-2016'</span> <span class="keyword">AS</span> DateB, <span class="string">'16-Jan-2016'</span> <span class="keyword">AS</span> DateC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="string">'08-Jan-2016'</span> <span class="keyword">AS</span> DateA, <span class="string">'31-Dec-2015'</span> <span class="keyword">AS</span> DateB, <span class="string">'10-Jan-2016'</span> <span class="keyword">AS</span> DateC</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (DateA), (DateB), (DateC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [MaxDate]</span><br><span class="line">  ,  (<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (DateA), (DateB), (DateC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [MinDate]</span><br><span class="line"><span class="keyword">FROM</span> CTE;</span><br></pre></td></tr></table></figure>
-<p>Outputs</p>
+<p><strong>Outputs</strong></p>
 <table>
 <thead>
 <tr>
@@ -121,6 +121,7 @@
 </tbody>
 </table>
 <h2 id="Aggregate-Numeric-Across-Columns-Example"><a href="#Aggregate-Numeric-Across-Columns-Example" class="headerlink" title="Aggregate Numeric Across Columns Example"></a>Aggregate Numeric Across Columns Example</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Example 2: Sum and Average Numbers Across Columns</span></span><br><span class="line">WITH CTE AS (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">5</span> <span class="keyword">AS</span> NumA, <span class="number">10</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">15</span> <span class="keyword">AS</span> NumC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="number">20</span> <span class="keyword">AS</span> NumA, <span class="number">40</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">60</span> <span class="keyword">AS</span> NumC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="number">25</span> <span class="keyword">AS</span> NumA, <span class="number">50</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">75</span> <span class="keyword">AS</span> NumC</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">SUM</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (NumA), (<span class="keyword">NumB</span>), (NumC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [SumNum]</span><br><span class="line">  ,  (<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (NumA), (<span class="keyword">NumB</span>), (NumC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [AvgNum]</span><br><span class="line"> <span class="keyword">FROM</span> CTE;</span><br></pre></td></tr></table></figure>
+<p><strong>Outputs</strong></p>
 <table>
 <thead>
 <tr>
@@ -147,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/SQLAggregateAcrossColumns/" data-id="cipy9zrtz0007cskaptk6womg" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/SQLAggregateAcrossColumns/" data-id="cipya1nzx0007m0kaaicbguhd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -185,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/test/" data-id="cipy9zru3000bcskaxnj4qut4" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/test/" data-id="cipya1nzz0009m0kau6f9do0q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,58 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="cipy9zrtn0000cskahzp3scv9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DeployingHexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/DeployingHexo/" class="article-date">
-  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/DeployingHexo/">Deploying Hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
-<p><img src="/images/HexoGenerate.png" alt="Hexo Generate Output"></p>
-<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file). The output folder should look something to below.</p>
-<p><img src="/images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
-<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
-<p><img src="/images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/DeployingHexo/" data-id="cipy9zrtr0001cskag5ytbuvj" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="cipya1nzm0000m0ka1rj8qysf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
@@ -337,10 +287,61 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/UsingGitHubForWebHosting/" data-id="cipy9zrty0005cskawc41255q" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/UsingGitHubForWebHosting/" data-id="cipya1nzv0004m0ka5daa06gd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-DeployingHexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/DeployingHexo/" class="article-date">
+  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/DeployingHexo/">Deploying Hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
+<p><img src="/images/HexoGenerate.png" alt="Hexo Generate Output"></p>
+<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file). The output folder should look something to below.</p>
+<p><img src="/images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
+<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
+<p><img src="/images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="www.datagriff.com/2016/06/DeployingHexo/" data-id="cipya1nzw0005m0kaq8l9wyio" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
 
     </footer>
   </div>
@@ -403,7 +404,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/InstallAndInitaliseHexo/" data-id="cipy9zrtx0004cskadntrav5o" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/InstallAndInitaliseHexo/" data-id="cipya1nzr0001m0kagfcwzyha" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
@@ -473,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/YAMLAndMarkdown/" data-id="cipy9zru10009cskaupx1jtj5" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/YAMLAndMarkdown/" data-id="cipya1o01000bm0kauqbawki7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/YAML/">YAML</a></li></ul>
@@ -509,11 +510,11 @@
           </li>
         
           <li>
-            <a href="/2016/06/DeployingHexo/">Deploying Hexo</a>
+            <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
           </li>
         
           <li>
-            <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
+            <a href="/2016/06/DeployingHexo/">Deploying Hexo</a>
           </li>
         
       </ul>
