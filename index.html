@@ -94,7 +94,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Configuring-Hexo-using-the-config-yml-file"><a href="#Configuring-Hexo-using-the-config-yml-file" class="headerlink" title="Configuring Hexo using the config.yml file"></a>Configuring Hexo using the config.yml file</h2><p>In the directory where you initalised hexo, you should see a file called config.yaml file. This is the file you edit to configure your hexo environment. At a bare minimum I did the following to get up and running quickly and efficiently.</p>
+        <h2 id="Configuring-Hexo-using-the-config-yml-file"><a href="#Configuring-Hexo-using-the-config-yml-file" class="headerlink" title="Configuring Hexo using the config.yml file"></a>Configuring Hexo using the config.yml file</h2><p>In the directory where you initalised hexo, you should see a file called config.yml file. This is the file you edit to configure your hexo environment. At a bare minimum I did the following to get up and running quickly and efficiently.</p>
 <p>I amended the site section at the top of the file to contain my and my site details.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: dataGriff</span><br><span class="line">subtitle: A blog about data from a guy named Griff</span><br><span class="line">description: A blog with content on SQL, data warehousing, business intelligence and all the rest!</span><br><span class="line">author: Richard Griffiths</span><br><span class="line">language: default</span><br><span class="line">timezone: GMT</span><br></pre></td></tr></table></figure>
 <p><strong>Important Note:</strong> It is important to change the language to default as leaving it as “en” was causing the language to be random everytime I generated the site. This was a bug in hexo at the time of writing.</p>
@@ -108,56 +108,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="cipy6kdm10000x4ka7ehhd30k" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DeployingHexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/DeployingHexo/" class="article-date">
-  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/DeployingHexo/">Deploying Hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy all the html files to the output path you designated in the config.yml file.</p>
-<p><img src="../images/HexoGenerate.png" alt="Hexo Generate Output"></p>
-<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>You also need to ensure that in your config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy and push the files to the github repo you specified in the config.yml file.</p>
-<p><img src="../images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/DeployingHexo/" data-id="cipy6kdm50001x4karo6p2ele" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="cipy6qcnq0000gkkan0doc8ms" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
@@ -197,7 +148,7 @@
       
         <h2 id="Creating-a-Git-Hub-io-Repo"><a href="#Creating-a-Git-Hub-io-Repo" class="headerlink" title="Creating a Git Hub io Repo"></a>Creating a Git Hub io Repo</h2><p><strong><a href="https://github.com/" title="GitHub" target="_blank" rel="external">GitHub</a></strong> allows you each user to host one website as part of their service using a <a href="https://pages.github.com/" title="Github pages" target="_blank" rel="external">github “io” repoistory</a>.</p>
 <p>To do this create a new github repository called [YourUserName]/[YourUserName].github.io.</p>
-<p>I used this for my blog and so the URL for the github repository above was what I used in my Hexo config.yml file in the deployment section.</p>
+<p>I used this for my blog and so the URL for the github repository above was what I used in my Hexo _config.yml file in the deployment section.</p>
 <p>Once you have deployed to the github repository you can view the site using the URL [YourUserName].github.io.</p>
 <p>If you have a custom domain you want to use then you need to go to settings of your repo and where it says “Custom Domain” - add your custom domain name and save. This will add a CNAME file to your repository with the name of your custom domain in there.</p>
 <p><strong>Important Note:</strong> In order for this CNAME file to persist, you should create it in your local output folder (with no file name extension), with the name of your custom domain. I found that if I didn’t do this everytime I pushed from my local folder the CNAME file would disappear and the connection from my github URL to my custom domain would disappear and I’d get a 404 error, so be aware of this!</p>
@@ -207,10 +158,59 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/UsingGitHubForWebHosting/" data-id="cipy6kdma0005x4kauji17ph4" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/UsingGitHubForWebHosting/" data-id="cipy6qcny0004gkkapsf5a669" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-DeployingHexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/DeployingHexo/" class="article-date">
+  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/DeployingHexo/">Deploying Hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
+<p><img src="../images/HexoGenerate.png" alt="Hexo Generate Output"></p>
+<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
+<p><img src="../images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="www.datagriff.com/2016/06/DeployingHexo/" data-id="cipy6qco00007gkkamv5flwsh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
 
     </footer>
   </div>
@@ -273,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/InstallAndInitaliseHexo/" data-id="cipy6kdm90004x4kax35c5fcp" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/InstallAndInitaliseHexo/" data-id="cipy6qcnu0001gkka18z3pgll" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
@@ -343,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/YAMLAndMarkdown/" data-id="cipy6kdmb0007x4karfcer40d" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/YAMLAndMarkdown/" data-id="cipy6qcnz0005gkka8snh8g1g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/YAML/">YAML</a></li></ul>
@@ -371,11 +371,11 @@
           </li>
         
           <li>
-            <a href="/2016/06/DeployingHexo/">Deploying Hexo</a>
+            <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
           </li>
         
           <li>
-            <a href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
+            <a href="/2016/06/DeployingHexo/">Deploying Hexo</a>
           </li>
         
           <li>
