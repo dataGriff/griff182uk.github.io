@@ -4,6 +4,54 @@
   
     
     <entry>
+      <title><![CDATA[Visual Studio Team Services New Project]]></title>
+      <url>www.datagriff.com/2016/07/VisualStudioOnlineNewProject/</url>
+      <content type="html"><![CDATA[<p><a href="https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx" target="_blank" rel="external">Visual studio team services</a> is an online tool for managing your visual studio code. It is a free tool for individuals that provides source control, project management, Kanban boards, automated builds, testing and much more. I’ve found it a useful way of managing my visual studio work and also a way of practicing for team foundation server in the workplace when I don’t actually have it!</p>
+<p>The following explains how to simply setup a visual studio team services project, clone it in visual studio and then keep your code in the source control provided by team services. I will be choosing the Git style rather than the TFS version of source control, just because I’m now used to Git and I think it’s more flexible. Also you get the added bonus of a local git repository if you can’t get online for any reason.</p>
+<h2 id="Setup-a-visual-studio-team-services-account"><a href="#Setup-a-visual-studio-team-services-account" class="headerlink" title="Setup a visual studio team services account"></a>Setup a visual studio team services account</h2><p>If you haven’t already got one - set yourself up a visual studio account. At the time of writing the link for this could be found at <a href="https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx" target="_blank" rel="external">Visual studio team services</a>, if it’s moved just google visual studio team services or visual studio online and follow the relevant paths and instructions.</p>
+<p>Another prerequisite for the following is obviosuly having <a href="https://www.visualstudio.com/" target="_blank" rel="external">visual studio</a> installed on your local machine… Nearly forgot that one!</p>
+<h2 id="Setup-a-new-online-project"><a href="#Setup-a-new-online-project" class="headerlink" title="Setup a new online project"></a>Setup a new online project</h2><p>Select new under Recent Projects &amp; Teams of you visual studio team services account.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineNewProject.png" alt="Team Services New Project" title="Team Services New Project">
+<p>Give the project a name, a description, pick a process template (<strong>Agile</strong> is fine for me and provides a Kanban board but you may want to choose a different one if you wish) and your version control (as I mentioned in the beginning I use <strong>Git</strong> as I believe it’s more flexible), then click create project.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineCreateProject.png" alt="Team Services Create Project" title="Team Services Create Project">
+<p>Once your project is created click navigate to project.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineProjectCreated.png" alt="Team Services Project Created" title="Team Services Project Created">
+<p>You can start managing your work or add your code. In this example we’re just going to focus on getting code in and syncing this with your visual studio project, so we’ll choose add code.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineProjectChooseCode.png" alt="Team Services Add Code" title="Team Services Add Code">
+<h2 id="Link-your-online-project-to-visual-studio-code"><a href="#Link-your-online-project-to-visual-studio-code" class="headerlink" title="Link your online project to visual studio code"></a>Link your online project to visual studio code</h2><p>After choosing add code Select “Clone in Visual Studio”.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineClone.png" alt="Team Services Clone" title="Team Services Clone">
+<p>In any external protocol request that pops up just click accept. Visual studio will now open with an empty project, but in the <strong>team explorer</strong> window on the right you will see the option to clone from your online project, click clone.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSClone.png" alt="Visual Studio Clone" title="Visual Studio Clone">
+<p>You will see a message for the new repository being cloned successfully.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSSuccesfulClone.png" alt="Visual Studio Successful Clone" title="Visual Studio Successful Clone">
+<p>Then start a new solution for whatever project it is you’re going to do. In my example I’m just going to create a windows form project.<br>Back in the team explorer window click changes and you will see a load of changes as a result of creating the project. Click the + icon to stage these changes.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSStageChanges.png" alt="Visual Studio Stage Changes" title="Visual Studio Stage Changes">
+<p>Then type a commit message in the box at the top to describe your changes and click commit staged.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSCommit.png" alt="Visual Studio Commit Changes" title="Visual Studio Commit Changes">
+<p>Then click sync to share with your server.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSSync.png" alt="Visual Studio Sync" title="Visual Studio Sync">
+<p>Finally in the synchronisation menu that appears select push.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSPush.png" alt="Visual Studio Push" title="Visual Studio Push">
+<p>You should then see this successfully pushing to your origin which is your visual studio team services project.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSSuccessfulPush.png" alt="Visual Studio Push Success" title="Visual Studio Push Success">
+<p>Lets go back online and see if we can see it, refresh the page and… Hey presto your code is added to your online project.</p>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineInitialCommit.png" alt="Visual Studio Online Initial Commit" title="Visual Studio Online Initial Commit">
+<h2 id="Quick-Reference-for-Working-with-your-Visual-Studio-Team-Services"><a href="#Quick-Reference-for-Working-with-your-Visual-Studio-Team-Services" class="headerlink" title="Quick Reference for Working with your Visual Studio Team Services"></a>Quick Reference for Working with your Visual Studio Team Services</h2><p>Just to quickly go through the process of adding code, committing, syncing and pushing to your team services project. Make a change to your project e.g. adding a form button.</p>
+<ol>
+<li>Make a change to your code in Visual Studio</li>
+<li>Save the changes</li>
+<li>In <strong>team explorer</strong> go to changes menu</li>
+<li>Add your staged changes</li>
+<li>Commit your stage changes with a message</li>
+<li>Sync your changes</li>
+<li>Push your changes</li>
+</ol>
+<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineCommitedExample.png" alt="Visual Studio Online Committed Example" title="Visual Studio Online Committed Example">
+<p>This will keep your visual studio code in the visual studio team services online source control, available for you to work from wherever you are with internet access! Sweet.<br>There’s a hell of a lot more you can do with visual studio online but this should give you the basics to use the tool as a system source control.   </p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Get by with Git]]></title>
       <url>www.datagriff.com/2016/07/GetByWithGit/</url>
       <content type="html"><![CDATA[<p>Source control allows you to keep version history of your code all in one place. It also allows multiple teams to work on the same code using the concepts of branching and merging… I’m not going to talk about that though - this is just a brief post on how you can easily set up source control for free for your own code, using it locally (on your machine), with the option of pushing it to a distributed <a href="https://github.com/" target="_blank" rel="external">github repository</a> as well, along with the key commands to get by for most of what you’re going to do.</p>
