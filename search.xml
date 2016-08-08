@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[Add Visual Studio Project Team Services]]></title>
+      <title><![CDATA[Add Visual Studio Project to Online Visual Studio Team Services]]></title>
       <url>www.datagriff.com/2016/08/AddVisualStudioProjectTeamServices/</url>
       <content type="html"><![CDATA[<p>The following shows you how to add an existing Visual Studio project to your visual studio team services online account.</p>
 <p>First open your solution in Visual Studio, right click the solution and select “Add to Source Control.”</p>
