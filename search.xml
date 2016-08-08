@@ -4,6 +4,30 @@
   
     
     <entry>
+      <title><![CDATA[Add Visual Studio Project Team Services]]></title>
+      <url>www.datagriff.com/2016/08/AddVisualStudioProjectTeamServices/</url>
+      <content type="html"><![CDATA[<p>The following shows you how to add an existing Visual Studio project to your visual studio team services online account.</p>
+<p>First open your solution in Visual Studio, right click the solution and select “Add to Source Control.”</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/VSAddToSourceControl.png" alt="Visual Studio Add to Source Control" title="Visual Studio Add to Source Control">
+<p>You will then see that the project has green lock icons next to its files.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/VSSolutionAddedToSourceControl.png" alt="Visual Studio Added to Source Control" title="Visual Studio Added to Source Control">
+<p>And the file architecture folder will have git files.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/GitAddedToSolution.png" alt="Solution Folder Git Files" title="Solution Folder Git Files">
+<p>Both showing that you have added the solution to a local Git repo for source control.</p>
+<p>Open the team explorer window and select Sync.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/VSSync.png" alt="Visual Studio Sync" title="Visual Studio Sync">
+<p>With the options that you get presented with, choose Publish to Visual Studio Team Service by clicking Publish Git Repo.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/ChoosePublishVSOnline.png" alt="Choose Publish Visual Studio Team Services" title="Choose Publish Visual Studio Team Services">
+<p>Publish the project to your online visual studio account (you may need to sign in again here), by entering an appropriate name for your new repository and select then Publish Repository.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/PublishProject.png" alt="Visual Studio Publish Project" title="Visual Studio Publish Project">
+<p>Open a browser and navigate to your Visual Studio team services homepage. You may not see the project in your list so you might have to choose browse and find your new project there.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/BrowseToNewProject.png" alt="Browse to Visual Studio Team Service Project" title="Browse to Visual Studio Team Service Project">
+<p>There you will see the code from your Visual Studio solution online in your team services source control.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/VSOnlineCodeAdded.png" alt="Visual Studio Team Service Project Code" title="Visual Studio Team Service Project Code">
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Visual Studio Team Services New Project]]></title>
       <url>www.datagriff.com/2016/07/VisualStudioOnlineNewProject/</url>
       <content type="html"><![CDATA[<p><a href="https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx" target="_blank" rel="external">Visual studio team services</a> is an online tool for managing your visual studio code. It is a free tool for individuals that provides source control, project management, Kanban boards, automated builds, testing and much more. I’ve found it a useful way of managing my visual studio work and also a way of practicing for team foundation server in the workplace when I don’t actually have it!</p>
