@@ -4,6 +4,53 @@
   
     
     <entry>
+      <title><![CDATA[Azure Create SQL Database]]></title>
+      <url>www.datagriff.com/2016/09/AzureSQLPaaS/</url>
+      <content type="html"><![CDATA[<h2 id="Azure-Create-SQL-Database"><a href="#Azure-Create-SQL-Database" class="headerlink" title="Azure Create SQL Database"></a>Azure Create SQL Database</h2><p>Please note if you want to go straight to the official azure documentation, please go <a href="https://azure.microsoft.com/en-gb/documentation/articles/sql-database-get-started/" target="_blank" rel="external">here</a>. It’s probably more up to date than this already! :)</p>
+<p>In this quick example we’re going to see how to create a SQL database in Azure using the PaaS offering. This stands for platform as a service and is a complete service provided by Microsoft. It does have it’s limitations but is a great way to spin up a database to play with no concerns over infrastructure or software administration. This is any idea for any new applications you may have or just to have some fun!</p>
+<p><strong>What we’re going to do:</strong></p>
+<ul>
+<li>We’re going to make sure you have an <a href="https://azure.microsoft.com/en-gb/" target="_blank" rel="external">azure</a> account</li>
+<li>Create a SQL Database in Azure</li>
+<li>Connect to the SQL Database via SSMS</li>
+</ul>
+<h3 id="Get-yourself-an-Azure-Account"><a href="#Get-yourself-an-Azure-Account" class="headerlink" title="Get yourself an Azure Account"></a>Get yourself an Azure Account</h3><p>Don’t fear the Azure! Get yourself over to <a href="https://azure.microsoft.com/en-gb/" target="_blank" rel="external">azure</a> and set yourself up an account. It will ask for bank details but you get a load of credit free at the start and if you have an MSDN license you have even more. You can also cap your spending limit. See the screenshot below to allay your fears… We’ll revisit this at the end as I would guess this would be the biggest sticking point for most people when approaching Azure. It’s all good…</p>
+<h3 id="Create-a-SQL-Database-in-Azure"><a href="#Create-a-SQL-Database-in-Azure" class="headerlink" title="Create a SQL Database in Azure"></a>Create a SQL Database in Azure</h3><p>When logged in to your Azure portal use search tool and type in SQL Database.</p>
+<img src="/2016/09/AzureSQLPaaS/01_Search.png" alt="Search SQL Database Azure Portal" title="Search SQL Database Azure Portal">
+<p>Pick SQL Database</p>
+<img src="/2016/09/AzureSQLPaaS/PickSQLDatabase.PNG" alt="Pick SQL Database" title="Pick SQL Database">
+<p>then click Create</p>
+<img src="/2016/09/AzureSQLPaaS/02_Create.PNG" alt="Create SQL Database Azure" title="Create SQL Database Azure">
+<p>Enter in the  database details. This includes the database name, setting up a new resource group (if don’t already have one), setting your collation and selecting your developer pricing benefit package. Remember to select the basic pricing tier to save your credits. You’ll also need to configure a logical server for this database to live which you will see in the next section.<br>P.s in the Select source section you can choose a sample database rather than a blank one if you want some ready made data!</p>
+<img src="/2016/09/AzureSQLPaaS/03_ConfigureDatabase.PNG" alt="Configure SQL Database Azure" title="Configure SQL Database Azure">
+<p>Click the Configure Server settings and create a new server (if don’t already have one).</p>
+<img src="/2016/09/AzureSQLPaaS/04_ConfigureServerSettings.PNG" alt="Click Configure Server Settings Azure" title="Click Configure Server Settings Azure">
+<img src="/2016/09/AzureSQLPaaS/05_CreateNewServer.PNG" alt="Create Logical Server Azure" title="Create Logical Server Azure">
+<p>Set the name of your logical server. Create a server admin login and a password, <strong>you’ll need these later to logon to your database so remember this!</strong> Leave the rest as default then just to get along…</p>
+<img src="/2016/09/AzureSQLPaaS/06_ServerDetails.PNG" alt="Configure Logical Server Details" title="Configure Logical Server Details">
+<p>Now that you are back to your configure database page after configuring your server, click create! Have a look in your notifications and you will see it deploying.</p>
+<img src="/2016/09/AzureSQLPaaS/07_DeployStartedUnderNotifications.PNG" alt="Validating Deployment" title="Validating Deployment">
+<p>Once this is done, we can look at connecting in the next step!</p>
+<h3 id="Connect-to-the-SQL-Database-via-SSMS"><a href="#Connect-to-the-SQL-Database-via-SSMS" class="headerlink" title="Connect to the SQL Database via SSMS"></a>Connect to the SQL Database via SSMS</h3><p>In Azure go back to your homepage and pick SQL databases. You will see the list of your SQL databases. Pick the one you want to create a connection to (the one you just made).</p>
+<img src="/2016/09/AzureSQLPaaS/YourSQLDatabases.PNG" alt="Go to your SQL Databases" title="Go to your SQL Databases">
+<p>Now you need to ensure that your local PC is going to be able to connect to your database so click the Set Server Firewall tab at the top in the database settings.</p>
+<img src="/2016/09/AzureSQLPaaS/SetServerFirewall.PNG" alt="Set Firewall" title="Set Firewall">
+<p>Click add client IP.</p>
+<img src="/2016/09/AzureSQLPaaS/AddClientIP.PNG" alt="Add Client IP" title="Add Client IP">
+<p>This will then save your IP address to allow connection.</p>
+
+<p>And finally you will get a success…</p>
+<img src="/2016/09/AzureSQLPaaS/FirewallSuccess.PNG" alt="Firewall Success" title="Firewall Success">
+<p>Now you have set the firewall rules, go back to your database settings and get the full name of your database. This is the one that ends with database.windows.net and you can hover over the end of it and just click copy.</p>
+<img src="/2016/09/AzureSQLPaaS/CopyServerName.PNG" alt="Copy full path of database" title="Copy full path of database">
+<p>Open SSMS and paste in the full path, ensure SQL authentication is chosen and use the admin account and password you created earlier.</p>
+<img src="/2016/09/AzureSQLPaaS/SSMSConnect.PNG" alt="SSMS Connect Dialog" title="SSMS Connect Dialog">
+<p>Hey presto! There’s your database in the cloud!</p>
+<img src="/2016/09/AzureSQLPaaS/SSMSConnected.PNG" alt="SSMS Connected to database in the Cloud" title="SSMS Connected to database in the Cloud">
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Add Visual Studio Project to Online Visual Studio Team Services]]></title>
       <url>www.datagriff.com/2016/08/AddVisualStudioProjectTeamServices/</url>
       <content type="html"><![CDATA[<p>The following shows you how to add an existing Visual Studio project to your visual studio team services online account.</p>
@@ -201,21 +248,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Deploying Hexo]]></title>
-      <url>www.datagriff.com/2016/06/DeployingHexo/</url>
-      <content type="html"><![CDATA[<h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
-<p><img src="/images/HexoGenerate.png" alt="Hexo Generate Output"></p>
-<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file). The output folder should look something to below.</p>
-<p><img src="/images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
-<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
-<p><img src="/images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Using Git Hub for Web Hosting]]></title>
       <url>www.datagriff.com/2016/06/UsingGitHubForWebHosting/</url>
       <content type="html"><![CDATA[<h2 id="Creating-a-Git-Hub-io-Repo"><a href="#Creating-a-Git-Hub-io-Repo" class="headerlink" title="Creating a Git Hub io Repo"></a>Creating a Git Hub io Repo</h2><p><strong><a href="https://github.com/" title="GitHub" target="_blank" rel="external">GitHub</a></strong> allows you each user to host one website as part of their service using a <a href="https://pages.github.com/" title="Github pages" target="_blank" rel="external">github “io” repoistory</a>.</p>
@@ -227,6 +259,21 @@
 <p><strong>Important Note:</strong> In order for this CNAME file to persist, you should create it in your local output folder (with no file name extension), with the name of your custom domain. I found that if I didn’t do this everytime I pushed from my local folder the CNAME file would disappear and the connection from my github URL to my custom domain would disappear and I’d get a 404 error, so be aware of this!</p>
 <p><img src="/images/CNAMEFolder.png" alt="CNAME File in Source Folder"></p>
 <p><img src="/images/CNAMEContent.png" alt="CNAME Content"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Deploying Hexo]]></title>
+      <url>www.datagriff.com/2016/06/DeployingHexo/</url>
+      <content type="html"><![CDATA[<h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
+<p><img src="/images/HexoGenerate.png" alt="Hexo Generate Output"></p>
+<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file). The output folder should look something to below.</p>
+<p><img src="/images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
+<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
+<p><img src="/images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
 ]]></content>
     </entry>
     
