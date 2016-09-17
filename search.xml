@@ -4,6 +4,42 @@
   
     
     <entry>
+      <title><![CDATA[Github IO Page 404 Error Hexo CNAME]]></title>
+      <url>www.datagriff.com/2016/09/Github404ErrorCNAME/</url>
+      <content type="html"><![CDATA[<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Unless you ensure your CNAME file with the name of your domain is in your github io repository root folder, you’ll get a 404 error on the domain of your github io page.<br>When deploying in Hexo this file gets overwritten unless you place it in the source folder of your raw Hexo files.</p>
+<p><strong>What we’re going to do:</strong></p>
+<ul>
+<li>Ensure the CNAME file is in the Hexo source folder with domain name</li>
+<li>Ensure this CNAME file is the root folder of the Hexo output</li>
+<li>Ensure this CNAME file is in the root of your github io repository</li>
+</ul>
+<h3 id="CNAME-in-hexo-source-folder"><a href="#CNAME-in-hexo-source-folder" class="headerlink" title="CNAME in hexo source folder"></a>CNAME in hexo source folder</h3><p>First ensure that you place a CNAME file in the source folder of your raw hexo folder with the name of your domain contained in the file. <strong>Note</strong> there is no file extension for the CNAME file.</p>
+<img src="/2016/09/Github404ErrorCNAME/CNAMESourceFolder.PNG" alt="CNAME in Hexo Source Folder" title="CNAME in Hexo Source Folder">
+<h3 id="CNAME-in-hexo-output-root-folder"><a href="#CNAME-in-hexo-output-root-folder" class="headerlink" title="CNAME in hexo output root folder"></a>CNAME in hexo output root folder</h3><p>Then after you have done the Hexo generate command, ensure that you can see the CNAME file in the root of your  output folder.</p>
+<img src="/2016/09/Github404ErrorCNAME/CNAMEOutputFolder.PNG" alt="CNAME in root of Hexo Output Folder" title="CNAME in root of Hexo Output Folder">
+<h3 id="CNAME-in-root-folder-of-Github-IO-Repository"><a href="#CNAME-in-root-folder-of-Github-IO-Repository" class="headerlink" title="CNAME in root folder of Github IO Repository"></a>CNAME in root folder of Github IO Repository</h3><p>Then after you have done the Hexo deploy command (using git) to your github IO repository, ensure the CNAME file is there.</p>
+<img src="/2016/09/Github404ErrorCNAME/CNAMEGitHubIO.PNG" alt="CNAME in root folder of Github IO repo" title="CNAME in root folder of Github IO repo">
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Azure Create SQL Virtual MAchine]]></title>
+      <url>www.datagriff.com/2016/09/AzureSQLIaaSCreate/</url>
+      <content type="html"><![CDATA[<h2 id="Title-of-Post"><a href="#Title-of-Post" class="headerlink" title="Title of Post"></a>Title of Post</h2><p>Introduction</p>
+<p><a href="www.google.com">Here’s a link to google</a></p>
+<p><strong>What we’re going to do:</strong></p>
+<ul>
+<li>First part</li>
+<li>Second part</li>
+<li>Third part</li>
+</ul>
+<h3 id="First-part"><a href="#First-part" class="headerlink" title="First part"></a>First part</h3>
+<h3 id="Second-part"><a href="#Second-part" class="headerlink" title="Second part"></a>Second part</h3>
+<h3 id="Third-part"><a href="#Third-part" class="headerlink" title="Third part"></a>Third part</h3>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Azure Create SQL Database]]></title>
       <url>www.datagriff.com/2016/09/AzureSQLPaaS/</url>
       <content type="html"><![CDATA[<h2 id="Azure-Create-SQL-Database"><a href="#Azure-Create-SQL-Database" class="headerlink" title="Azure Create SQL Database"></a>Azure Create SQL Database</h2><p>Please note if you want to go straight to the official azure documentation, please go <a href="https://azure.microsoft.com/en-gb/documentation/articles/sql-database-get-started/" target="_blank" rel="external">here</a>. It’s probably more up to date than this already! :)</p>
@@ -232,21 +268,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Deploying Hexo]]></title>
-      <url>www.datagriff.com/2016/06/DeployingHexo/</url>
-      <content type="html"><![CDATA[<h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
-<p><img src="/images/HexoGenerate.png" alt="Hexo Generate Output"></p>
-<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file). The output folder should look something to below.</p>
-<p><img src="/images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
-<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
-<p><img src="/images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Configure Hexo]]></title>
       <url>www.datagriff.com/2016/06/ConfigureHexo/</url>
       <content type="html"><![CDATA[<h2 id="Configuring-Hexo-using-the-config-yml-file"><a href="#Configuring-Hexo-using-the-config-yml-file" class="headerlink" title="Configuring Hexo using the _config.yml file"></a>Configuring Hexo using the _config.yml file</h2><p>In the directory where you initalised hexo, you should see a file called _config.yml file. This is the file you edit to configure your hexo environment. At a bare minimum I did the following to get up and running quickly and efficiently.</p>
@@ -259,6 +280,21 @@
 <p>The only other thing I changed at this point was the deployment details, where I used the git type and entered in my github io repository where I’d be deploying my output.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/griff182uk/griff182uk.github.io</span><br></pre></td></tr></table></figure>
 <p>There are a number of other configuration items that I’m sure could be messed around with found at <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">https://hexo.io/docs/deployment.html</a>, but I found the above was enough to get me going.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Deploying Hexo]]></title>
+      <url>www.datagriff.com/2016/06/DeployingHexo/</url>
+      <content type="html"><![CDATA[<h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
+<p><img src="/images/HexoGenerate.png" alt="Hexo Generate Output"></p>
+<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file). The output folder should look something to below.</p>
+<p><img src="/images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
+<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
+<p><img src="/images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
 ]]></content>
     </entry>
     
