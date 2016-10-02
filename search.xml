@@ -7,7 +7,7 @@
       <title><![CDATA[SQL Relay 2016 - Build a Database for free with Team Services Online, SSDT and Azure]]></title>
       <url>www.datagriff.com/2016/10/SQLRelay2016DIYDBFromHome/</url>
       <content type="html"><![CDATA[<p>I am speaking again at SQL Relay this year and I decided to cover some of the basics. It was only about 18 months ago I had never used source control, never used any cloud services and it all seemed quite beyond me… But it’s not!<br>The aim of my talk this year is to hopefully speed up this process for people who find themselves in a similar situation that I was in and show all the free tools and resources that are available to you.</p>
-<p><a href="SQLRelay2016DIYDBFromHome/Presentation/SQLRelay2016DIYDBFromHomeSlideShow.html SQL Relay 2016 Presentation">SQL Relay Presentation</a></p>
+<a href="/2016/10/SQLRelay2016DIYDBFromHome/zSQLRelay2016DIYDBFromHomeSlideShow.html" title="SQL Relay 2016 Presentation">SQL Relay 2016 Presentation</a>
 <h2 id="PreRequisites"><a href="#PreRequisites" class="headerlink" title="PreRequisites"></a>PreRequisites</h2><p>The demonstrations in the talk require the following:</p>
 <ul>
 <li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a> &amp; <a href="https://github.com/" target="_blank" rel="external">Github Account</a> - For Source Control</li>
@@ -316,36 +316,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Install and Initialise Hexo]]></title>
-      <url>www.datagriff.com/2016/06/InstallAndInitaliseHexo/</url>
-      <content type="html"><![CDATA[<p>Inspired by the awesome <strong><a href="https://www.pluralsight.com/" title="Pluralsight" target="_blank" rel="external">Pluralsight</a></strong> and it’s course on <a href="http://www.staticgen.com/" title="Title" target="_blank" rel="external">static site generators</a>, I decided to implement a blog using hexo.</p>
-<p>The steps shown below are what you need to install and initalise Hexo locally.</p>
-<h2 id="Required-Applications-and-Installations"><a href="#Required-Applications-and-Installations" class="headerlink" title="Required Applications and Installations"></a>Required Applications and Installations</h2><p>The following items were required to create my blog, which I either already had or required to install.</p>
-<ul>
-<li><strong><a href="https://git-scm.com/downloads" title="Git" target="_blank" rel="external">Git</a></strong>  - Of course I already had it installed! Git will provide the methods of source control and also in my case, provide the host for my blog web page.</li>
-<li><strong><a href="https://nodejs.org/en/" title="Node.js" target="_blank" rel="external">Node.js</a></strong> - Downloaded this for windows X64, as I have a 64 bit machine, chose all the defaults and so “Next Next Nexted” until Finish.</li>
-<li><strong>NPM</strong> - This installed with the latest version of Node.js above anyway so I didn’t need to do anything here.</li>
-<li><strong><a href="https://atom.io/" title="Atom" target="_blank" rel="external">Atom</a></strong>  - Even though I’d used notepad++ as my text editor up until this point, it didn’t have any native markdown features so I got converted to atom. It has appropriate syntax highlighting for markdown and has a useful live HTML preview feature (CTRL+Shift+M). Therefore my first blog post (this one) was written with atom and I’m likely to stick with it…</li>
-<li><strong><a href="https://hexo.io/" title="Hexo" target="_blank" rel="external">Hexo</a></strong> - Is a static site generator application and the main application I have used to implement my blog. The home page of Hexo gives you the command to install, so I opened up my command prompt and typed it in. At the time of my implementation of my blog this was…<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>Note:</strong> I actually used the node.js command prompt when performing these tasks, not windows command prompt, in case windows command prompt doesn’t work!</p>
-<p>Then type in hexo into the command prompt and if the installation was a success you’ll get a load of hexo details back in the command window. Tidy!</p>
-<h2 id="Using-Hexo-to-Initiate-my-Folders-and-Files"><a href="#Using-Hexo-to-Initiate-my-Folders-and-Files" class="headerlink" title="Using Hexo to Initiate my Folders and Files"></a>Using Hexo to Initiate my Folders and Files</h2><p>I created a folder in the desired location for my dataGriff blog by typing in the command (replace [My Path] with your folder path)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mrkdir //[My Path]/dataGriff</span><br></pre></td></tr></table></figure></p>
-<p>Then I changed directory to this folder using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd //[My Path]/dataGriff</span><br></pre></td></tr></table></figure></p>
-<p>Finally I initialised hexo on the folder using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
-<p>There was a little message at the end of the command prompt output that stated<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO Start blogging with hexo</span><br></pre></td></tr></table></figure></p>
-<p>So I thought I must be on the right track!</p>
-<p><img src="/images/HexoStartBlogging.png" alt="Hexo Start Blogging"></p>
-<h2 id="Viewing-Hexos-Startup-Template"><a href="#Viewing-Hexos-Startup-Template" class="headerlink" title="Viewing Hexos Startup Template"></a>Viewing Hexos Startup Template</h2><p>In command prompt, in my dataGriff directory, I typed<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure></p>
-<p>Again I got the satisfying message of<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO hexo is running at http://localhost:4000/.</span><br></pre></td></tr></table></figure></p>
-<p>So with trepidation I went to the <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> link in a browser and…<br>Hey presto! I could see hexos startup template! Success!<br>To stop the page running you can just press CTRL+C in the command prompt and confirm the termination.</p>
-<p><img src="/images/HexoDefault.png" alt="Hexo Default Startup Page"></p>
-<p>Using the hexo server command is a good way of testing your site locally before deployment.</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[YAML And Markdown Example]]></title>
       <url>www.datagriff.com/2016/06/YAMLAndMarkdown/</url>
       <content type="html"><![CDATA[<p>Markdown (.md) files offer the ability to use shorthand methods to generate HTML. Simply create a text file in your<br>favourite text editor and save it as FileName.md. Then you have yourself a markdown file.<br>This is particularly useful for bloggers where markdown is easier to quickly type and potentially easier to read as<br>raw code than HTML. Github already supports markdown files and a number of static site generators use markdown as their<br>raw source files to generate HTML. Where markdown caters for the content, YAML, which stands for “YAML ain’t markup language”, handles the metadata for the markdown document.</p>
@@ -376,6 +346,36 @@
 <p>I can display the code specifically (ish) as SQL by adding the keyword sql after the top three backticks if I like too…</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dbo.TestTable</span><br><span class="line">(RowNo <span class="built_in">INT</span>, RowValue <span class="built_in">CHAR</span>(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> dbo.TestTable</span><br><span class="line"><span class="keyword">WHERE</span> RowNo = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="Markdown-Editors"><a href="#Markdown-Editors" class="headerlink" title="Markdown Editors"></a>Markdown Editors</h3><p>I currently use <a href="https://atom.io/" title="Atom" target="_blank" rel="external">Atom</a>   as my local markdown editor but there are also plenty of online markdown editors if you want to just try it out, such as <a href="https://stackedit.io/" title="stackedit" target="_blank" rel="external">stackedit</a> or <a href="http://dillinger.io/ [dillinger]" title="dillinger" target="_blank" rel="external">dillinger</a>. Also remember any github files saved as markdown (.md) will also display accordingly as HTML when viewed.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Install and Initialise Hexo]]></title>
+      <url>www.datagriff.com/2016/06/InstallAndInitaliseHexo/</url>
+      <content type="html"><![CDATA[<p>Inspired by the awesome <strong><a href="https://www.pluralsight.com/" title="Pluralsight" target="_blank" rel="external">Pluralsight</a></strong> and it’s course on <a href="http://www.staticgen.com/" title="Title" target="_blank" rel="external">static site generators</a>, I decided to implement a blog using hexo.</p>
+<p>The steps shown below are what you need to install and initalise Hexo locally.</p>
+<h2 id="Required-Applications-and-Installations"><a href="#Required-Applications-and-Installations" class="headerlink" title="Required Applications and Installations"></a>Required Applications and Installations</h2><p>The following items were required to create my blog, which I either already had or required to install.</p>
+<ul>
+<li><strong><a href="https://git-scm.com/downloads" title="Git" target="_blank" rel="external">Git</a></strong>  - Of course I already had it installed! Git will provide the methods of source control and also in my case, provide the host for my blog web page.</li>
+<li><strong><a href="https://nodejs.org/en/" title="Node.js" target="_blank" rel="external">Node.js</a></strong> - Downloaded this for windows X64, as I have a 64 bit machine, chose all the defaults and so “Next Next Nexted” until Finish.</li>
+<li><strong>NPM</strong> - This installed with the latest version of Node.js above anyway so I didn’t need to do anything here.</li>
+<li><strong><a href="https://atom.io/" title="Atom" target="_blank" rel="external">Atom</a></strong>  - Even though I’d used notepad++ as my text editor up until this point, it didn’t have any native markdown features so I got converted to atom. It has appropriate syntax highlighting for markdown and has a useful live HTML preview feature (CTRL+Shift+M). Therefore my first blog post (this one) was written with atom and I’m likely to stick with it…</li>
+<li><strong><a href="https://hexo.io/" title="Hexo" target="_blank" rel="external">Hexo</a></strong> - Is a static site generator application and the main application I have used to implement my blog. The home page of Hexo gives you the command to install, so I opened up my command prompt and typed it in. At the time of my implementation of my blog this was…<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>Note:</strong> I actually used the node.js command prompt when performing these tasks, not windows command prompt, in case windows command prompt doesn’t work!</p>
+<p>Then type in hexo into the command prompt and if the installation was a success you’ll get a load of hexo details back in the command window. Tidy!</p>
+<h2 id="Using-Hexo-to-Initiate-my-Folders-and-Files"><a href="#Using-Hexo-to-Initiate-my-Folders-and-Files" class="headerlink" title="Using Hexo to Initiate my Folders and Files"></a>Using Hexo to Initiate my Folders and Files</h2><p>I created a folder in the desired location for my dataGriff blog by typing in the command (replace [My Path] with your folder path)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mrkdir //[My Path]/dataGriff</span><br></pre></td></tr></table></figure></p>
+<p>Then I changed directory to this folder using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd //[My Path]/dataGriff</span><br></pre></td></tr></table></figure></p>
+<p>Finally I initialised hexo on the folder using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
+<p>There was a little message at the end of the command prompt output that stated<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO Start blogging with hexo</span><br></pre></td></tr></table></figure></p>
+<p>So I thought I must be on the right track!</p>
+<p><img src="/images/HexoStartBlogging.png" alt="Hexo Start Blogging"></p>
+<h2 id="Viewing-Hexos-Startup-Template"><a href="#Viewing-Hexos-Startup-Template" class="headerlink" title="Viewing Hexos Startup Template"></a>Viewing Hexos Startup Template</h2><p>In command prompt, in my dataGriff directory, I typed<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure></p>
+<p>Again I got the satisfying message of<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO hexo is running at http://localhost:4000/.</span><br></pre></td></tr></table></figure></p>
+<p>So with trepidation I went to the <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> link in a browser and…<br>Hey presto! I could see hexos startup template! Success!<br>To stop the page running you can just press CTRL+C in the command prompt and confirm the termination.</p>
+<p><img src="/images/HexoDefault.png" alt="Hexo Default Startup Page"></p>
+<p>Using the hexo server command is a good way of testing your site locally before deployment.</p>
 ]]></content>
     </entry>
     
