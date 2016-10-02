@@ -7,7 +7,7 @@
       <title><![CDATA[SQL Relay 2016 - Build a Database for free with Team Services Online, SSDT and Azure]]></title>
       <url>www.datagriff.com/2016/10/SQLRelay2016DIYDBFromHome/</url>
       <content type="html"><![CDATA[<p>I am speaking again at SQL Relay this year and I decided to cover some of the basics. It was only about 18 months ago I had never used source control, never used any cloud services and it all seemed quite beyond me… But it’s not!<br>The aim of my talk this year is to hopefully speed up this process for people who find themselves in a similar situation that I was in and show all the free tools and resources that are available to you.</p>
-
+<p><a href="SQLRelay2016DIYDBFromHome/Presentation/SQLRelay2016DIYDBFromHomeSlideShow.html SQL Relay 2016 Presentation">SQL Relay Presentation</a></p>
 <h2 id="PreRequisites"><a href="#PreRequisites" class="headerlink" title="PreRequisites"></a>PreRequisites</h2><p>The demonstrations in the talk require the following:</p>
 <ul>
 <li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a> &amp; <a href="https://github.com/" target="_blank" rel="external">Github Account</a> - For Source Control</li>
