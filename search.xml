@@ -8,10 +8,19 @@
       <url>www.datagriff.com/2016/10/SQLRelay2016DIYDBFromHome/</url>
       <content type="html"><![CDATA[<p>I am speaking again at SQL Relay this year and I decided to cover some of the basics. It was only about 18 months ago I had never used source control, never used any cloud services and it all seemed quite beyond me… But it’s not!<br>The aim of my talk this year is to hopefully speed up this process for people who find themselves in a similar situation that I was in and show all the free tools and resources that are available to you.</p>
 <a href="/2016/10/SQLRelay2016DIYDBFromHome/zSQLRelay2016DIYDBFromHomeSlideShow.html" title="SQL Relay 2016 Presentation">SQL Relay 2016 Presentation</a>
+<p>The presentation covers the basics of the following:</p>
+<ul>
+<li>Database design</li>
+<li>Work management</li>
+<li>Source control</li>
+<li>Infrastructure locally and in the cloud</li>
+<li>Database Development</li>
+<li>Deployment</li>
+</ul>
 <h2 id="PreRequisites"><a href="#PreRequisites" class="headerlink" title="PreRequisites"></a>PreRequisites</h2><p>The demonstrations in the talk require the following:</p>
 <ul>
-<li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a> &amp; <a href="https://github.com/" target="_blank" rel="external">Github Account</a> - For Source Control</li>
-<li><a href="https://www.visualstudio.com/team-services/" target="_blank" rel="external">Team Services Online Account</a> - For Source Control and Work Management</li>
+<li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a> &amp; <a href="https://github.com/" target="_blank" rel="external">Github Account</a> - For source control</li>
+<li><a href="https://www.visualstudio.com/team-services/" target="_blank" rel="external">Team Services Online Account</a> - For source control and Work Management</li>
 <li><a href="https://www.visualstudio.com/vs/community/" target="_blank" rel="external">Visual Studio Community Edition</a> - For code development and infrastructure</li>
 <li><a href="https://www.microsoft.com/en-gb/download/details.aspx?id=52679" target="_blank" rel="external">SQL Server Express</a> - For code development and infrastructure</li>
 <li><a href="https://azure.microsoft.com/en-gb/" target="_blank" rel="external">Azure Account</a> - For infrastructure</li>
@@ -270,6 +279,21 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Deploying Hexo]]></title>
+      <url>www.datagriff.com/2016/06/DeployingHexo/</url>
+      <content type="html"><![CDATA[<h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
+<p><img src="/images/HexoGenerate.png" alt="Hexo Generate Output"></p>
+<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file). The output folder should look something to below.</p>
+<p><img src="/images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
+<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
+<p><img src="/images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Configure Hexo]]></title>
       <url>www.datagriff.com/2016/06/ConfigureHexo/</url>
       <content type="html"><![CDATA[<h2 id="Configuring-Hexo-using-the-config-yml-file"><a href="#Configuring-Hexo-using-the-config-yml-file" class="headerlink" title="Configuring Hexo using the _config.yml file"></a>Configuring Hexo using the _config.yml file</h2><p>In the directory where you initalised hexo, you should see a file called _config.yml file. This is the file you edit to configure your hexo environment. At a bare minimum I did the following to get up and running quickly and efficiently.</p>
@@ -282,21 +306,6 @@
 <p>The only other thing I changed at this point was the deployment details, where I used the git type and entered in my github io repository where I’d be deploying my output.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/griff182uk/griff182uk.github.io</span><br></pre></td></tr></table></figure>
 <p>There are a number of other configuration items that I’m sure could be messed around with found at <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">https://hexo.io/docs/deployment.html</a>, but I found the above was enough to get me going.</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Deploying Hexo]]></title>
-      <url>www.datagriff.com/2016/06/DeployingHexo/</url>
-      <content type="html"><![CDATA[<h2 id="Generating-the-Files"><a href="#Generating-the-Files" class="headerlink" title="Generating the Files"></a>Generating the Files</h2><p>When in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy all the html files to the output path you designated in the _config.yml file.</p>
-<p><img src="/images/HexoGenerate.png" alt="Hexo Generate Output"></p>
-<p>In my case I’d configured the files to generate in a folder above the source folder called outputs (../Output was what I had in the _config.yml file). The output folder should look something to below.</p>
-<p><img src="/images/HexoOutputFiles.png" alt="Hexo Output Files"></p>
-<h2 id="Deploying-Hexo"><a href="#Deploying-Hexo" class="headerlink" title="Deploying Hexo"></a>Deploying Hexo</h2><p>I chose to use git for my hexo deployment so before you can use the hexo deploy command below, you first need to install this. To install git deployment, while in the hexo initalised folder, type the following command and press return.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>You also need to ensure that in your _config.yml file that you have git specified as the deploy method and the name of your github io repository specified.<br>To deploy then, when in node.js command prompt, navigate to your source folder where you initialised hexo, and type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>This will deploy and push the files to the github repo you specified in the _config.yml file.</p>
-<p><img src="/images/HexoDeploy.png" alt="Hexo Deploy Output"></p>
 ]]></content>
     </entry>
     
