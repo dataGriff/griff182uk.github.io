@@ -68,14 +68,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-ConfigureHexo" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SQLAggregateAcrossColumns" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/06/ConfigureHexo/" class="article-date">
-  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
+    <a href="/2016/06/SQLAggregateAcrossColumns/" class="article-date">
+  <time datetime="2016-06-27T17:54:53.000Z" itemprop="datePublished">2016-06-27</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
   </div>
 
   </div>
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/ConfigureHexo/">Configure Hexo</a>
+      <a class="article-title" href="/2016/06/SQLAggregateAcrossColumns/">SQL Aggregate Across Columns</a>
     </h1>
   
 
@@ -94,24 +94,64 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Configuring-Hexo-using-the-config-yml-file"><a href="#Configuring-Hexo-using-the-config-yml-file" class="headerlink" title="Configuring Hexo using the _config.yml file"></a>Configuring Hexo using the _config.yml file</h2><p>In the directory where you initalised hexo, you should see a file called _config.yml file. This is the file you edit to configure your hexo environment. At a bare minimum I did the following to get up and running quickly and efficiently.</p>
-<p>I amended the site section at the top of the file to contain my and my site details.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: dataGriff</span><br><span class="line">subtitle: A blog about data from a guy named Griff</span><br><span class="line">description: A blog with content on SQL, data warehousing, business intelligence and all the rest!</span><br><span class="line">author: Richard Griffiths</span><br><span class="line">language: default</span><br><span class="line">timezone: GMT</span><br></pre></td></tr></table></figure>
-<p><strong>Important Note:</strong> It is important to change the language to default as leaving it as “en” was causing the language to be random everytime I generated the site. This was a bug in hexo at the time of writing.</p>
-<p>In the URL section I changed the URL to be my custom domain (“www.datagriff.com”) and amended the permalink of each post to be just down to the month level and not down to day.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: www.datagriff.com</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure></p>
-<p>In the directory section I just changed the output path to <strong>../Output</strong>, from the default of public, which means the HTML files that get outputted go into a folder in the directory above the source path called Output, as I didn’t want the deployment to generate in the same folder as the source. This would cause all sorts of headaches with source control and with the number of git files. I preferred to keep the source code and ouput files separate.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Directory</span><br><span class="line">source_dir: source</span><br><span class="line">public_dir: ../Output</span><br><span class="line">tag_dir: tags</span><br><span class="line">archive_dir: archives</span><br><span class="line">category_dir: categories</span><br><span class="line">code_dir: downloads/code</span><br><span class="line">i18n_dir: :lang</span><br><span class="line">skip_render:</span><br></pre></td></tr></table></figure>
-<p>The only other thing I changed at this point was the deployment details, where I used the git type and entered in my github io repository where I’d be deploying my output.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/griff182uk/griff182uk.github.io</span><br></pre></td></tr></table></figure>
-<p>There are a number of other configuration items that I’m sure could be messed around with found at <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">https://hexo.io/docs/deployment.html</a>, but I found the above was enough to get me going.</p>
+        <p>In order to aggregate across columns in SQL you can use the following syntax.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">Aggregate</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (ColA), (ColB), (ColC),...) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [AggregateCol]</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Object</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Aggregate-Dates-Across-Columns-Example"><a href="#Aggregate-Dates-Across-Columns-Example" class="headerlink" title="Aggregate Dates Across Columns Example"></a>Aggregate Dates Across Columns Example</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Example 1: Dates Min and Max Across Columns</span></span><br><span class="line">WITH CTE AS (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(<span class="string">'01-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateA, <span class="keyword">CAST</span>(<span class="string">'10-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateB, <span class="keyword">CAST</span>(<span class="string">'15-Jan-2016'</span> <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> DateC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="string">'05-Jan-2016'</span> <span class="keyword">AS</span> DateA, <span class="string">'04-Jan-2016'</span> <span class="keyword">AS</span> DateB, <span class="string">'16-Jan-2016'</span> <span class="keyword">AS</span> DateC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="string">'08-Jan-2016'</span> <span class="keyword">AS</span> DateA, <span class="string">'31-Dec-2015'</span> <span class="keyword">AS</span> DateB, <span class="string">'10-Jan-2016'</span> <span class="keyword">AS</span> DateC</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (DateA), (DateB), (DateC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [MaxDate]</span><br><span class="line">  ,  (<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (DateA), (DateB), (DateC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [MinDate]</span><br><span class="line"><span class="keyword">FROM</span> CTE;</span><br></pre></td></tr></table></figure>
+<p><strong>Outputs</strong></p>
+<table>
+<thead>
+<tr>
+<th>MaxDate</th>
+<th>MinDate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2016-01-15</td>
+<td>2016-01-01</td>
+</tr>
+<tr>
+<td>2016-01-16</td>
+<td>2016-01-04</td>
+</tr>
+<tr>
+<td>2016-01-10</td>
+<td>2015-12-31</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Aggregate-Numeric-Across-Columns-Example"><a href="#Aggregate-Numeric-Across-Columns-Example" class="headerlink" title="Aggregate Numeric Across Columns Example"></a>Aggregate Numeric Across Columns Example</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Example 2: Sum and Average Numbers Across Columns</span></span><br><span class="line">WITH CTE AS (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">5</span> <span class="keyword">AS</span> NumA, <span class="number">10</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">15</span> <span class="keyword">AS</span> NumC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="number">20</span> <span class="keyword">AS</span> NumA, <span class="number">40</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">60</span> <span class="keyword">AS</span> NumC</span><br><span class="line"><span class="keyword">UNION</span> ALL <span class="keyword">SELECT</span> <span class="number">25</span> <span class="keyword">AS</span> NumA, <span class="number">50</span> <span class="keyword">AS</span> <span class="keyword">NumB</span>, <span class="number">75</span> <span class="keyword">AS</span> NumC</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">SUM</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (NumA), (<span class="keyword">NumB</span>), (NumC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [SumNum]</span><br><span class="line">  ,  (<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(v) <span class="keyword">FROM</span> (<span class="keyword">VALUES</span> (NumA), (<span class="keyword">NumB</span>), (NumC)) <span class="keyword">AS</span> <span class="keyword">value</span>(v)) <span class="keyword">as</span> [AvgNum]</span><br><span class="line"> <span class="keyword">FROM</span> CTE;</span><br></pre></td></tr></table></figure>
+<p><strong>Outputs</strong></p>
+<table>
+<thead>
+<tr>
+<th>SumNum</th>
+<th>AvgNum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30</td>
+<td>10</td>
+</tr>
+<tr>
+<td>120</td>
+<td>40</td>
+</tr>
+<tr>
+<td>150</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="ciummvhf400016okajpcyokzh" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/SQLAggregateAcrossColumns/" data-id="ciuvg97b4000rigkae2anlcrk" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
 
     </footer>
   </div>
@@ -123,7 +163,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/9/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/9/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/11/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -134,6 +174,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/10/SQL2012AdminExam02PlanningAndInstalling/">SQL 2012 Admin Exam 02 Planning And Installing</a>
+          </li>
         
           <li>
             <a href="/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/">SQL 2012 Admin Exam 01 Prepare Environment</a>
@@ -151,10 +195,6 @@
             <a href="/2016/09/AzureSQLPaaS/">Azure Create SQL Database</a>
           </li>
         
-          <li>
-            <a href="/2016/08/AddVisualStudioProjectTeamServices/">Add Visual Studio Project to Online Visual Studio Team Services</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -164,7 +204,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-2012/">SQL 2012</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -174,7 +214,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam/">Exam</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -184,7 +224,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 12px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 20px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam/" style="font-size: 10px;">Exam</a> <a href="/tags/Git/" style="font-size: 18px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 10px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 14px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 18px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 12px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+      <a href="/tags/Azure/" style="font-size: 12px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 20px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 12px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 18px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 16px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 12px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 14px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 18px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 12px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
     </div>
   </div>
 
@@ -193,7 +233,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
