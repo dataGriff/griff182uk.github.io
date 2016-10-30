@@ -68,10 +68,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-VisualStudioOnlineNewProject" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-AddVisualStudioProjectTeamServices" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/07/VisualStudioOnlineNewProject/" class="article-date">
-  <time datetime="2016-07-30T12:26:07.000Z" itemprop="datePublished">2016-07-30</time>
+    <a href="/2016/08/AddVisualStudioProjectTeamServices/" class="article-date">
+  <time datetime="2016-08-07T15:43:15.000Z" itemprop="datePublished">2016-08-07</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/VisualStudioOnlineNewProject/">Visual Studio Team Services New Project</a>
+      <a class="article-title" href="/2016/08/AddVisualStudioProjectTeamServices/">Add Visual Studio Project to Online Visual Studio Team Services</a>
     </h1>
   
 
@@ -94,53 +94,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx" target="_blank" rel="external">Visual studio team services</a> is an online tool for managing your visual studio code. It is a free tool for individuals that provides source control, project management, Kanban boards, automated builds, testing and much more. I’ve found it a useful way of managing my visual studio work and also a way of practicing for team foundation server in the workplace when I don’t actually have it!</p>
-<p>The following explains how to simply setup a visual studio team services project, clone it in visual studio and then keep your code in the source control provided by team services. I will be choosing the Git style rather than the TFS version of source control, just because I’m now used to Git and I think it’s more flexible. Also you get the added bonus of a local git repository if you can’t get online for any reason.</p>
-<h2 id="Setup-a-visual-studio-team-services-account"><a href="#Setup-a-visual-studio-team-services-account" class="headerlink" title="Setup a visual studio team services account"></a>Setup a visual studio team services account</h2><p>If you haven’t already got one - set yourself up a visual studio account. At the time of writing the link for this could be found at <a href="https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx" target="_blank" rel="external">Visual studio team services</a>, if it’s moved just google visual studio team services or visual studio online and follow the relevant paths and instructions.</p>
-<p>Another prerequisite for the following is obviosuly having <a href="https://www.visualstudio.com/" target="_blank" rel="external">visual studio</a> installed on your local machine… Nearly forgot that one!</p>
-<h2 id="Setup-a-new-online-project"><a href="#Setup-a-new-online-project" class="headerlink" title="Setup a new online project"></a>Setup a new online project</h2><p>Select new under Recent Projects &amp; Teams of you visual studio team services account.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineNewProject.png" alt="Team Services New Project" title="Team Services New Project">
-<p>Give the project a name, a description, pick a process template (<strong>Agile</strong> is fine for me and provides a Kanban board but you may want to choose a different one if you wish) and your version control (as I mentioned in the beginning I use <strong>Git</strong> as I believe it’s more flexible), then click create project.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineCreateProject.png" alt="Team Services Create Project" title="Team Services Create Project">
-<p>Once your project is created click navigate to project.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineProjectCreated.png" alt="Team Services Project Created" title="Team Services Project Created">
-<p>You can start managing your work or add your code. In this example we’re just going to focus on getting code in and syncing this with your visual studio project, so we’ll choose add code.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineProjectChooseCode.png" alt="Team Services Add Code" title="Team Services Add Code">
-<h2 id="Link-your-online-project-to-visual-studio-code"><a href="#Link-your-online-project-to-visual-studio-code" class="headerlink" title="Link your online project to visual studio code"></a>Link your online project to visual studio code</h2><p>After choosing add code Select “Clone in Visual Studio”.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineClone.png" alt="Team Services Clone" title="Team Services Clone">
-<p>In any external protocol request that pops up just click accept. Visual studio will now open with an empty project, but in the <strong>team explorer</strong> window on the right you will see the option to clone from your online project, click clone.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSClone.png" alt="Visual Studio Clone" title="Visual Studio Clone">
-<p>You will see a message for the new repository being cloned successfully.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSSuccesfulClone.png" alt="Visual Studio Successful Clone" title="Visual Studio Successful Clone">
-<p>Then start a new solution for whatever project it is you’re going to do. In my example I’m just going to create a windows form project.<br>Back in the team explorer window click changes and you will see a load of changes as a result of creating the project. Click the + icon to stage these changes.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSStageChanges.png" alt="Visual Studio Stage Changes" title="Visual Studio Stage Changes">
-<p>Then type a commit message in the box at the top to describe your changes and click commit staged.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSCommit.png" alt="Visual Studio Commit Changes" title="Visual Studio Commit Changes">
-<p>Then click sync to share with your server.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSSync.png" alt="Visual Studio Sync" title="Visual Studio Sync">
-<p>Finally in the synchronisation menu that appears select push.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSPush.png" alt="Visual Studio Push" title="Visual Studio Push">
-<p>You should then see this successfully pushing to your origin which is your visual studio team services project.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSSuccessfulPush.png" alt="Visual Studio Push Success" title="Visual Studio Push Success">
-<p>Lets go back online and see if we can see it, refresh the page and… Hey presto your code is added to your online project.</p>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineInitialCommit.png" alt="Visual Studio Online Initial Commit" title="Visual Studio Online Initial Commit">
-<h2 id="Quick-Reference-for-Working-with-your-Visual-Studio-Team-Services"><a href="#Quick-Reference-for-Working-with-your-Visual-Studio-Team-Services" class="headerlink" title="Quick Reference for Working with your Visual Studio Team Services"></a>Quick Reference for Working with your Visual Studio Team Services</h2><p>Just to quickly go through the process of adding code, committing, syncing and pushing to your team services project. Make a change to your project e.g. adding a form button.</p>
-<ol>
-<li>Make a change to your code in Visual Studio</li>
-<li>Save the changes</li>
-<li>In <strong>team explorer</strong> go to changes menu</li>
-<li>Add your staged changes</li>
-<li>Commit your stage changes with a message</li>
-<li>Sync your changes</li>
-<li>Push your changes</li>
-</ol>
-<img src="/2016/07/VisualStudioOnlineNewProject/VSOnlineCommitedExample.png" alt="Visual Studio Online Committed Example" title="Visual Studio Online Committed Example">
-<p>This will keep your visual studio code in the visual studio team services online source control, available for you to work from wherever you are with internet access! Sweet.<br>There’s a hell of a lot more you can do with visual studio online but this should give you the basics to use the tool as a system source control.   </p>
+        <p>The following shows you how to add an existing Visual Studio project to your visual studio team services online account.</p>
+<p>First open your solution in Visual Studio, right click the solution and select “Add to Source Control.”</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/VSAddToSourceControl.png" alt="Visual Studio Add to Source Control" title="Visual Studio Add to Source Control">
+<p>You will then see that the project has green lock icons next to its files.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/VSSolutionAddedToSourceControl.png" alt="Visual Studio Added to Source Control" title="Visual Studio Added to Source Control">
+<p>And the file architecture folder will have git files.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/GitAddedToSolution.png" alt="Solution Folder Git Files" title="Solution Folder Git Files">
+<p>Both showing that you have added the solution to a local Git repo for source control.</p>
+<p>Open the team explorer window and select Sync.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/VSSync.png" alt="Visual Studio Sync" title="Visual Studio Sync">
+<p>With the options that you get presented with, choose Publish to Visual Studio Team Service by clicking Publish Git Repo.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/ChoosePublishVSOnline.png" alt="Choose Publish Visual Studio Team Services" title="Choose Publish Visual Studio Team Services">
+<p>Publish the project to your online visual studio account (you may need to sign in again here), by entering an appropriate name for your new repository and select then Publish Repository.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/PublishProject.png" alt="Visual Studio Publish Project" title="Visual Studio Publish Project">
+<p>Open a browser and navigate to your Visual Studio team services homepage. You may not see the project in your list so you might have to choose browse and find your new project there.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/BrowseToNewProject.png" alt="Browse to Visual Studio Team Service Project" title="Browse to Visual Studio Team Service Project">
+<p>There you will see the code from your Visual Studio solution online in your team services source control.</p>
+<img src="/2016/08/AddVisualStudioProjectTeamServices/VSOnlineCodeAdded.png" alt="Visual Studio Team Service Project Code" title="Visual Studio Team Service Project Code">
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/07/VisualStudioOnlineNewProject/" data-id="ciuvgi8yc000zsgkaclk4xbci" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/08/AddVisualStudioProjectTeamServices/" data-id="ciuwinl9d0000a4ka4l5lpu83" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Source-Control/">Source Control</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a></li></ul>
@@ -155,7 +131,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -166,6 +142,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/10/SQL-2012-Admin-Exam-03-Configuring-and-Managing-Instances/">SQL 2012 Admin Exam 03 Configuring and Managing Instances</a>
+          </li>
         
           <li>
             <a href="/2016/10/SQL2012AdminExam02PlanningAndInstalling/">SQL 2012 Admin Exam 02 Planning And Installing</a>
@@ -183,10 +163,6 @@
             <a href="/2016/09/Github404ErrorCNAME/">Github IO Page 404 Error Hexo CNAME</a>
           </li>
         
-          <li>
-            <a href="/2016/09/AzureSQLPaaS/">Azure Create SQL Database</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -196,7 +172,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -206,7 +182,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -216,7 +192,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 12px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 20px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 12px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 18px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 16px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 12px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 14px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 18px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 12px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+      <a href="/tags/Azure/" style="font-size: 11.67px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 20px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 13.33px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 18.33px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 18.33px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 13.33px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 15px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 18.33px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
     </div>
   </div>
 
@@ -225,7 +201,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
