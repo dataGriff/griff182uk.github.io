@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components | dataGriff</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="So on to the third chapter in 2 days! My brain may be slightly frazzled…
+Video Exercises
+SQL 2012 Configure FILESTREAM
+SQL 2012 Create a FileTable
+SQL 2012 Create Full Text Index
+SQL 2012 Create Parti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components">
+<meta property="og:url" content="www.datagriff.com/2016/10/SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components/index.html">
+<meta property="og:site_name" content="dataGriff">
+<meta property="og:description" content="So on to the third chapter in 2 days! My brain may be slightly frazzled…
+Video Exercises
+SQL 2012 Configure FILESTREAM
+SQL 2012 Create a FileTable
+SQL 2012 Create Full Text Index
+SQL 2012 Create Parti">
+<meta property="og:updated_time" content="2016-11-03T08:16:38.953Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components">
+<meta name="twitter:description" content="So on to the third chapter in 2 days! My brain may be slightly frazzled…
+Video Exercises
+SQL 2012 Configure FILESTREAM
+SQL 2012 Create a FileTable
+SQL 2012 Create Full Text Index
+SQL 2012 Create Parti">
+  
+    <link rel="alternate" href="/atom.xml" title="dataGriff" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dataGriff</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A blog about data from a guy named Griff</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="www.datagriff.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components/" class="article-date">
+  <time datetime="2016-10-30T11:20:43.000Z" itemprop="datePublished">2016-10-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL-Administration/">SQL Administration</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>So on to the third chapter in 2 days! My brain may be slightly frazzled…</p>
+<h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>
+<li><a href="https://youtu.be/tUWm6qNte20" target="_blank" rel="external">SQL 2012 Configure FILESTREAM</a></li>
+<li><a href="https://youtu.be/h2615ZtaZXk" target="_blank" rel="external">SQL 2012 Create a FileTable</a></li>
+<li><a href="https://youtu.be/B0XF02sHKeM" target="_blank" rel="external">SQL 2012 Create Full Text Index</a></li>
+<li><a href="https://youtu.be/36D9HColDeY" target="_blank" rel="external">SQL 2012 Create Partitioned Table</a></li>
+<li><a href="https://youtu.be/ugrzwf8ZPzw" target="_blank" rel="external">SQL 2012 Transparent Data Encryption</a></li>
+<li><a href="https://youtu.be/PLfL7FZbnWs" target="_blank" rel="external">SQL 2012 Data Compression</a></li>
+<li><a href="https://youtu.be/DJ_LFyEylIU" target="_blank" rel="external">SQL 2012 Managing Transaction Logs</a></li>
+</ul>
+<h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
+<li><strong>Full-Text Indexing</strong> - Stores significant words and their location. There can be only one per table or indexed view and can contain up to 1024 columns. This can then be used in querying used commands like CONTAINSTABLE and FREETEXTTABLE.</li>
+<li><strong>FileStream</strong> - Allows SQL Server to store unstructured data like files and documents (BLOBs, Binary Large Objects).</li>
+<li><strong>FileTables</strong> - Allows you to store files and documents in SQL server and can be accessed via applications as if they were stored in file system.</li>
+<li><strong>Contained Database</strong> - All settings and properties within database and can connect without authentication at server level.</li>
+<li><strong>Row-Level Compression</strong> - Less CPU than page but not as efficient and useful for fixed length data types.</li>
+<li><strong>Page-Level Compression</strong> - More CPU that row and compresses repeating data.</li>
+<li><strong>Unicode Compression</strong>- - Good for NVARCHAR and NCHAR types.</li>
+<li><strong>Transparent Data Encryption (TDE)</strong> - Encrypts database that requires no extra effort in application layer.</li>
+<li><strong>Partition Function</strong> - Defines how rows of index map to partitions based on values of Partitioning column.</li>
+<li><strong>Partition Scheme</strong> - Maps partition function to filegroups.</li>
+<li><strong>Partitioning Column</strong> -Column or index that partition function uses.</li>
+<li><strong>Aligned Index</strong> - Index that uses same partition scheme as the table to which it belongs.</li>
+<li><strong>NonAligned Index</strong> - Index independently partition from table to which it belongs.</li>
+<li><strong>Partition Elimination</strong> - Optimiser can access only partitions it needs for query.</li>
+</ul>
+<p><strong>There are a shedload of <a href="">DBCC Commands..</a></strong></p>
+<ul>
+<li><strong>Maintenance</strong> - DBCC CLEANTABLE, DBCC DBREINDEX, DBCC DROPCLEANBUFFERS, DBCC FREEPROCCACHE, DBCC INDEXDEFRAG, DBCC SHRINKDATABSE, DBCC SHRINKFILE, DBCC UPDATEUSAGE</li>
+<li><strong>Informational</strong> -  DBCC INPUTBUFFER, DBCC OPENTRAN, DBCC OUTPUTBUFFER, DBCC PROCACHE, DBCC SHOW_STATISICS, DBCC SHOWCONTIG, DBCC SQLPERF, DBCC TRACESTATUS, DBCC USEROPTIONS</li>
+<li><strong>Validation</strong> -  DBCC CHECKALLOC, DBCC CHECKCATALOG, DBCC CHECKCONSTRAINTS, DBCC CHECKDB, DBCC CHECKFILEGROUP, DBCC CHECKIDENT, DBCC CHECKTABLE</li>
+<li><strong>Miscellaenous</strong> -  DBCC dllname (FREE), DBCC FREESESSIONCACHE, DBCC HELP, DBCC TRACEOFF</li>
+</ul>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ul>
+<li>DComconfg.exe is a tool to give non-admin users access to IS.</li>
+<li>Reporting Services Configuration manager is how you would changed the RS execution account.</li>
+<li>To enable FILESTREAM you must edit properties of SQL server Service in SQL Server Configuration manager.</li>
+<li>FILESTREAM steps: SQL Server Config Manager &gt; Properties &gt; FILESTREAM enable &gt; sp_configure &gt; Restart &gt; FILESTREAM Filegroup &gt; FILESTREAM Filegroup</li>
+<li>FileTable steps: Enable FILESTREAM &gt; NON_TRANSACTED_ACCESS = FULL on Database &gt; Create table as FileTable</li>
+<li>TDE Steps: Create master encryption key &gt; Certificate &gt; Database Encryption Key &gt; Encrypt database</li>
+</ul>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Install AS from Command-Line in MultiDimensional Mode</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Setup.exe /q /IAcceptSQLServerLicenseTerms /Action=install /Features=AS /ASSERVERMODE=MULTIDIMENSIONAL /INSTANCENAME=ASMulti /ASSVCACCOUNT=contoso\kim_akers /ASSYSADMINACCOUNTS=contoso\kim_akers</span><br></pre></td></tr></table></figure></p>
+<p><strong>Install AS from Command-Line in Tabular Mode</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Setup.exe /q /IAcceptSQLServerLicenseTerms /Action=install /Features=AS /ASSERVERMODE=TABULAR /INSTANCENAME=ASTabular /ASSVCACCOUNT=contoso\kim_akers /ASSYSADMINACCOUNTS=contoso\kim_akers</span><br></pre></td></tr></table></figure></p>
+<p><strong>Install AS from Command-Line in PowerPivot Mode</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Setup.exe /q /IAcceptSQLServerLicenseTerms /Action=install /Features=AS /ASSERVERMODE=POWERPIVOT /INSTANCENAME=ASPower /ASSVCACCOUNT=contoso\kim_akers /ASSYSADMINACCOUNTS=contoso\kim_akers</span><br></pre></td></tr></table></figure></p>
+<p><strong>Powershell RS Prerequisite 01</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Import-module ServerManager</span><br></pre></td></tr></table></figure></p>
+<p><strong>Powershell RS Prerequisite 02</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Add-WindowsFeature Web-Server -IncludeAllSubfeature</span><br></pre></td></tr></table></figure></p>
+<p><strong>Install RS from Command-Line</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setup.exe /q /IAcceptSQLServerLicenseTerms /Action=instal/ Features=SQL,RS,TOOLS /INSTANCENAME=RPTSVR /SQLSYSADMINACCOUNTS=&quot;BUILTIN\ADMINISTRATORS&quot; /RSSVCACCOUNT=NetworkService /SQLSVCACCOUNT=NetworkService /AGTSVCACCOUNT=NetworkService /RSSVCSTARTUPTYPE=&quot;Manual&quot; /RSINSTALLMODE=&quot;DefaultNativeMode&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Full Text Catalog</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> DbName;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> FULLTEXT <span class="keyword">CATALOG</span> CatalogName;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> FULLTEXT <span class="keyword">INDEX</span> <span class="keyword">ON</span> SchemaName.TableName</span><br><span class="line">(</span><br><span class="line">Column1, Column2, Column3</span><br><span class="line">)</span><br><span class="line"><span class="keyword">KEY</span> <span class="keyword">INDEX</span> PK_SchemaName_TabName_Column1</span><br><span class="line"><span class="keyword">ON</span> CatalogName;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Drop Full Text Catalog</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> FULLTEXT <span class="keyword">INDEX</span> <span class="keyword">ON</span> SchemaName.TableName;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Configure FILESTREAM to allow T-SQL and Win32 Streaming</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EXEC sp_configure filestream_access_level, 2</span><br><span class="line">RECONFIGURE</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create a FILESTREAM FileGroup</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> DBName <span class="keyword">ADD</span></span><br><span class="line">FILEGROUP FileStreamFG CONTAINS FILESTREAM;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create a FILESTREAM File</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> DBName <span class="keyword">ADD</span> <span class="keyword">FILE</span></span><br><span class="line">( <span class="keyword">NAME</span> = FileStrmFile</span><br><span class="line">, FILENAME = N<span class="string">'C:\FSTRM'</span>)</span><br><span class="line"><span class="keyword">TO</span> FILEGROUP FileStreamFG;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Enable FILESTREAM NON_TRANSACTED_ACCESS</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> DBName</span><br><span class="line"><span class="keyword">SET</span> FILESTREAM (NON_TRANSACTED_ACCESS = <span class="keyword">FULL</span>, DIRECTORY_NAME = N<span class="string">'directory'</span>)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create FileTable</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> DocStore <span class="keyword">AS</span> FileTable;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Row-Level Compression</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> TabName <span class="keyword">REBUILD</span> <span class="keyword">WITH</span> (DATA_COMPRESSION=<span class="keyword">ROW</span>);</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">INDEX</span> idx_Name <span class="keyword">ON</span> TabName <span class="keyword">REBUILD</span> <span class="keyword">WITH</span> (DATA_COMPRESSION=<span class="keyword">ROW</span>);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Page-Level Compression</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> TabName <span class="keyword">REBUILD</span> <span class="keyword">WITH</span> (DATA_COMPRESSION=PAGE);</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">INDEX</span> idx_Name <span class="keyword">ON</span> TabName <span class="keyword">REBUILD</span> <span class="keyword">WITH</span> (DATA_COMPRESSION=PAGE);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Partition Function</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PARTITION</span> <span class="keyword">FUNCTION</span> PartFun ( <span class="built_in">INT</span> )</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">RANGE</span> <span class="keyword">LEFT</span> <span class="keyword">FOR</span> <span class="keyword">VALUES</span> (<span class="number">100</span>,<span class="number">200</span>);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Partition Scheme</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PARTITION</span> SCHEME PartScheme</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line">	<span class="keyword">PARTITION</span> PartFun</span><br><span class="line">	<span class="keyword">TO</span> (FG1, FG2, FG3)</span><br><span class="line"><span class="keyword">GO</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Partitioned Table</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">Test</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span>,</span><br><span class="line"><span class="keyword">value</span> <span class="built_in">char</span>(<span class="number">30</span>)</span><br><span class="line">) <span class="keyword">on</span> PartScheme(<span class="keyword">id</span>)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Transparent Data Encryption (TDE) Part 1 - Create Master Key</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">MASTER</span> <span class="keyword">KEY</span> ENCRYPTION <span class="keyword">BY</span> <span class="keyword">PASSWORD</span> = <span class="string">'Password'</span>;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>TDE Part 2 - Create Certificate</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> CERTIFICATE ServerCert <span class="keyword">WITH</span> SUBJECT = <span class="string">'Server Cert'</span>;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>TDE Part 3 - Create Database Encryption Key (DEK)</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> DBName;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> ENCRYPTION <span class="keyword">KEY</span></span><br><span class="line"><span class="keyword">WITH</span> ALGORITHM = AES_128</span><br><span class="line">ENCRYPTION <span class="keyword">BY</span> <span class="keyword">SERVER</span> CERTIFICATE ServerCert;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>TDE Part 4 - Enable Encryption</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> DBName</span><br><span class="line"><span class="keyword">SET</span> ENCRYPTION <span class="keyword">ON</span>;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>TDE Backup Certificate</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BACKUP</span> CERTIFICATE ServerCert</span><br><span class="line"><span class="keyword">TO</span> <span class="keyword">FILE</span> = <span class="string">'ServerCertExport'</span></span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">PRIVATE</span> <span class="keyword">KEY</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">FILE</span>=<span class="string">'PrivateKeyFile'</span>,</span><br><span class="line">    ENCRYPTION <span class="keyword">BY</span> <span class="keyword">PASSWORD</span> = <span class="string">'Password'</span></span><br><span class="line">);</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Add a Log File</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [<span class="keyword">master</span>]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [DBName] <span class="keyword">ADD</span> <span class="keyword">LOG</span> <span class="keyword">FILE</span></span><br><span class="line">( <span class="keyword">NAME</span> = N<span class="string">'LogFile2'</span></span><br><span class="line">, FILENAME = N<span class="string">'FilePath'</span></span><br><span class="line">, <span class="keyword">SIZE</span> = <span class="number">1024</span>KB , FILEGROWTH = <span class="number">10</span>%)</span><br><span class="line"><span class="keyword">GO</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Trigger a Log CheckPoint</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CHECKPOINT;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Check to see Log Space Used</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DBCC SQLPERF(LOGSPACE);</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="www.datagriff.com/2016/10/SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components/" data-id="civ22xvip000e84kadp151p6z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exam-70462/">Exam 70462</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/SQL-2012-Admin-Exam-03-Configuring-and-Managing-Instances/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SQL 2012 Admin Exam 03 Configuring and Managing Instances</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/10/SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components/">SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/SQL-2012-Admin-Exam-03-Configuring-and-Managing-Instances/">SQL 2012 Admin Exam 03 Configuring and Managing Instances</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/SQL2012AdminExam02PlanningAndInstalling/">SQL 2012 Admin Exam 02 Planning And Installing</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/">SQL 2012 Admin Exam 01 Prepare Environment</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/SQLRelay2016DIYDBFromHome/">SQL Relay 2016 - Build a Database for free with Team Services Online, SSDT and Azure</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Azure/" style="font-size: 12px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 20px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 14px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 18px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 14px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 14px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 18px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 12px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Richard Griffiths<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
