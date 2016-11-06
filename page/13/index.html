@@ -68,10 +68,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-ConfigureHexo" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-HexoQuickNewPostAndDeploy" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/06/ConfigureHexo/" class="article-date">
-  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
+    <a href="/2016/06/HexoQuickNewPostAndDeploy/" class="article-date">
+  <time datetime="2016-06-27T18:11:55.000Z" itemprop="datePublished">2016-06-27</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/ConfigureHexo/">Configure Hexo</a>
+      <a class="article-title" href="/2016/06/HexoQuickNewPostAndDeploy/">Hexo Quick New Post and Deploy</a>
     </h1>
   
 
@@ -94,24 +94,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Configuring-Hexo-using-the-config-yml-file"><a href="#Configuring-Hexo-using-the-config-yml-file" class="headerlink" title="Configuring Hexo using the _config.yml file"></a>Configuring Hexo using the _config.yml file</h2><p>In the directory where you initalised hexo, you should see a file called _config.yml file. This is the file you edit to configure your hexo environment. At a bare minimum I did the following to get up and running quickly and efficiently.</p>
-<p>I amended the site section at the top of the file to contain my and my site details.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: dataGriff</span><br><span class="line">subtitle: A blog about data from a guy named Griff</span><br><span class="line">description: A blog with content on SQL, data warehousing, business intelligence and all the rest!</span><br><span class="line">author: Richard Griffiths</span><br><span class="line">language: default</span><br><span class="line">timezone: GMT</span><br></pre></td></tr></table></figure>
-<p><strong>Important Note:</strong> It is important to change the language to default as leaving it as “en” was causing the language to be random everytime I generated the site. This was a bug in hexo at the time of writing.</p>
-<p>In the URL section I changed the URL to be my custom domain (“www.datagriff.com”) and amended the permalink of each post to be just down to the month level and not down to day.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: www.datagriff.com</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure></p>
-<p>In the directory section I just changed the output path to <strong>../Output</strong>, from the default of public, which means the HTML files that get outputted go into a folder in the directory above the source path called Output, as I didn’t want the deployment to generate in the same folder as the source. This would cause all sorts of headaches with source control and with the number of git files. I preferred to keep the source code and ouput files separate.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Directory</span><br><span class="line">source_dir: source</span><br><span class="line">public_dir: ../Output</span><br><span class="line">tag_dir: tags</span><br><span class="line">archive_dir: archives</span><br><span class="line">category_dir: categories</span><br><span class="line">code_dir: downloads/code</span><br><span class="line">i18n_dir: :lang</span><br><span class="line">skip_render:</span><br></pre></td></tr></table></figure>
-<p>The only other thing I changed at this point was the deployment details, where I used the git type and entered in my github io repository where I’d be deploying my output.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/griff182uk/griff182uk.github.io</span><br></pre></td></tr></table></figure>
-<p>There are a number of other configuration items that I’m sure could be messed around with found at <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">https://hexo.io/docs/deployment.html</a>, but I found the above was enough to get me going.</p>
+        <p>Below shows the quick process of creating and deploying a new post, while keeping everything under source control. This post assumes you already have the source folder initialised with git and linked to a standard repository, and the output folder initialised with git, linked to your io repository.  </p>
+<p>Navigate to your hexo source folder in node.js command prompt.<br>In my case this is E:\Documents\Projects\DataGriff\Raw.</p>
+<p><img src="\images\HexoSourceFolder.png" alt="Hexo Source Folder in Node.js Command Prompt"></p>
+<p>Enter the command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post test</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\HexoNewPost.png" alt="Hexo New Post Command in Node.js Command Prompt"></p>
+<p>This will create a new post file called test.md. Don’t close the node.js command prompt as you use it again at the end to deploy.</p>
+<p>Start Git bash on your source folder and check the status by using:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitStatusChange.png" alt="Git Status New Post Added"><br>This will show a new file called test.md has been added.</p>
+<p>Use the command below to add all the changed or new files.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitAddAll.png" alt="Git Add All Files Using Git Bash"><br>Use the command below to commit the changes with a message.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;new post added&quot;</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitCommit.png" alt="Git Commit with Message  Using Git Bash"><br>Check the status again and you will see there are no changes now as you have committed them.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitStatusClean.png" alt="Git Status Clean  Using Git Bash"><br>To keep your remote repository up to date, use the command below.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\GitPushOriginMaster.png" alt="Git Sync with Remote Using Git Bash"><br>Revert back to the node.js command prompt and use the following command to generate the output files<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\HexoGenerate.png" alt="Hexo Generate Command in Node.js"><br>Still in the node.js command prompt use the following command to deploy the output files to your github io repo and so your website.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\HexoDeploy.png" alt="Hexo Deploy Command in Node.js"><br>You should then be able to see the new post if you refresh the page.<br><img src="\images\HexoTestPost.png" alt="Hexo New Post"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/ConfigureHexo/" data-id="civ22xvih000784kaus2ectw2" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/HexoQuickNewPostAndDeploy/" data-id="civ6om0sn000bfcka6r7zrfdu" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
 
     </footer>
   </div>
@@ -123,7 +128,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/12/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/14/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/14/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -134,6 +139,14 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/">SQL 2012 Admin Exam 06 SQL Server Logins Roles And Users</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/SQL-2012-Admin-Exam-05-Migrating-Importing-and-Exporting/">SQL 2012 Admin Exam 05 Migrating Importing and Exporting</a>
+          </li>
         
           <li>
             <a href="/2016/10/SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components/">SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components</a>
@@ -147,14 +160,6 @@
             <a href="/2016/10/SQL2012AdminExam02PlanningAndInstalling/">SQL 2012 Admin Exam 02 Planning And Installing</a>
           </li>
         
-          <li>
-            <a href="/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/">SQL 2012 Admin Exam 01 Prepare Environment</a>
-          </li>
-        
-          <li>
-            <a href="/2016/10/SQLRelay2016DIYDBFromHome/">SQL Relay 2016 - Build a Database for free with Team Services Online, SSDT and Azure</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -164,7 +169,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -174,7 +179,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -184,7 +189,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 12px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 20px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 14px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 18px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 14px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 14px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 18px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 12px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+      <a href="/tags/Azure/" style="font-size: 11.67px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 18.33px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 16.67px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 16.67px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 13.33px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 16.67px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
     </div>
   </div>
 
@@ -193,7 +198,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 

@@ -68,14 +68,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-YAMLAndMarkdown" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-UsingGitHubForWebHosting" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/06/YAMLAndMarkdown/" class="article-date">
-  <time datetime="2016-06-23T00:00:00.000Z" itemprop="datePublished">2016-06-23</time>
+    <a href="/2016/06/UsingGitHubForWebHosting/" class="article-date">
+  <time datetime="2016-06-27T00:00:00.000Z" itemprop="datePublished">2016-06-27</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Markdown/">Markdown</a>
+    <a class="article-category-link" href="/categories/Github/">Github</a>
   </div>
 
   </div>
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/YAMLAndMarkdown/">YAML And Markdown Example</a>
+      <a class="article-title" href="/2016/06/UsingGitHubForWebHosting/">Using Git Hub for Web Hosting</a>
     </h1>
   
 
@@ -94,42 +94,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Markdown (.md) files offer the ability to use shorthand methods to generate HTML. Simply create a text file in your<br>favourite text editor and save it as FileName.md. Then you have yourself a markdown file.<br>This is particularly useful for bloggers where markdown is easier to quickly type and potentially easier to read as<br>raw code than HTML. Github already supports markdown files and a number of static site generators use markdown as their<br>raw source files to generate HTML. Where markdown caters for the content, YAML, which stands for “YAML ain’t markup language”, handles the metadata for the markdown document.</p>
-<h2 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h2><p><strong>YAML</strong> stands for “YAML aint markup language” and is the metadata component of the page which can contain title, date and tags among others.<br>So at the top of my markdown document I could contain some metadata in YAML that would look something like the following.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &apos;YAML And Markdown Example&apos;</span><br><span class="line">date: 2016-06-23</span><br><span class="line">categories: Markdown</span><br><span class="line">tags: [&apos;Learning&apos;,&apos;YAML&apos;,&apos;Markdown&apos;]</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
-<h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><p><strong>Markdown</strong> is an easy way to write content with shorthand methods instead of using something with tags (like HTML) so prose is easier to write and read when coded.<br>You can get more information on markdown at the creators of markdown <a href="https://daringfireball.net/" title="Daring Fireball" target="_blank" rel="external">Daring Fireball</a> or this nice cheatsheet from <a href="https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf&quot;" title="Github Markdown Cheatsheet" target="_blank" rel="external">github</a>.<br>The Markdown that generated the HTML above looks like this.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## Markdown</span><br><span class="line">**Markdown** is an easy way to write content with shorthand methods instead of using something with tags (like HTML) so prose is easier to write and read when coded.</span><br><span class="line">You can get more information on markdown at the creators of markdown [Daring Fireball](https://daringfireball.net/ &quot;Daring Fireball&quot;) or this nice cheatsheet from [github](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf&quot; &quot;Github Markdown Cheatsheet&quot;).</span><br><span class="line">The Markdown that generated the HTML above looks like this.</span><br></pre></td></tr></table></figure>
-<p>Where the ## translates to a header h1 tag in HTML and the asterisks wrapped around a word translate to bold. Links are represented as [Name to Display](URL “Title”).</p>
-<h3 id="Markdown-Lists"><a href="#Markdown-Lists" class="headerlink" title="Markdown Lists"></a>Markdown Lists</h3><p>You can use asterisks (*) to create unordered lists in your markdown</p>
-<ul>
-<li>I</li>
-<li>am</li>
-<li>unordered</li>
-</ul>
-<p>Where the markdown that generates this HTML looks like the following.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### Markdown Lists</span><br><span class="line">You can use asterisks (\*) to create unordered lists in your markdown</span><br><span class="line">* I</span><br><span class="line">* am</span><br><span class="line">* unordered</span><br></pre></td></tr></table></figure>
-<p>You can see that ### creates a h3, the backslash is an escape character (for the asterisk) and asterisks generate the unordered bullets.</p>
-<p>or the number 1 and a full stop (1.) to create ordered lists</p>
-<ol>
-<li>I</li>
-<li>am</li>
-<li>ordered</li>
-</ol>
-<p>Where the markdown that generates this HTML looks the following.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">or the number 1 and a full stop (1.) to create ordered lists</span><br><span class="line">1. I</span><br><span class="line">1. am</span><br><span class="line">1. ordered</span><br></pre></td></tr></table></figure>
-<p>You can see that 1. creates an ordered list.</p>
-<h3 id="Markdown-Code-blocks"><a href="#Markdown-Code-blocks" class="headerlink" title="Markdown Code blocks"></a>Markdown Code blocks</h3><p>You can also create code snippets using markdown by using three backticks above and below your markdown code.<br>Where is backtick on your keyboard?? It’s the Windows key and the backtick key (top left on a Qwerty keyboard)..</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Message(&quot;Hello World&quot;);</span><br></pre></td></tr></table></figure>
-<p>I can display the code specifically (ish) as SQL by adding the keyword sql after the top three backticks if I like too…</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dbo.TestTable</span><br><span class="line">(RowNo <span class="built_in">INT</span>, RowValue <span class="built_in">CHAR</span>(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> dbo.TestTable</span><br><span class="line"><span class="keyword">WHERE</span> RowNo = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="Markdown-Editors"><a href="#Markdown-Editors" class="headerlink" title="Markdown Editors"></a>Markdown Editors</h3><p>I currently use <a href="https://atom.io/" title="Atom" target="_blank" rel="external">Atom</a>   as my local markdown editor but there are also plenty of online markdown editors if you want to just try it out, such as <a href="https://stackedit.io/" title="stackedit" target="_blank" rel="external">stackedit</a> or <a href="http://dillinger.io/ [dillinger]" title="dillinger" target="_blank" rel="external">dillinger</a>. Also remember any github files saved as markdown (.md) will also display accordingly as HTML when viewed.</p>
+        <h2 id="Creating-a-Git-Hub-io-Repo"><a href="#Creating-a-Git-Hub-io-Repo" class="headerlink" title="Creating a Git Hub io Repo"></a>Creating a Git Hub io Repo</h2><p><strong><a href="https://github.com/" title="GitHub" target="_blank" rel="external">GitHub</a></strong> allows you each user to host one website as part of their service using a <a href="https://pages.github.com/" title="Github pages" target="_blank" rel="external">github “io” repoistory</a>.</p>
+<p>To do this create a new github repository called [YourUserName]/[YourUserName].github.io.</p>
+<p><img src="/images/GitHubIORepo.png" alt="My IO GitHub Repo"></p>
+<p><strong>Note:</strong> I used this for my blog and so the URL for the github repository above was what I used in my Hexo _config.yml file in the deployment section.</p>
+<p>Once you have deployed to the github repository you can view the site using the URL [YourUserName].github.io.</p>
+<p>If you have a custom domain you want to use then you need to go to settings of your repo and where it says “Custom Domain” - add your custom domain name and save. This will add a CNAME file to your repository with the name of your custom domain in there.</p>
+<p><strong>Important Note:</strong> In order for this CNAME file to persist, you should create it in your local output folder (with no file name extension), with the name of your custom domain. I found that if I didn’t do this everytime I pushed from my local folder the CNAME file would disappear and the connection from my github URL to my custom domain would disappear and I’d get a 404 error, so be aware of this!</p>
+<p><img src="/images/CNAMEFolder.png" alt="CNAME File in Source Folder"></p>
+<p><img src="/images/CNAMEContent.png" alt="CNAME Content"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/06/YAMLAndMarkdown/" data-id="civ22xvkv003484kac9uv0kb4" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/06/UsingGitHubForWebHosting/" data-id="civ6om0t70017fckau2xitz3q" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/YAML/">YAML</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
 
     </footer>
   </div>
@@ -141,7 +122,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/16/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span>
+    <a class="extend prev" rel="prev" href="/page/16/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/18/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -152,6 +133,14 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/">SQL 2012 Admin Exam 06 SQL Server Logins Roles And Users</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/SQL-2012-Admin-Exam-05-Migrating-Importing-and-Exporting/">SQL 2012 Admin Exam 05 Migrating Importing and Exporting</a>
+          </li>
         
           <li>
             <a href="/2016/10/SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components/">SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components</a>
@@ -165,14 +154,6 @@
             <a href="/2016/10/SQL2012AdminExam02PlanningAndInstalling/">SQL 2012 Admin Exam 02 Planning And Installing</a>
           </li>
         
-          <li>
-            <a href="/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/">SQL 2012 Admin Exam 01 Prepare Environment</a>
-          </li>
-        
-          <li>
-            <a href="/2016/10/SQLRelay2016DIYDBFromHome/">SQL Relay 2016 - Build a Database for free with Team Services Online, SSDT and Azure</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -182,7 +163,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -192,7 +173,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -202,7 +183,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 12px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 20px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 14px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 18px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 14px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 14px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 18px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 12px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+      <a href="/tags/Azure/" style="font-size: 11.67px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 18.33px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 16.67px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 16.67px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 13.33px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 16.67px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
     </div>
   </div>
 
@@ -211,7 +192,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 

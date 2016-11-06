@@ -4,6 +4,137 @@
   
     
     <entry>
+      <title><![CDATA[SQL 2012 Admin Exam 06 SQL Server Logins Roles And Users]]></title>
+      <url>www.datagriff.com/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/</url>
+      <content type="html"><![CDATA[<p>So on to some exciting security stuff…</p>
+<h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>
+<li><a href="https://youtu.be/_uJ6ZaBQvsM" target="_blank" rel="external">SQL 2012 Create Logins</a></li>
+<li><a href="https://youtu.be/Bpi1O2AUAeA" target="_blank" rel="external">SQL 2012 Fixed Server Roles</a></li>
+<li><a href="https://youtu.be/qbPP7oSMu2U" target="_blank" rel="external">SQL 2012 User Defined Server Roles</a></li>
+<li><a href="https://youtu.be/a0lVUsNBb2A" target="_blank" rel="external">SQL 2012 Create Database Users</a></li>
+<li><a href="https://youtu.be/ayhosQqyr24" target="_blank" rel="external">SQL 2012 Administer Database Roles</a></li>
+<li><a href="https://youtu.be/e6jQ42f4N90" target="_blank" rel="external">SQL 2012 Partially Contained Databases</a></li>
+</ul>
+<h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
+<li><strong>Windows Authenticated Login</strong> - Inherited from local or domain active directory.</li>
+<li><strong>SQL Server Authenticated Login</strong> - Specific to SQL and requires password.</li>
+<li><strong>Certificate</strong> - Can create certificate if master key is present and then a login from certificate.</li>
+<li><strong>Assymetric Key</strong> - Can create login from asymmetric key and have a public and private key.</li>
+<li><strong>Fixed Server Roles</strong> - sysadmin, serveradmin, securityadmin, processadmin, setupadmin, bulkadmin, diskadmin, dbcreator, public.</li>
+<li><strong>User Defined Server Roles</strong> - Can create user defined server roles which allow bespoke server level permissions.</li>
+<li><strong>Credential</strong> - Stores authentication which can be used for example as a proxy in a SQL agent job.</li>
+<li><strong>Database User</strong> - User in a database (mapped to a single login).</li>
+<li><strong>Orphaned User</strong> - A database user without a login.</li>
+<li><strong>Fixed Database-Level Roles</strong> - db_owner, db_Securityadmin, db_accessadmin, db_backupoperator, db_ddladmin, db_datawriter, db_datareader, db_denydatawriter, db_denydatareader.</li>
+<li><strong>Flexible Database-Level Roles</strong> - create roles with custom database permissions.</li>
+<li><strong>msdb Roles</strong> - The msdb database has a lot of specific roles that are worth noting.<ul>
+<li>db_ssisadmin, db_ssisoperator, db_ssisltduser (SSIS)</li>
+<li>dc_admin, dc_operator, dc_proxy (Data Collector)</li>
+<li>ServerGroupAdministratorRole, ServerGroupReaderRole</li>
+<li>dbm_monitor (mirroring)</li>
+<li>PolicyAdministerRole</li>
+<li>SQLAgentOperatorRole, SQLAgentReaderRole, SQLAgentUser</li>
+</ul>
+</li>
+<li><strong>Partially Contained Database</strong> - Allows for connections without external dependencies on SQL logins.</li>
+<li><strong>Contained User</strong> - Does not have login and applied directly to database.</li>
+<li><strong>Principle of Least Privilege</strong> - Grant only access that is required.</li>
+<li><strong>Application Role</strong> -  Allows application to access SQL database and not based on user credentials.  </li>
+</ul>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ul>
+<li>ALTER ANY LOGIN permission required to create logins.</li>
+<li>sys.server_principals catalog of logins.</li>
+<li>sys.database_principals, sys.database_role_members, sys.database_permissions</li>
+<li>ALTER ROLE and sp_addrolemember allow you to add members to roles.</li>
+<li>Enabling of contained databases configured at the instance level. </li>
+</ul>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Create SQL Login</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sql_user_c] <span class="keyword">WITH</span> <span class="keyword">PASSWORD</span>=N<span class="string">'P@ssw0rd'</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Windows Login</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sqla\local_group_b] <span class="keyword">FROM</span> WINDOWS;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Certificate</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> CERTIFICATE Richard_Griffiths</span><br><span class="line"><span class="keyword">WITH</span> SUBJECT = <span class="string">'Richard Griffiths certificate in master database'</span>,</span><br><span class="line">EXPIRY_DATE = <span class="string">'01/01/2020'</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Login from Certificate</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sqla\local_group_b] <span class="keyword">FROM</span> CERTIFICATE Richard_Griffiths;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Asymmetric Key</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ASYMMETRIC <span class="keyword">KEY</span> sql_user_a <span class="keyword">WITH</span> ALGORITHM = RSA_2048;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Login from Asymmetric Key</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sqla\local_group_b] <span class="keyword">FROM</span> ASYMMETRIC <span class="keyword">KEY</span> sql_user_a;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Alter a Login</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> LOGIN sql_user_a <span class="keyword">DISABLE</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Catalog of Logins</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.server_principals;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Credential</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> CREDENTIAL SSISStage <span class="keyword">WITH</span> <span class="keyword">IDENTITY</span> = <span class="string">'SSISStage'</span>, SECRET = <span class="string">'P@$w0rd'</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Add Login to Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SERVER</span> <span class="keyword">ROLE</span> bulkadmin <span class="keyword">ADD</span> <span class="keyword">MEMBER</span> [contoso\domain_group_b];</span><br></pre></td></tr></table></figure></p>
+<p><strong>Identify Fixed Server Role Members</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sp_helpsrvrolemember;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create User Defined Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">SERVER</span> <span class="keyword">ROLE</span> Login_Manager;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Grant Permissions to User Defined Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALTER</span> <span class="keyword">ANY</span> LOGIN <span class="keyword">TO</span> Login_Manager;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Add Member to User Defined Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SERVER</span> <span class="keyword">ROLE</span> Login_Manager <span class="keyword">ADD</span> <span class="keyword">MEMBER</span> [contoso\domain_group_b];</span><br></pre></td></tr></table></figure></p>
+<p><strong>Check all Server Role Membership</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SP1.NAME <span class="keyword">AS</span> <span class="string">'RoleName'</span></span><br><span class="line">,SP2.NAME <span class="keyword">AS</span> <span class="string">'LoginName'</span></span><br><span class="line"><span class="keyword">FROM</span> SYS.SERVER_ROLE_MEMBERS M</span><br><span class="line"></span><br><span class="line"><span class="keyword">JOIN</span> sys.server_principals SP1 <span class="keyword">ON</span></span><br><span class="line">sp1.principal_id = m.role_principal_id</span><br><span class="line"></span><br><span class="line"><span class="keyword">JOIN</span> sys.server_principals SP2 <span class="keyword">ON</span></span><br><span class="line">sp2.principal_id = m.member_principal_id</span><br><span class="line"></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> sp1.name, sp2.name</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Database User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> [SQLA\local_account_b] <span class="keyword">FOR</span> LOGIN [SQLA\local_account_b];</span><br></pre></td></tr></table></figure></p>
+<p><strong>Detect Orphaned Database User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> DBName;</span><br><span class="line">GO</span><br><span class="line">sp_change_users_login @Action='Report';</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Database Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">ROLE</span> TableAdmin;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Grant Permission to Database Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">CREATE</span> <span class="keyword">SCHEMA</span> <span class="keyword">TO</span> TableAdmin;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Add Member to Database Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXEC sp_addrolemember 'TableAdmin','sql_user_c';</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Partially Contained Database</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> partialdb</span><br><span class="line">CONTAINMENT = <span class="keyword">PARTIAL</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Partially Contained Windows User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> partialdb;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> [contoso\contained_user_b];</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Partially Contained SQL User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> partialdb;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> [contained_user_c] <span class="keyword">WITH</span> <span class="keyword">PASSWORD</span>=<span class="string">'Pa$$w0rd'</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Application Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> DBNAME;</span><br><span class="line"><span class="keyword">CREATE</span> APPLICATION TOLE app_role_test <span class="keyword">WITH</span> <span class="keyword">PASSWORD</span> <span class="string">'P@$$w0rd'</span>;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SQL 2012 Admin Exam 05 Migrating Importing and Exporting]]></title>
+      <url>www.datagriff.com/2016/11/SQL-2012-Admin-Exam-05-Migrating-Importing-and-Exporting/</url>
+      <content type="html"><![CDATA[<p>The migrating wasn’t super exciting but the bulk inserts were :)</p>
+<h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>
+<li>[SQL 2012 Migrate Using Backup and Restore] (<a href="https://youtu.be/FwKvXygmp48" target="_blank" rel="external">https://youtu.be/FwKvXygmp48</a>)</li>
+<li>[SQL 2012 Migrate Using Database Copy Wizard] (<a href="https://youtu.be/DS9wzR9xEpk" target="_blank" rel="external">https://youtu.be/DS9wzR9xEpk</a>)</li>
+<li>[SQL 2012 Open Firewall for Database Copy Wizard] (<a href="https://youtu.be/bZgsAVhIzDE" target="_blank" rel="external">https://youtu.be/bZgsAVhIzDE</a>)</li>
+<li>[SQL 2012 Detach Attach] (<a href="https://youtu.be/hcB_qxE3CV4" target="_blank" rel="external">https://youtu.be/hcB_qxE3CV4</a>)</li>
+<li>[SQL 2012 Migrate Logins Using Scripts] (<a href="https://youtu.be/_Ma-ZCnS_Hc" target="_blank" rel="external">https://youtu.be/_Ma-ZCnS_Hc</a>)</li>
+<li>[SQL 2012 Create New Domain User] (<a href="https://youtu.be/IY1-fwU6cJA" target="_blank" rel="external">https://youtu.be/IY1-fwU6cJA</a>)</li>
+<li>[SQL 2012 Import Export Wizard] (<a href="https://youtu.be/FMvzlJAJXQw" target="_blank" rel="external">https://youtu.be/FMvzlJAJXQw</a>)</li>
+<li>[SQL 2012 BCP and BULK INSERT] (<a href="https://youtu.be/DTXowRhj4kg" target="_blank" rel="external">https://youtu.be/DTXowRhj4kg</a>)</li>
+</ul>
+<h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
+<li><strong>Upgrade Advisor</strong> - You can run this against SQL 2005, 2008 and 2008 R2 to check if okay to upgrade to 2012.</li>
+<li><strong>Distributed Replay Utility</strong> - Can simulate mission-critical work environments before upgrade.</li>
+<li><strong>Detach and Attach Database</strong> - Allows you to migrate database across instances. Detached database must have no snapshots, no replication, not mirrored and not be a system database.</li>
+<li><strong>Copy Database Wizard</strong> - Copy database across instances, choosing with Move means gets delete from source. Can copy server level objects too like jobs, logins, messages and can also schedule the move. You also create an SSIS package when creating the copy task.</li>
+<li><strong>Backup and Restore</strong> - You can copy databases across instances using backup and restore. When copying from a previous version remember to use WITH MOVE.</li>
+<li><strong>Generate and Publish Scripts Wizard</strong> - You can publish to a web hosting provider (web service) or produce a script to transfer a database.</li>
+<li><strong>Import/Export Wizard</strong> - Useful tool in SSMS to easily transfer data. You can save the transfer as an SSIS package as long as user has appropriate msdb privileges.</li>
+<li><strong>BCP Utility</strong> - bcp utility can copy data from database to file or file to database using command line.</li>
+<li><strong>BULK INSERT</strong> - Run from database engine and can load data into a table from a file.</li>
+<li><strong>OPENROWSET(BULK)</strong> - Connect to OLEDB linked server to bulk import data or insert from file via OLEDB provider.   </li>
+</ul>
+<h2 id="Tips-on-Bulk-Insert-Operations"><a href="#Tips-on-Bulk-Insert-Operations" class="headerlink" title="Tips on Bulk Insert Operations"></a>Tips on Bulk Insert Operations</h2><ul>
+<li>Metadata same in source and destination objects</li>
+<li>Use format file if inserting from fixed length fields</li>
+<li>Can use a csv as data file</li>
+<li>Requires select and insert permissions</li>
+<li>Disable constraints</li>
+<li>ADMINISTER BULK OPERATIONS permissions</li>
+<li>Read permissions on file server</li>
+<li>Cannot bulk insert into a partitioned view</li>
+<li>Can bulk insert in parallel using multiple tools</li>
+<li>Disable triggers</li>
+<li>Order by from source on destination clustered index column.</li>
+</ul>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ul>
+<li>You cannot upgrade from 32-bit to 64-bit and vice versa.</li>
+<li>SQL 2012 requires windows server 2008 or later.</li>
+<li>Pre-upgrade steps - DBCC commands to ensure consistent state, configured with AutoGrow enabled, disable startup procedures and replication, ensure enough disk space present.</li>
+<li>When using copy database wizard attach detach method is faster but database goes offline, object method is slower but database stays online.</li>
+<li>You can migrate SQL logins by scripting and source and executing on destination.</li>
+<li>Cannot create partitioned table using SELECT INTO.</li>
+</ul>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Detach a Database</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line">GO</span><br><span class="line">EXEC sp_detach_db @dbname = [DBName];</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Attach a Database</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> DBName <span class="keyword">ON</span> (FileName=<span class="string">'C:\FilePath\FileName.mdf'</span>),</span><br><span class="line">(FileName=<span class="string">'C:\FilePath\FileName_log.ldf'</span>) <span class="keyword">FOR</span> ATTACH;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>BCP From SQL into File</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcp &quot;SELECT FirstName, LastName FROM AdventureWorks2012.Person.Person ORDER BY LastName, FirstName;&quot; queryout file.txt -c -T</span><br></pre></td></tr></table></figure></p>
+<p><strong>BCP From File into SQL</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcp DBName.SchemaName.TableName in C:\Data\file.txt -T -c</span><br></pre></td></tr></table></figure></p>
+<p><strong>BULK INSERT into SQL</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BULK <span class="keyword">INSERT</span> DBName.SchemaName.TableName <span class="keyword">FROM</span> <span class="string">'C:\Data\file.txt'</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>OPENROWSET Bulk from File</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> T(XmlCol)  </span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> OPENROWSET(  </span><br><span class="line">   <span class="keyword">BULK</span> <span class="string">'c:\Folder\FileName.txt'</span>,  </span><br><span class="line">   SINGLE_BLOB) <span class="keyword">AS</span> x;</span><br></pre></td></tr></table></figure></p>
+<p> <strong>OPENROWSET from OLEDB</strong><br> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.*  </span><br><span class="line"><span class="keyword">FROM</span> OPENROWSET(<span class="string">'SQLNCLI'</span>, <span class="string">'Server=Seattle1;Trusted_Connection=yes;'</span>,  </span><br><span class="line">     <span class="string">'SELECT GroupName, Name, DepartmentID  </span><br><span class="line">      FROM AdventureWorks2012.HumanResources.Department  </span><br><span class="line">      ORDER BY GroupName, Name'</span>) <span class="keyword">AS</span> a;</span><br></pre></td></tr></table></figure></p>
+<p>  <strong>OPENDATASOURCE from Excel INTO</strong><br>  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">INTO</span> TableExcel <span class="keyword">FROM</span> OPENDATASOURCE(<span class="string">'Microsoft.Jet.OLEDB.4.0'</span>,  </span><br><span class="line"><span class="string">'Data Source=C:\DataFolder\Documents\TestExcel.xls;Extended Properties=EXCEL 5.0'</span>)...[Sheet1$] ;</span><br></pre></td></tr></table></figure></p>
+<p>   <strong>OPENQUERY</strong><br>   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OPENQUERY ( linked_server ,'query' )</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components]]></title>
       <url>www.datagriff.com/2016/10/SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components/</url>
       <content type="html"><![CDATA[<p>So on to the third chapter in 2 days! My brain may be slightly frazzled…</p>

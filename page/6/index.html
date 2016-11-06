@@ -68,14 +68,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Github404ErrorCNAME" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SQL-2012-Admin-Exam-01-Prepare-Environment" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/09/Github404ErrorCNAME/" class="article-date">
-  <time datetime="2016-09-17T16:28:56.000Z" itemprop="datePublished">2016-09-17</time>
+    <a href="/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/" class="article-date">
+  <time datetime="2016-10-23T13:07:01.000Z" itemprop="datePublished">2016-10-23</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Git/">Git</a>
+    <a class="article-category-link" href="/categories/SQL-Administration/">SQL Administration</a>
   </div>
 
   </div>
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/Github404ErrorCNAME/">Github IO Page 404 Error Hexo CNAME</a>
+      <a class="article-title" href="/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/">SQL 2012 Admin Exam 01 Prepare Environment</a>
     </h1>
   
 
@@ -94,27 +94,50 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Unless you ensure your CNAME file with the name of your domain is in your github io repository root folder, you’ll get a 404 error on the domain of your github io page.<br>When deploying in Hexo this file gets overwritten unless you place it in the source folder of your raw Hexo files.</p>
-<p><strong>What we’re going to do:</strong></p>
+        <p><strong>Introduction</strong></p>
+<p>So I’ve decided to take the <a href="https://www.microsoft.com/en-us/learning/exam-70-462.aspx" target="_blank" rel="external">SQL 2012 DBA 70-462 Exam</a>, it’s my last of the three for the MCSA and probably my weakest skill. I’ve given myself about 40 days from yesterday to get up to speed so this should be fun.</p>
+<p><strong>What this is about</strong></p>
 <ul>
-<li>Ensure the CNAME file is in the Hexo source folder with domain name</li>
-<li>Ensure this CNAME file is the root folder of the Hexo output</li>
-<li>Ensure this CNAME file is in the root of your github io repository</li>
+<li>Resources</li>
+<li>Environment Setup: How fun this turned out to be!</li>
+<li>Command-Line: What I learned from above.</li>
 </ul>
-<h3 id="CNAME-in-hexo-source-folder"><a href="#CNAME-in-hexo-source-folder" class="headerlink" title="CNAME in hexo source folder"></a>CNAME in hexo source folder</h3><p>First ensure that you place a CNAME file in the source folder of your raw hexo folder with the name of your domain contained in the file. <strong>Note</strong> there is no file extension for the CNAME file.</p>
-<img src="/2016/09/Github404ErrorCNAME/CNAMESourceFolder.PNG" alt="CNAME in Hexo Source Folder" title="CNAME in Hexo Source Folder">
-<h3 id="CNAME-in-hexo-output-root-folder"><a href="#CNAME-in-hexo-output-root-folder" class="headerlink" title="CNAME in hexo output root folder"></a>CNAME in hexo output root folder</h3><p>Then after you have done the Hexo generate command, ensure that you can see the CNAME file in the root of your  output folder.</p>
-<img src="/2016/09/Github404ErrorCNAME/CNAMEOutputFolder.PNG" alt="CNAME in root of Hexo Output Folder" title="CNAME in root of Hexo Output Folder">
-<h3 id="CNAME-in-root-folder-of-Github-IO-Repository"><a href="#CNAME-in-root-folder-of-Github-IO-Repository" class="headerlink" title="CNAME in root folder of Github IO Repository"></a>CNAME in root folder of Github IO Repository</h3><p>Then after you have done the Hexo deploy command (using git) to your github IO repository, ensure the CNAME file is there.</p>
-<img src="/2016/09/Github404ErrorCNAME/CNAMEGitHubIO.PNG" alt="CNAME in root folder of Github IO repo" title="CNAME in root folder of Github IO repo">
+<h3 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h3><p>Okay so I’m pretty much going to stick to my tried and tested - get the <a href="https://www.amazon.co.uk/Training-Kit-Exam-70-462-Administering-ebook/dp/B00IG2OS3Y/ref=sr_1_1?ie=UTF8&amp;qid=1477226838&amp;sr=8-1&amp;keywords=sql+70-462" target="_blank" rel="external">certification book</a>, <a href="https://www.microsoft.com/en-gb/learning/certification-exams.aspx" target="_blank" rel="external">book the exam</a> and get to work.<br>I’ll also watch the <a href="https://mva.microsoft.com/en-US/training-courses/administering-microsoft-sql-server-2012-jump-start-8259?l=70lJ0hKy_7704984382" target="_blank" rel="external">Microsoft Virtual Academy</a> stuff and anything else I find of interest on youtube (e.g. <a href="https://www.youtube.com/watch?v=rWwGPihzgOg" target="_blank" rel="external">Passing 70462</a>) as I go along.<br>Based on the book you’re also going to need the following downloads:</p>
+<ul>
+<li><a href="https://www.microsoft.com/en-GB/evalcenter/evaluate-windows-server-2012" target="_blank" rel="external">Windows Server 2012 Evaluation</a></li>
+<li><a href="https://www.microsoft.com/en-gb/download/details.aspx?id=29066" target="_blank" rel="external">SQL Server 2012 Evaluation</a></li>
+<li><a href="https://msftdbprodsamples.codeplex.com/releases/view/55330" target="_blank" rel="external">Adventureworks Database</a></li>
+</ul>
+<h3 id="Environment-Setup"><a href="#Environment-Setup" class="headerlink" title="Environment Setup"></a>Environment Setup</h3><p>Based on the book instructions to setup the lab environment to be able to carry out the exercises… I think they expect you to be some kind of infrastructure architect off the bat. I can tell you this, I am most certainly not. This became quite painful for me and I though “Christ I haven’t even started the book and this has taken me forever!”.<br>So after failed attempts of creating the environment in <a href="http://www.sqlservercentral.com/articles/certification/128503/" target="_blank" rel="external">Azure</a> (Costs and Speed) and failed attempts at doing it myself - I found this wonderful <a href="https://toddkleinhans.wordpress.com/" target="_blank" rel="external">page</a> by, who is now a god in my mind, Todd Kleinhans. Thank you so much.</p>
+<p><strong>Just in case you missed it above, here again is the <a href="https://toddkleinhans.wordpress.com/" target="_blank" rel="external">page</a> with all the wonderful instructions.</strong></p>
+<p>So if you follow the instructions in the word document attached to the page above you’ll be fine.<br>Highlights from it include:</p>
+<ul>
+<li>Download the trial version of <a href="http://www.vmware.com/uk/products/workstation/workstation-evaluation.html" target="_blank" rel="external">VMWare Pro</a>, the free version doesn’t include snapshots. (yet another time constraint for me to get this done in 30 days!)</li>
+<li>Use <a href="https://www.microsoft.com/en-GB/evalcenter/evaluate-windows-server-2012" target="_blank" rel="external">Windows Server 2012</a> instead of 2008 - make sure change from default “update” to custom install during the installation or you’ll get stuck in an idiot loop like me.</li>
+<li>As soon as you’ve installed Windows create shortcuts for administrative tools and command prompt, I found the operating system layout a bit windows 8 and a bugger to navigate through.</li>
+<li>Make sure you tick DNS when installing the Domain Controller - this was a stupid mistake I made as I excitedly rushed through the instructions.</li>
+<li>Make sure click the “new forest” option in Active Directory Domain Services Configuration Wizard when configuring the domain controller.</li>
+<li>Be careful when copying and pasting the instructions for SQLA (yes it says this but I still managed to go on autopilot and mess it up)</li>
+<li>Basically… <strong>READ THE INSTRUCTIONS AND FOLLOW THEM ALL - THEY ARE GOOD.</strong>  </li>
+<li>Although I did have an issue with the SQLCORE installation and had to run the sysprep thing just like the other servers, this wasn’t explicitly mentioned in the instructions.</li>
+<li>Share your network drives for resources from your actual machine in the VM to make life easier.</li>
+</ul>
+<h3 id="Command-Line-I-learned-from-above"><a href="#Command-Line-I-learned-from-above" class="headerlink" title="Command-Line I learned from above"></a>Command-Line I learned from above</h3><p>Getting the name of the local area connection - this is not always Ethernet so check!<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh int ip show int</span><br></pre></td></tr></table></figure></p>
+<p>Change an IP address.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh interface ipv4 set address &quot;Local Area connection&quot; static 10.10.10.10 #Change IP Address</span><br></pre></td></tr></table></figure></p>
+<p>Okay I knew this one - getting the IP details for the machine you’re on.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure></p>
+<p>Getting the name of the computer.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname</span><br></pre></td></tr></table></figure></p>
+<p>Renaming a machine.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netdom renamecomputer %computername% /newname:DC</span><br></pre></td></tr></table></figure></p>
+<p>Join a machine to a network<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netdom join ComputerName /domain:domainname.com</span><br></pre></td></tr></table></figure></p>
+<p>Reboot a machine.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown /r /t 0</span><br></pre></td></tr></table></figure></p>
+<p>I don’t think this did anything but may need it if get failed to configure DHCP error…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh int ip reset</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/09/Github404ErrorCNAME/" data-id="civ22xvib000584ka46sns4dv" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/" data-id="civ6om0ss000ffcka7bo5are0" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Source-Control/">Source Control</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Command-Line/">Command-Line</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exam-70462/">Exam 70462</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a></li></ul>
 
     </footer>
   </div>
@@ -126,7 +149,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/7/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/7/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -137,6 +160,14 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/">SQL 2012 Admin Exam 06 SQL Server Logins Roles And Users</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/SQL-2012-Admin-Exam-05-Migrating-Importing-and-Exporting/">SQL 2012 Admin Exam 05 Migrating Importing and Exporting</a>
+          </li>
         
           <li>
             <a href="/2016/10/SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components/">SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components</a>
@@ -150,14 +181,6 @@
             <a href="/2016/10/SQL2012AdminExam02PlanningAndInstalling/">SQL 2012 Admin Exam 02 Planning And Installing</a>
           </li>
         
-          <li>
-            <a href="/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/">SQL 2012 Admin Exam 01 Prepare Environment</a>
-          </li>
-        
-          <li>
-            <a href="/2016/10/SQLRelay2016DIYDBFromHome/">SQL Relay 2016 - Build a Database for free with Team Services Online, SSDT and Azure</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -167,7 +190,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -177,7 +200,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -187,7 +210,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 12px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 20px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 14px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 18px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 14px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 14px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 18px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 12px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+      <a href="/tags/Azure/" style="font-size: 11.67px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 18.33px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 16.67px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 16.67px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 13.33px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 16.67px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
     </div>
   </div>
 
@@ -196,7 +219,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
