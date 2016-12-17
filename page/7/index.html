@@ -68,14 +68,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-SQLRelay2016DIYDBFromHome" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/10/SQLRelay2016DIYDBFromHome/" class="article-date">
-  <time datetime="2016-10-02T15:06:37.000Z" itemprop="datePublished">2016-10-02</time>
+    <a href="/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/" class="article-date">
+  <time datetime="2016-11-05T17:32:14.000Z" itemprop="datePublished">2016-11-05</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Presentation/">Presentation</a>
+    <a class="article-category-link" href="/categories/SQL-Administration/">SQL Administration</a>
   </div>
 
   </div>
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/SQLRelay2016DIYDBFromHome/">SQL Relay 2016 - Build a Database for free with Team Services Online, SSDT and Azure</a>
+      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/">SQL 2012 Admin Exam 06 SQL Server Logins Roles And Users</a>
     </h1>
   
 
@@ -94,36 +94,80 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>I am speaking again at SQL Relay this year and I decided to cover some of the basics. It was only about 18 months ago I had never used source control, never used any cloud services and it all seemed quite beyond me… But it’s not!<br>The aim of my talk this year is to hopefully speed up this process for people who find themselves in a similar situation that I was in and show all the free tools and resources that are available to you.</p>
-<a href="/2016/10/SQLRelay2016DIYDBFromHome/zSQLRelay2016DIYDBFromHomeSlideShow.html" title="SQL Relay 2016 Presentation">SQL Relay 2016 Presentation</a>
-<p>The presentation covers the basics of the following:</p>
-<ul>
-<li>Database design</li>
-<li>Work management</li>
-<li>Source control</li>
-<li>Infrastructure locally and in the cloud</li>
-<li>Database Development</li>
-<li>Deployment</li>
+        <p>So on to some exciting security stuff…</p>
+<h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>
+<li><a href="https://youtu.be/_uJ6ZaBQvsM" target="_blank" rel="external">SQL 2012 Create Logins</a></li>
+<li><a href="https://youtu.be/Bpi1O2AUAeA" target="_blank" rel="external">SQL 2012 Fixed Server Roles</a></li>
+<li><a href="https://youtu.be/qbPP7oSMu2U" target="_blank" rel="external">SQL 2012 User Defined Server Roles</a></li>
+<li><a href="https://youtu.be/a0lVUsNBb2A" target="_blank" rel="external">SQL 2012 Create Database Users</a></li>
+<li><a href="https://youtu.be/ayhosQqyr24" target="_blank" rel="external">SQL 2012 Administer Database Roles</a></li>
+<li><a href="https://youtu.be/e6jQ42f4N90" target="_blank" rel="external">SQL 2012 Partially Contained Databases</a></li>
 </ul>
-<h2 id="PreRequisites"><a href="#PreRequisites" class="headerlink" title="PreRequisites"></a>PreRequisites</h2><p>The demonstrations in the talk require the following:</p>
-<ul>
-<li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a> &amp; <a href="https://github.com/" target="_blank" rel="external">Github Account</a> - For source control</li>
-<li><a href="https://www.visualstudio.com/team-services/" target="_blank" rel="external">Team Services Online Account</a> - For source control and Work Management</li>
-<li><a href="https://www.visualstudio.com/vs/community/" target="_blank" rel="external">Visual Studio Community Edition</a> - For code development and infrastructure</li>
-<li><a href="https://www.microsoft.com/en-gb/download/details.aspx?id=52679" target="_blank" rel="external">SQL Server Express</a> - For code development and infrastructure</li>
-<li><a href="https://azure.microsoft.com/en-gb/" target="_blank" rel="external">Azure Account</a> - For infrastructure</li>
-<li><a href="https://notepad-plus-plus.org/download/v6.9.2.html" target="_blank" rel="external">Notepad++</a>, <a href="https://atom.io/" target="_blank" rel="external">Atom</a> - These are both useful text editors</li>
+<h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
+<li><strong>Windows Authenticated Login</strong> - Inherited from local or domain active directory.</li>
+<li><strong>SQL Server Authenticated Login</strong> - Specific to SQL and requires password.</li>
+<li><strong>Certificate</strong> - Can create certificate if master key is present and then a login from certificate.</li>
+<li><strong>Assymetric Key</strong> - Can create login from asymmetric key and have a public and private key.</li>
+<li><strong>Fixed Server Roles</strong> - sysadmin, serveradmin, securityadmin, processadmin, setupadmin, bulkadmin, diskadmin, dbcreator, public.</li>
+<li><strong>User Defined Server Roles</strong> - Can create user defined server roles which allow bespoke server level permissions.</li>
+<li><strong>Credential</strong> - Stores authentication which can be used for example as a proxy in a SQL agent job.</li>
+<li><strong>Database User</strong> - User in a database (mapped to a single login).</li>
+<li><strong>Orphaned User</strong> - A database user without a login.</li>
+<li><strong>Fixed Database-Level Roles</strong> - db_owner, db_Securityadmin, db_accessadmin, db_backupoperator, db_ddladmin, db_datawriter, db_datareader, db_denydatawriter, db_denydatareader.</li>
+<li><strong>Flexible Database-Level Roles</strong> - create roles with custom database permissions.</li>
+<li><strong>msdb Roles</strong> - The msdb database has a lot of specific roles that are worth noting.<ul>
+<li>db_ssisadmin, db_ssisoperator, db_ssisltduser (SSIS)</li>
+<li>dc_admin, dc_operator, dc_proxy (Data Collector)</li>
+<li>ServerGroupAdministratorRole, ServerGroupReaderRole</li>
+<li>dbm_monitor (mirroring)</li>
+<li>PolicyAdministerRole</li>
+<li>SQLAgentOperatorRole, SQLAgentReaderRole, SQLAgentUser</li>
 </ul>
-<h2 id="Accompanying-Youtube-Videos"><a href="#Accompanying-Youtube-Videos" class="headerlink" title="Accompanying Youtube Videos"></a>Accompanying Youtube Videos</h2><p>I’ve pushed the boat out with this years talk and decided to make myself a youtube channel and playlist to demonstrate the tools used.<br><a href="https://www.youtube.com/playlist?list=PLA5YLvtN7pNPqa77xX-g0K5roN93BOAS2" target="_blank" rel="external">SQL Relay 2016 Demos</a></p>
-<h2 id="Accompanying-Github-Repository"><a href="#Accompanying-Github-Repository" class="headerlink" title="Accompanying Github Repository"></a>Accompanying Github Repository</h2><p>I’ve also created a more detail github code respository of the MyGymDB project which I hope to add to over time.<br>This includes a ReadMe file with further details and instructions to implement the database yourself.<br><a href="https://github.com/griff182uk/MyGymDB" target="_blank" rel="external">MyGymDB GitHub Repository</a></p>
+</li>
+<li><strong>Partially Contained Database</strong> - Allows for connections without external dependencies on SQL logins.</li>
+<li><strong>Contained User</strong> - Does not have login and applied directly to database.</li>
+<li><strong>Principle of Least Privilege</strong> - Grant only access that is required.</li>
+<li><strong>Application Role</strong> -  Allows application to access SQL database and not based on user credentials.  </li>
+</ul>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ul>
+<li>ALTER ANY LOGIN permission required to create logins.</li>
+<li>sys.server_principals catalog of logins.</li>
+<li>sys.database_principals, sys.database_role_members, sys.database_permissions</li>
+<li>ALTER ROLE and sp_addrolemember allow you to add members to roles.</li>
+<li>Enabling of contained databases configured at the instance level. </li>
+</ul>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Create SQL Login</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sql_user_c] <span class="keyword">WITH</span> <span class="keyword">PASSWORD</span>=N<span class="string">'P@ssw0rd'</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Windows Login</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sqla\local_group_b] <span class="keyword">FROM</span> WINDOWS;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Certificate</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> CERTIFICATE Richard_Griffiths</span><br><span class="line"><span class="keyword">WITH</span> SUBJECT = <span class="string">'Richard Griffiths certificate in master database'</span>,</span><br><span class="line">EXPIRY_DATE = <span class="string">'01/01/2020'</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Login from Certificate</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sqla\local_group_b] <span class="keyword">FROM</span> CERTIFICATE Richard_Griffiths;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Asymmetric Key</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ASYMMETRIC <span class="keyword">KEY</span> sql_user_a <span class="keyword">WITH</span> ALGORITHM = RSA_2048;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Login from Asymmetric Key</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sqla\local_group_b] <span class="keyword">FROM</span> ASYMMETRIC <span class="keyword">KEY</span> sql_user_a;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Alter a Login</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> LOGIN sql_user_a <span class="keyword">DISABLE</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Catalog of Logins</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.server_principals;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Credential</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> CREDENTIAL SSISStage <span class="keyword">WITH</span> <span class="keyword">IDENTITY</span> = <span class="string">'SSISStage'</span>, SECRET = <span class="string">'P@$w0rd'</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Add Login to Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SERVER</span> <span class="keyword">ROLE</span> bulkadmin <span class="keyword">ADD</span> <span class="keyword">MEMBER</span> [contoso\domain_group_b];</span><br></pre></td></tr></table></figure></p>
+<p><strong>Identify Fixed Server Role Members</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sp_helpsrvrolemember;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create User Defined Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">SERVER</span> <span class="keyword">ROLE</span> Login_Manager;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Grant Permissions to User Defined Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALTER</span> <span class="keyword">ANY</span> LOGIN <span class="keyword">TO</span> Login_Manager;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Add Member to User Defined Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SERVER</span> <span class="keyword">ROLE</span> Login_Manager <span class="keyword">ADD</span> <span class="keyword">MEMBER</span> [contoso\domain_group_b];</span><br></pre></td></tr></table></figure></p>
+<p><strong>Check all Server Role Membership</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SP1.NAME <span class="keyword">AS</span> <span class="string">'RoleName'</span></span><br><span class="line">,SP2.NAME <span class="keyword">AS</span> <span class="string">'LoginName'</span></span><br><span class="line"><span class="keyword">FROM</span> SYS.SERVER_ROLE_MEMBERS M</span><br><span class="line"></span><br><span class="line"><span class="keyword">JOIN</span> sys.server_principals SP1 <span class="keyword">ON</span></span><br><span class="line">sp1.principal_id = m.role_principal_id</span><br><span class="line"></span><br><span class="line"><span class="keyword">JOIN</span> sys.server_principals SP2 <span class="keyword">ON</span></span><br><span class="line">sp2.principal_id = m.member_principal_id</span><br><span class="line"></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> sp1.name, sp2.name</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Database User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> [SQLA\local_account_b] <span class="keyword">FOR</span> LOGIN [SQLA\local_account_b];</span><br></pre></td></tr></table></figure></p>
+<p><strong>Detect Orphaned Database User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> DBName;</span><br><span class="line">GO</span><br><span class="line">sp_change_users_login @Action='Report';</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Database Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">ROLE</span> TableAdmin;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Grant Permission to Database Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">CREATE</span> <span class="keyword">SCHEMA</span> <span class="keyword">TO</span> TableAdmin;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Add Member to Database Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXEC sp_addrolemember 'TableAdmin','sql_user_c';</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Partially Contained Database</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> partialdb</span><br><span class="line">CONTAINMENT = <span class="keyword">PARTIAL</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Partially Contained Windows User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> partialdb;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> [contoso\contained_user_b];</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Partially Contained SQL User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> partialdb;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> [contained_user_c] <span class="keyword">WITH</span> <span class="keyword">PASSWORD</span>=<span class="string">'Pa$$w0rd'</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Application Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> DBNAME;</span><br><span class="line"><span class="keyword">CREATE</span> APPLICATION TOLE app_role_test <span class="keyword">WITH</span> <span class="keyword">PASSWORD</span> <span class="string">'P@$$w0rd'</span>;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/10/SQLRelay2016DIYDBFromHome/" data-id="civ6om0t1000xfckanww5p75n" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/" data-id="ciwt7m7mo001dewkaxmd5psh4" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure/">Azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Presentation/">Presentation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSDT/">SSDT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Team-Services/">Team Services</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exam-70462/">Exam 70462</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a></li></ul>
 
     </footer>
   </div>
@@ -135,7 +179,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/8/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/8/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -148,23 +192,23 @@
       <ul>
         
           <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/">SQL 2012 Admin Exam 06 SQL Server Logins Roles And Users</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/">SQL 2012 Admin Exam 12 SQL Agent Backup and Restore</a>
           </li>
         
           <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-05-Migrating-Importing-and-Exporting/">SQL 2012 Admin Exam 05 Migrating Importing and Exporting</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/">SQL 2012 Admin Exam 11 Indexes and Concurrency</a>
           </li>
         
           <li>
-            <a href="/2016/10/SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components/">SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server/">SQL 2012 Admin Exam 10 Troubleshooting SQL Server</a>
           </li>
         
           <li>
-            <a href="/2016/10/SQL-2012-Admin-Exam-03-Configuring-and-Managing-Instances/">SQL 2012 Admin Exam 03 Configuring and Managing Instances</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/">SQL 2012 Admin Exam 09 Clustering and AlwaysOn</a>
           </li>
         
           <li>
-            <a href="/2016/10/SQL2012AdminExam02PlanningAndInstalling/">SQL 2012 Admin Exam 02 Planning And Installing</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-08-Mirroring-and-Replication/">SQL 2012 Admin Exam 08 Mirroring and Replication</a>
           </li>
         
       </ul>
@@ -176,7 +220,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -186,7 +230,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -196,7 +240,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 11.67px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 18.33px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 16.67px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 16.67px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 13.33px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 16.67px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 17.14px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 18.57px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 15.71px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14.29px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 18.57px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 12.86px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 15.71px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.43px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
     </div>
   </div>
 
@@ -205,7 +249,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 

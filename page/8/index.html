@@ -68,14 +68,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Github404ErrorCNAME" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SQL-2012-Admin-Exam-05-Migrating-Importing-and-Exporting" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/09/Github404ErrorCNAME/" class="article-date">
-  <time datetime="2016-09-17T16:28:56.000Z" itemprop="datePublished">2016-09-17</time>
+    <a href="/2016/11/SQL-2012-Admin-Exam-05-Migrating-Importing-and-Exporting/" class="article-date">
+  <time datetime="2016-11-05T17:31:42.000Z" itemprop="datePublished">2016-11-05</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Git/">Git</a>
+    <a class="article-category-link" href="/categories/SQL-Administration/">SQL Administration</a>
   </div>
 
   </div>
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/Github404ErrorCNAME/">Github IO Page 404 Error Hexo CNAME</a>
+      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-05-Migrating-Importing-and-Exporting/">SQL 2012 Admin Exam 05 Migrating Importing and Exporting</a>
     </h1>
   
 
@@ -94,27 +94,67 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Unless you ensure your CNAME file with the name of your domain is in your github io repository root folder, you’ll get a 404 error on the domain of your github io page.<br>When deploying in Hexo this file gets overwritten unless you place it in the source folder of your raw Hexo files.</p>
-<p><strong>What we’re going to do:</strong></p>
-<ul>
-<li>Ensure the CNAME file is in the Hexo source folder with domain name</li>
-<li>Ensure this CNAME file is the root folder of the Hexo output</li>
-<li>Ensure this CNAME file is in the root of your github io repository</li>
+        <p>The migrating wasn’t super exciting but the bulk inserts were :)</p>
+<h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>
+<li>[SQL 2012 Migrate Using Backup and Restore] (<a href="https://youtu.be/FwKvXygmp48" target="_blank" rel="external">https://youtu.be/FwKvXygmp48</a>)</li>
+<li>[SQL 2012 Migrate Using Database Copy Wizard] (<a href="https://youtu.be/DS9wzR9xEpk" target="_blank" rel="external">https://youtu.be/DS9wzR9xEpk</a>)</li>
+<li>[SQL 2012 Open Firewall for Database Copy Wizard] (<a href="https://youtu.be/bZgsAVhIzDE" target="_blank" rel="external">https://youtu.be/bZgsAVhIzDE</a>)</li>
+<li>[SQL 2012 Detach Attach] (<a href="https://youtu.be/hcB_qxE3CV4" target="_blank" rel="external">https://youtu.be/hcB_qxE3CV4</a>)</li>
+<li>[SQL 2012 Migrate Logins Using Scripts] (<a href="https://youtu.be/_Ma-ZCnS_Hc" target="_blank" rel="external">https://youtu.be/_Ma-ZCnS_Hc</a>)</li>
+<li>[SQL 2012 Create New Domain User] (<a href="https://youtu.be/IY1-fwU6cJA" target="_blank" rel="external">https://youtu.be/IY1-fwU6cJA</a>)</li>
+<li>[SQL 2012 Import Export Wizard] (<a href="https://youtu.be/FMvzlJAJXQw" target="_blank" rel="external">https://youtu.be/FMvzlJAJXQw</a>)</li>
+<li>[SQL 2012 BCP and BULK INSERT] (<a href="https://youtu.be/DTXowRhj4kg" target="_blank" rel="external">https://youtu.be/DTXowRhj4kg</a>)</li>
 </ul>
-<h3 id="CNAME-in-hexo-source-folder"><a href="#CNAME-in-hexo-source-folder" class="headerlink" title="CNAME in hexo source folder"></a>CNAME in hexo source folder</h3><p>First ensure that you place a CNAME file in the source folder of your raw hexo folder with the name of your domain contained in the file. <strong>Note</strong> there is no file extension for the CNAME file.</p>
-<img src="/2016/09/Github404ErrorCNAME/CNAMESourceFolder.PNG" alt="CNAME in Hexo Source Folder" title="CNAME in Hexo Source Folder">
-<h3 id="CNAME-in-hexo-output-root-folder"><a href="#CNAME-in-hexo-output-root-folder" class="headerlink" title="CNAME in hexo output root folder"></a>CNAME in hexo output root folder</h3><p>Then after you have done the Hexo generate command, ensure that you can see the CNAME file in the root of your  output folder.</p>
-<img src="/2016/09/Github404ErrorCNAME/CNAMEOutputFolder.PNG" alt="CNAME in root of Hexo Output Folder" title="CNAME in root of Hexo Output Folder">
-<h3 id="CNAME-in-root-folder-of-Github-IO-Repository"><a href="#CNAME-in-root-folder-of-Github-IO-Repository" class="headerlink" title="CNAME in root folder of Github IO Repository"></a>CNAME in root folder of Github IO Repository</h3><p>Then after you have done the Hexo deploy command (using git) to your github IO repository, ensure the CNAME file is there.</p>
-<img src="/2016/09/Github404ErrorCNAME/CNAMEGitHubIO.PNG" alt="CNAME in root folder of Github IO repo" title="CNAME in root folder of Github IO repo">
+<h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
+<li><strong>Upgrade Advisor</strong> - You can run this against SQL 2005, 2008 and 2008 R2 to check if okay to upgrade to 2012.</li>
+<li><strong>Distributed Replay Utility</strong> - Can simulate mission-critical work environments before upgrade.</li>
+<li><strong>Detach and Attach Database</strong> - Allows you to migrate database across instances. Detached database must have no snapshots, no replication, not mirrored and not be a system database.</li>
+<li><strong>Copy Database Wizard</strong> - Copy database across instances, choosing with Move means gets delete from source. Can copy server level objects too like jobs, logins, messages and can also schedule the move. You also create an SSIS package when creating the copy task.</li>
+<li><strong>Backup and Restore</strong> - You can copy databases across instances using backup and restore. When copying from a previous version remember to use WITH MOVE.</li>
+<li><strong>Generate and Publish Scripts Wizard</strong> - You can publish to a web hosting provider (web service) or produce a script to transfer a database.</li>
+<li><strong>Import/Export Wizard</strong> - Useful tool in SSMS to easily transfer data. You can save the transfer as an SSIS package as long as user has appropriate msdb privileges.</li>
+<li><strong>BCP Utility</strong> - bcp utility can copy data from database to file or file to database using command line.</li>
+<li><strong>BULK INSERT</strong> - Run from database engine and can load data into a table from a file.</li>
+<li><strong>OPENROWSET(BULK)</strong> - Connect to OLEDB linked server to bulk import data or insert from file via OLEDB provider.   </li>
+</ul>
+<h2 id="Tips-on-Bulk-Insert-Operations"><a href="#Tips-on-Bulk-Insert-Operations" class="headerlink" title="Tips on Bulk Insert Operations"></a>Tips on Bulk Insert Operations</h2><ul>
+<li>Metadata same in source and destination objects</li>
+<li>Use format file if inserting from fixed length fields</li>
+<li>Can use a csv as data file</li>
+<li>Requires select and insert permissions</li>
+<li>Disable constraints</li>
+<li>ADMINISTER BULK OPERATIONS permissions</li>
+<li>Read permissions on file server</li>
+<li>Cannot bulk insert into a partitioned view</li>
+<li>Can bulk insert in parallel using multiple tools</li>
+<li>Disable triggers</li>
+<li>Order by from source on destination clustered index column.</li>
+</ul>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ul>
+<li>You cannot upgrade from 32-bit to 64-bit and vice versa.</li>
+<li>SQL 2012 requires windows server 2008 or later.</li>
+<li>Pre-upgrade steps - DBCC commands to ensure consistent state, configured with AutoGrow enabled, disable startup procedures and replication, ensure enough disk space present.</li>
+<li>When using copy database wizard attach detach method is faster but database goes offline, object method is slower but database stays online.</li>
+<li>You can migrate SQL logins by scripting and source and executing on destination.</li>
+<li>Cannot create partitioned table using SELECT INTO.</li>
+</ul>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Detach a Database</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line">GO</span><br><span class="line">EXEC sp_detach_db @dbname = [DBName];</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Attach a Database</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> DBName <span class="keyword">ON</span> (FileName=<span class="string">'C:\FilePath\FileName.mdf'</span>),</span><br><span class="line">(FileName=<span class="string">'C:\FilePath\FileName_log.ldf'</span>) <span class="keyword">FOR</span> ATTACH;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>BCP From SQL into File</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcp &quot;SELECT FirstName, LastName FROM AdventureWorks2012.Person.Person ORDER BY LastName, FirstName;&quot; queryout file.txt -c -T</span><br></pre></td></tr></table></figure></p>
+<p><strong>BCP From File into SQL</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcp DBName.SchemaName.TableName in C:\Data\file.txt -T -c</span><br></pre></td></tr></table></figure></p>
+<p><strong>BULK INSERT into SQL</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BULK <span class="keyword">INSERT</span> DBName.SchemaName.TableName <span class="keyword">FROM</span> <span class="string">'C:\Data\file.txt'</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>OPENROWSET Bulk from File</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> T(XmlCol)  </span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> OPENROWSET(  </span><br><span class="line">   <span class="keyword">BULK</span> <span class="string">'c:\Folder\FileName.txt'</span>,  </span><br><span class="line">   SINGLE_BLOB) <span class="keyword">AS</span> x;</span><br></pre></td></tr></table></figure></p>
+<p> <strong>OPENROWSET from OLEDB</strong><br> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.*  </span><br><span class="line"><span class="keyword">FROM</span> OPENROWSET(<span class="string">'SQLNCLI'</span>, <span class="string">'Server=Seattle1;Trusted_Connection=yes;'</span>,  </span><br><span class="line">     <span class="string">'SELECT GroupName, Name, DepartmentID  </span><br><span class="line">      FROM AdventureWorks2012.HumanResources.Department  </span><br><span class="line">      ORDER BY GroupName, Name'</span>) <span class="keyword">AS</span> a;</span><br></pre></td></tr></table></figure></p>
+<p>  <strong>OPENDATASOURCE from Excel INTO</strong><br>  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">INTO</span> TableExcel <span class="keyword">FROM</span> OPENDATASOURCE(<span class="string">'Microsoft.Jet.OLEDB.4.0'</span>,  </span><br><span class="line"><span class="string">'Data Source=C:\DataFolder\Documents\TestExcel.xls;Extended Properties=EXCEL 5.0'</span>)...[Sheet1$] ;</span><br></pre></td></tr></table></figure></p>
+<p>   <strong>OPENQUERY</strong><br>   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OPENQUERY ( linked_server ,'query' )</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/09/Github404ErrorCNAME/" data-id="civ6om0sa0004fckakmnbwmb1" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-05-Migrating-Importing-and-Exporting/" data-id="ciwt7m7mj0015ewka7blq209w" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Source-Control/">Source Control</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exam-70462/">Exam 70462</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a></li></ul>
 
     </footer>
   </div>
@@ -126,7 +166,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/7/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/9/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/7/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/9/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -139,23 +179,23 @@
       <ul>
         
           <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/">SQL 2012 Admin Exam 06 SQL Server Logins Roles And Users</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/">SQL 2012 Admin Exam 12 SQL Agent Backup and Restore</a>
           </li>
         
           <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-05-Migrating-Importing-and-Exporting/">SQL 2012 Admin Exam 05 Migrating Importing and Exporting</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/">SQL 2012 Admin Exam 11 Indexes and Concurrency</a>
           </li>
         
           <li>
-            <a href="/2016/10/SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components/">SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server/">SQL 2012 Admin Exam 10 Troubleshooting SQL Server</a>
           </li>
         
           <li>
-            <a href="/2016/10/SQL-2012-Admin-Exam-03-Configuring-and-Managing-Instances/">SQL 2012 Admin Exam 03 Configuring and Managing Instances</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/">SQL 2012 Admin Exam 09 Clustering and AlwaysOn</a>
           </li>
         
           <li>
-            <a href="/2016/10/SQL2012AdminExam02PlanningAndInstalling/">SQL 2012 Admin Exam 02 Planning And Installing</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-08-Mirroring-and-Replication/">SQL 2012 Admin Exam 08 Mirroring and Replication</a>
           </li>
         
       </ul>
@@ -167,7 +207,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -177,7 +217,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -187,7 +227,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 11.67px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 18.33px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 16.67px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 16.67px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 13.33px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 16.67px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 17.14px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 18.57px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 15.71px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14.29px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 18.57px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 12.86px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 15.71px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.43px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
     </div>
   </div>
 
@@ -196,7 +236,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 

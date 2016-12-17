@@ -68,10 +68,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/" class="article-date">
-  <time datetime="2016-11-05T17:32:14.000Z" itemprop="datePublished">2016-11-05</time>
+    <a href="/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/" class="article-date">
+  <time datetime="2016-11-25T19:13:09.000Z" itemprop="datePublished">2016-11-25</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/">SQL 2012 Admin Exam 06 SQL Server Logins Roles And Users</a>
+      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/">SQL 2012 Admin Exam 12 SQL Agent Backup and Restore</a>
     </h1>
   
 
@@ -94,77 +94,106 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>So on to some exciting security stuff…</p>
-<h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>
-<li><a href="https://youtu.be/_uJ6ZaBQvsM" target="_blank" rel="external">SQL 2012 Create Logins</a></li>
-<li><a href="https://youtu.be/Bpi1O2AUAeA" target="_blank" rel="external">SQL 2012 Fixed Server Roles</a></li>
-<li><a href="https://youtu.be/qbPP7oSMu2U" target="_blank" rel="external">SQL 2012 User Defined Server Roles</a></li>
-<li><a href="https://youtu.be/a0lVUsNBb2A" target="_blank" rel="external">SQL 2012 Create Database Users</a></li>
-<li><a href="https://youtu.be/ayhosQqyr24" target="_blank" rel="external">SQL 2012 Administer Database Roles</a></li>
-<li><a href="https://youtu.be/e6jQ42f4N90" target="_blank" rel="external">SQL 2012 Partially Contained Databases</a></li>
+        <h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>
+<li><a href="https://www.youtube.com/watch?v=etyataFYx08&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=61" target="_blank" rel="external">SQL 2012 Configure SQL Agent</a></li>
+<li><a href="https://www.youtube.com/watch?v=HjnnRYN3uI4&amp;t=36s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=62" target="_blank" rel="external">SQL 2012 Create Agent Job</a></li>
+<li><a href="https://www.youtube.com/watch?v=QL6_GvZkokY&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=63" target="_blank" rel="external">SQL 2012 Create Operator</a></li>
+<li><a href="https://www.youtube.com/watch?v=z2MtAQ4gx3k&amp;t=2s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=64" target="_blank" rel="external">SQL 2012 Create Alert</a></li>
+<li><a href="https://www.youtube.com/watch?v=EWyvEjr1wQo&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=65" target="_blank" rel="external">SQL 2012 Create Backup Device</a></li>
+<li><a href="https://www.youtube.com/watch?v=Urtcxw_tqG4&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=66" target="_blank" rel="external">SQL 2012 Perform Backups</a></li>
+<li><a href="https://www.youtube.com/watch?v=G9RgSGSCr4s&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=67" target="_blank" rel="external">SQL 2012 Restore a Database</a></li>
 </ul>
 <h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
-<li><strong>Windows Authenticated Login</strong> - Inherited from local or domain active directory.</li>
-<li><strong>SQL Server Authenticated Login</strong> - Specific to SQL and requires password.</li>
-<li><strong>Certificate</strong> - Can create certificate if master key is present and then a login from certificate.</li>
-<li><strong>Assymetric Key</strong> - Can create login from asymmetric key and have a public and private key.</li>
-<li><strong>Fixed Server Roles</strong> - sysadmin, serveradmin, securityadmin, processadmin, setupadmin, bulkadmin, diskadmin, dbcreator, public.</li>
-<li><strong>User Defined Server Roles</strong> - Can create user defined server roles which allow bespoke server level permissions.</li>
-<li><strong>Credential</strong> - Stores authentication which can be used for example as a proxy in a SQL agent job.</li>
-<li><strong>Database User</strong> - User in a database (mapped to a single login).</li>
-<li><strong>Orphaned User</strong> - A database user without a login.</li>
-<li><strong>Fixed Database-Level Roles</strong> - db_owner, db_Securityadmin, db_accessadmin, db_backupoperator, db_ddladmin, db_datawriter, db_datareader, db_denydatawriter, db_denydatareader.</li>
-<li><strong>Flexible Database-Level Roles</strong> - create roles with custom database permissions.</li>
-<li><strong>msdb Roles</strong> - The msdb database has a lot of specific roles that are worth noting.<ul>
-<li>db_ssisadmin, db_ssisoperator, db_ssisltduser (SSIS)</li>
-<li>dc_admin, dc_operator, dc_proxy (Data Collector)</li>
-<li>ServerGroupAdministratorRole, ServerGroupReaderRole</li>
-<li>dbm_monitor (mirroring)</li>
-<li>PolicyAdministerRole</li>
-<li>SQLAgentOperatorRole, SQLAgentReaderRole, SQLAgentUser</li>
-</ul>
+<li><strong>SQL Server Agent</strong> - Automates execution of jobs.</li>
+<li><strong>SQL Server Agent Service account</strong> - Requires logon as a service right, membership of windows 2000 compatible access security group at domain level, should not be member of local Administrators, must be member of SQL sysadmin server role.</li>
+<li><strong>SQLAgentUserRole</strong> - Least privileges, local jobs and scheduled jobs they own. No to multi-server.</li>
+<li><strong>SQLAgentReaderRole</strong> - Includes above and view properties and histories of all jobs and schedules. Yes to multi-server.</li>
+<li><strong>SQLAgentOperatorRole</strong> - As above and can start, stop, delete history of any local job. Also enable and disable schedules.</li>
+<li><strong>SQL Agent Error Log</strong> - Warnings and errors about sql agent. Found under sql agent.</li>
+<li><strong>Alerts</strong> - When certain condition met (performance, WMI events) can trigger an alert.</li>
+<li><strong>Job Activity Monitor</strong> - To monitor job activity!  </li>
+<li><p><strong>Operators</strong> - Who receive notifications. Email, pager notifications, net send.</p>
 </li>
-<li><strong>Partially Contained Database</strong> - Allows for connections without external dependencies on SQL logins.</li>
-<li><strong>Contained User</strong> - Does not have login and applied directly to database.</li>
-<li><strong>Principle of Least Privilege</strong> - Grant only access that is required.</li>
-<li><strong>Application Role</strong> -  Allows application to access SQL database and not based on user credentials.  </li>
+<li><p><strong>Full Database Backup</strong> - Everything backed up and all transactions during full backup.</p>
+</li>
+<li><strong>Differential Backups</strong> - Backups what changed since last FULL, even if differentials in between. Always since last full.</li>
+<li><strong>Transaction Log Backups</strong> - Backs up changes since last transaction log backup and truncates transaction log.</li>
+<li><strong>File and FileGroup Backups</strong> - Backs up individual files and filegroups, must back up transaction log.</li>
+<li><strong>Copy-Only Backup</strong> - Functionally same as full or transaction log backups but do not mess up backup sequence.</li>
+<li><strong>Backup Compression</strong> - Saves disk space but increases CPU.</li>
+<li><strong>Recovery Point Objective (RPO)</strong> - Allowable data loss in event of failure.</li>
+<li><strong>Simple Recovery Mode</strong> - No transaction, no point in time, just last full backup.</li>
+<li><strong>Full Recovery Mode</strong> - Transaction logs and allows for point in time.</li>
+<li><strong>Bulk-Logged Recovery Mode</strong> - Special for bulk operations, minimises transaction log, no point in time recovery.</li>
+<li><strong>Database Checkpoint</strong> - writes modifies pages held in memory to disk and records in transaction log.</li>
+<li><p><strong>Media Set</strong> - single file, multiple files, tape, multiple tapes, up to 32 backup devices.</p>
+</li>
+<li><p><strong>RESTORE WITH RECOVERY</strong> - Restores database back to normal state.</p>
+</li>
+<li><strong>RESTORE WITH NORECOVERY</strong> - Restores database but not accessible.</li>
+<li><strong>RESTORE WITH STANDBY</strong> - Restores database in read-only mode for admins.</li>
+<li><strong>File Restore</strong> - Restore a database file.</li>
+<li><strong>Page Restore</strong> - restore small number of pages damaged where rest of database is not. Full or bulk-logged, offline or online, read/write filegroups only, only database pages (not transaction log).</li>
+<li><strong>Automatic Page Repair</strong> - AlwaysOn Availability Groups and database mirrors can repair own pages from health secondaries.</li>
 </ul>
 <h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ul>
-<li>ALTER ANY LOGIN permission required to create logins.</li>
-<li>sys.server_principals catalog of logins.</li>
-<li>sys.database_principals, sys.database_role_members, sys.database_permissions</li>
-<li>ALTER ROLE and sp_addrolemember allow you to add members to roles.</li>
-<li>Enabling of contained databases configured at the instance level. </li>
+<li>SQL Agent setting configured through SQL Server configuration manager.</li>
+<li>For multi server job processing Agent service account needs to be in the TargetServerRole in msdb.</li>
+<li>Restart agent to apply config changes.</li>
+<li>SQL Agent Mail - Right click agent &gt; click alerts &gt; enable mail profile tick &gt; select DB mail &gt; restart agent service.</li>
+<li>SQL Agent Alert - Right-click alerts under agent &gt; enter details in general page e.g. alert name, counter, value, condition for alert &gt; Response tab is kicking off job etc &gt; Options - can e-mail, pager or net send message.</li>
+<li>You can specify event for specific error number, severity and error contains message text.</li>
+<li>You can configure jobs on a schedule, or when sql starts, or when CPU falls below idle threshold.  </li>
+<li>Operator - right-click operators under sql agent node &gt; new operator &gt; name and address of operator.</li>
+<li>Multi Server jobs - right click agent &gt; choose multi server administration &gt; make this a master &gt; master server operator information &gt; configure target servers &gt; master server login credentials create a new login.</li>
+<li>Target servers report to master servers.</li>
 </ul>
-<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Create SQL Login</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sql_user_c] <span class="keyword">WITH</span> <span class="keyword">PASSWORD</span>=N<span class="string">'P@ssw0rd'</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Windows Login</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sqla\local_group_b] <span class="keyword">FROM</span> WINDOWS;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Certificate</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> CERTIFICATE Richard_Griffiths</span><br><span class="line"><span class="keyword">WITH</span> SUBJECT = <span class="string">'Richard Griffiths certificate in master database'</span>,</span><br><span class="line">EXPIRY_DATE = <span class="string">'01/01/2020'</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Login from Certificate</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sqla\local_group_b] <span class="keyword">FROM</span> CERTIFICATE Richard_Griffiths;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Asymmetric Key</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ASYMMETRIC <span class="keyword">KEY</span> sql_user_a <span class="keyword">WITH</span> ALGORITHM = RSA_2048;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Login from Asymmetric Key</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> LOGIN [sqla\local_group_b] <span class="keyword">FROM</span> ASYMMETRIC <span class="keyword">KEY</span> sql_user_a;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Alter a Login</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> LOGIN sql_user_a <span class="keyword">DISABLE</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Catalog of Logins</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.server_principals;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Credential</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> CREDENTIAL SSISStage <span class="keyword">WITH</span> <span class="keyword">IDENTITY</span> = <span class="string">'SSISStage'</span>, SECRET = <span class="string">'P@$w0rd'</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Add Login to Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SERVER</span> <span class="keyword">ROLE</span> bulkadmin <span class="keyword">ADD</span> <span class="keyword">MEMBER</span> [contoso\domain_group_b];</span><br></pre></td></tr></table></figure></p>
-<p><strong>Identify Fixed Server Role Members</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sp_helpsrvrolemember;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create User Defined Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">SERVER</span> <span class="keyword">ROLE</span> Login_Manager;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Grant Permissions to User Defined Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALTER</span> <span class="keyword">ANY</span> LOGIN <span class="keyword">TO</span> Login_Manager;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Add Member to User Defined Server Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SERVER</span> <span class="keyword">ROLE</span> Login_Manager <span class="keyword">ADD</span> <span class="keyword">MEMBER</span> [contoso\domain_group_b];</span><br></pre></td></tr></table></figure></p>
-<p><strong>Check all Server Role Membership</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SP1.NAME <span class="keyword">AS</span> <span class="string">'RoleName'</span></span><br><span class="line">,SP2.NAME <span class="keyword">AS</span> <span class="string">'LoginName'</span></span><br><span class="line"><span class="keyword">FROM</span> SYS.SERVER_ROLE_MEMBERS M</span><br><span class="line"></span><br><span class="line"><span class="keyword">JOIN</span> sys.server_principals SP1 <span class="keyword">ON</span></span><br><span class="line">sp1.principal_id = m.role_principal_id</span><br><span class="line"></span><br><span class="line"><span class="keyword">JOIN</span> sys.server_principals SP2 <span class="keyword">ON</span></span><br><span class="line">sp2.principal_id = m.member_principal_id</span><br><span class="line"></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> sp1.name, sp2.name</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Database User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> [SQLA\local_account_b] <span class="keyword">FOR</span> LOGIN [SQLA\local_account_b];</span><br></pre></td></tr></table></figure></p>
-<p><strong>Detect Orphaned Database User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> DBName;</span><br><span class="line">GO</span><br><span class="line">sp_change_users_login @Action='Report';</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Database Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">ROLE</span> TableAdmin;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Grant Permission to Database Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">CREATE</span> <span class="keyword">SCHEMA</span> <span class="keyword">TO</span> TableAdmin;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Add Member to Database Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXEC sp_addrolemember 'TableAdmin','sql_user_c';</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Partially Contained Database</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> partialdb</span><br><span class="line">CONTAINMENT = <span class="keyword">PARTIAL</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Partially Contained Windows User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> partialdb;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> [contoso\contained_user_b];</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Partially Contained SQL User</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> partialdb;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> [contained_user_c] <span class="keyword">WITH</span> <span class="keyword">PASSWORD</span>=<span class="string">'Pa$$w0rd'</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Application Role</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> DBNAME;</span><br><span class="line"><span class="keyword">CREATE</span> APPLICATION TOLE app_role_test <span class="keyword">WITH</span> <span class="keyword">PASSWORD</span> <span class="string">'P@$$w0rd'</span>;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>You cannot backup offline data.</li>
+<li>Altering a database to add a file during a backup will not complete until after backup completes.</li>
+<li>Resource governor could be used to limit CPU during compressed backup operation.</li>
+<li>System databases SIMPLE recovery by default.</li>
+<li>Backup master and msdb regularly. Model only when change it. Tempdb always regenerated so no need to backup.</li>
+<li>Replication - publisher - backup master, msdb and publication databases.</li>
+<li>Replication - Distributor - backup master, msdb and distribution databases.</li>
+<li>Replication - Subscriber - backup master, msdb and subscription databases.</li>
+<li>Can only backup primary with mirroring and cannot use BACKUP LOG WITH NORECOVERY.</li>
+<li>AlwaysOn backup options - Prefer Secondary (default, primary still possible), secondary only, primary, any replica (has preference settings).</li>
+<li>Can change target recovery (Checkpoint) time at instance in server properties (Database settings) or using sp_configure.</li>
+<li>Backups can go to local volumes, network shares, compatible tapes.</li>
+<li>Add media set SSMS - Server Objects Node &gt; New Backup Device &gt; Provide device name (or path)</li>
+<li>Perform backup - SSMS &gt; right-click Database &gt; Tasks &gt; Back Up &gt; Name backup set &gt; existing backup device or create &gt; backup to new or existing media set &gt; option to checksum &gt; option to compress.</li>
+<li><p>You can see backup events in log file history.</p>
+</li>
+<li><p>Restore - SSMS - perform tail log backup (checkbox in backup options) &gt; Right-click db to restore &gt; if backups were done in SSMS or maintenance plan will auto populate to get to most recent &gt; You can click timeline button to get to a point in time &gt; RECOVERY, NORECOVERY or STANDBY &gt;  </p>
+</li>
+<li>Remember take tail-log backup before a restore of a restore from full backup.</li>
+<li>File Restore - tail-log backup if possible otherwise complete restore &gt; restore most recent backup that includes file &gt; restore differential backups &gt; restore transaction logs in sequence</li>
+<li>You can perform online secondary filegroup restores as long as primary is online.  </li>
+<li>Page Restores - Right-click db &gt; tasks &gt; restore &gt; check database pages to find corrupt &gt; Ok to restore those that are corrupt.</li>
+<li>Can only restore database with TDE when have certificate and private key. Make sure include both of these in backup strategy for TDE databases. Once restored if certificate not present need to restore this too.</li>
+<li>When restore databases involved in replication you must restore master and msdb on instance too.</li>
+</ul>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>SQL Agent Scripts</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sp_add_job <span class="comment">--creates job</span></span><br><span class="line">sp_add_jobstep <span class="comment">--creates job step</span></span><br><span class="line">sp_add_schedule <span class="comment">--creates schedule</span></span><br><span class="line">sp_attach_schedule <span class="comment">--attaches schedule to existing job</span></span><br><span class="line">sp_add_jobserver <span class="comment">--Adds job to server</span></span><br><span class="line">sp_msx_enlist <span class="comment">--execute on target server to enlist target server in master server</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Enable Instance Backup Compression</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EXEC sys.sp_configure [<span class="keyword">backup</span> compression <span class="keyword">default</span>],<span class="number">1</span>;</span><br><span class="line">GO</span><br><span class="line">RECONFIGURE WITH OVERRIDE;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Alter Availability Group Backup Settings</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">AVAILABILITY</span> <span class="keyword">GROUP</span> [AG_NAME] <span class="keyword">SET</span> ( AUTOMATED_BACUP_PREFERENCE = SEONDARY_ONLY);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Alter Checkpoint Time at Database Level</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [DBName] <span class="keyword">SET</span> TARGET_RECOVERY_TIME = <span class="number">1</span>; <span class="comment">--in minutes</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Add Backup Device</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXEC sp_addumpdevice 'disk', 'BackupName','c:\\<span class="keyword">backup</span>\\backupname.bak<span class="string">';</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Full Backup</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BACKUP</span> <span class="keyword">DATABASE</span> [DBName] <span class="keyword">to</span> [BackupName]; <span class="comment">--device already exists</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Differential Backup</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BACKUP</span> <span class="keyword">DATABASE</span> [DBName] <span class="keyword">to</span> [BackupName] <span class="keyword">WITH</span> DIFFERENTIAL; <span class="comment">--device already exists</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Log Backup</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BACKUP</span> <span class="keyword">LOG</span> [DBName] <span class="keyword">to</span> [BackupName] <span class="keyword">WITH</span> DIFFERENTIAL; <span class="comment">--device already exists</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>DMV Backup History</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> msdb.dbo.backupset;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Restore Database Pages</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RESTORE</span> <span class="keyword">DATABASE</span> [DBNAME] PAGE=<span class="string">'2:42, 2:81'</span> <span class="keyword">FROM</span> FileBackupName <span class="keyword">WITH</span> NORECOVERY; <span class="comment">--restores pages</span></span><br><span class="line"><span class="keyword">RESTORE</span> <span class="keyword">LOG</span> DBName <span class="keyword">FROM</span> log_backup1 <span class="keyword">WITH</span> NORECOVERY; <span class="comment">--restores most recent log</span></span><br><span class="line"><span class="keyword">BACKUP</span> <span class="keyword">LOG</span> DBName <span class="keyword">TO</span> log_backup_new <span class="comment">--takes another log backup</span></span><br><span class="line"><span class="keyword">RESTORE</span> <span class="keyword">LOG</span> <span class="keyword">FROM</span> log_backup_new <span class="keyword">WITH</span> <span class="keyword">RECOVERY</span>; <span class="comment">--restores log backup just taken and back online</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Automatic Page Repair DMVs</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_hadr_auto_page_repair; <span class="comment">--for AlwaysOn Availability Groups</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_mirroring_auto_page_repair; <span class="comment">--for mirroring</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Automatic Page Repair DMVs</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_hadr_auto_page_repair; <span class="comment">--for AlwaysOn Availability Groups</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_mirroring_auto_page_repair; <span class="comment">--for mirroring</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Restore Master Database</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RESTORE</span> <span class="keyword">DATABASE</span> <span class="keyword">master</span> <span class="keyword">FROM</span> BackupDevice <span class="keyword">WITH</span> <span class="keyword">REPLACE</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Rebuild System Databases</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setup /Q /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER</span><br></pre></td></tr></table></figure></p>
+<p><strong>Check Database Properties</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> databasepropertyex(<span class="string">'databasename'</span>,<span class="string">'Status'</span>); <span class="comment">--Whether ONLINE, OFFLINE, RESTORING, RECOVERING, SUSPECT, EMERGENCY</span></span><br><span class="line"><span class="keyword">SELECT</span> databasepropertyex(<span class="string">'databasename'</span>,<span class="string">'UserAccess'</span>); <span class="comment">--SINGLE_USER, RESTRICTED_USER, MULTI_USER</span></span><br><span class="line"><span class="keyword">SELECT</span> databasepropertyex(<span class="string">'databasename'</span>,<span class="string">'Updateability'</span>); <span class="comment">--READ_WRITE, READ_ONLY</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/" data-id="civ6om0sy000sfckak5t2c0ag" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/" data-id="ciwt7m7n7001uewkaujnjfly0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exam-70462/">Exam 70462</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a></li></ul>
@@ -179,7 +208,7 @@
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -192,23 +221,23 @@
       <ul>
         
           <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-06-SQL-Server-Logins-Roles-And-Users/">SQL 2012 Admin Exam 06 SQL Server Logins Roles And Users</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/">SQL 2012 Admin Exam 12 SQL Agent Backup and Restore</a>
           </li>
         
           <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-05-Migrating-Importing-and-Exporting/">SQL 2012 Admin Exam 05 Migrating Importing and Exporting</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/">SQL 2012 Admin Exam 11 Indexes and Concurrency</a>
           </li>
         
           <li>
-            <a href="/2016/10/SQL-2012-Admin-Exam-04-Configuring-Additional-SQL-Server-Components/">SQL 2012 Admin Exam 04 Configuring Additional SQL Server Components</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server/">SQL 2012 Admin Exam 10 Troubleshooting SQL Server</a>
           </li>
         
           <li>
-            <a href="/2016/10/SQL-2012-Admin-Exam-03-Configuring-and-Managing-Instances/">SQL 2012 Admin Exam 03 Configuring and Managing Instances</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/">SQL 2012 Admin Exam 09 Clustering and AlwaysOn</a>
           </li>
         
           <li>
-            <a href="/2016/10/SQL2012AdminExam02PlanningAndInstalling/">SQL 2012 Admin Exam 02 Planning And Installing</a>
+            <a href="/2016/11/SQL-2012-Admin-Exam-08-Mirroring-and-Replication/">SQL 2012 Admin Exam 08 Mirroring and Replication</a>
           </li>
         
       </ul>
@@ -220,7 +249,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -230,7 +259,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -240,7 +269,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 11.67px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 18.33px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 16.67px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 16.67px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 13.33px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 16.67px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 17.14px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 18.57px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 15.71px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14.29px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 18.57px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 12.86px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 15.71px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.43px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
     </div>
   </div>
 
@@ -249,7 +278,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
