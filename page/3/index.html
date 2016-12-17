@@ -68,10 +68,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SQL-2012-Admin-Exam-11-Indexes-and-Concurrency" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/11/SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server/" class="article-date">
-  <time datetime="2016-11-19T11:27:23.000Z" itemprop="datePublished">2016-11-19</time>
+    <a href="/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/" class="article-date">
+  <time datetime="2016-11-19T14:07:16.000Z" itemprop="datePublished">2016-11-19</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server/">SQL 2012 Admin Exam 10 Troubleshooting SQL Server</a>
+      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/">SQL 2012 Admin Exam 11 Indexes and Concurrency</a>
     </h1>
   
 
@@ -94,111 +94,83 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Today I’m going to be looking at troubleshooting SQL server for the exam looking at performance monitor, profiler and data collector.</p>
-<h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>
-<li><a href="https://www.youtube.com/watch?v=wKkQYYmC82Q&amp;t=4s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=56" target="_blank" rel="external">SQL 2012 Performance Monitor</a></li>
-<li><a href="https://www.youtube.com/watch?v=wKkQYYmC82Q&amp;t=4s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=56" target="_blank" rel="external">SQL 2012 Profiler</a></li>
-<li><a href="https://www.youtube.com/watch?v=-Uq6S7H9vOc&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=58" target="_blank" rel="external">SQL 2012 Profiler Query Trace File</a></li>
-<li><a href="https://www.youtube.com/watch?v=iIFsO0vH6PM&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=59" target="_blank" rel="external">SQL 2012 DMVs and Activity Monitor</a></li>
-<li><a href="https://www.youtube.com/watch?v=GodD1evwGYQ&amp;t=5s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=60" target="_blank" rel="external">SQL 2012 Configure Master Data Warehouse</a></li>
-</ul>
-<h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
-<li><strong>Performance Monitor (PerfMon)</strong> - Captures counters from hardware, operating system and applications. A counter object can be monitored using counters, where there can be multiple counters if multiple resources have the same type of counters, each one being a counter instance.</li>
-<li><strong>Data Collector Set</strong> - Reusable sets of data collectors. These can contain performance counters, event trace data and system configuration information like registry key values.</li>
-<li><strong>Key SQL Server PerfMon Metrics</strong> - CPU, Memory, File I/O, Locking, blocking, or deadlocking and Networking.</li>
-<li><strong>Key System PerfMon Metrics</strong> - System processor queue length, network interface output queue length and physical disk Avg. Queue Length.</li>
-<li><p><strong>System Process Queue Length</strong> - Number of system requests waiting for a processor.</p>
+        <h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
+<li><strong>B-Tree Structure</strong> - The balanced tree structure is how SQL indexes are architected made up of a root node, intermediate nodes and leaf nodes (Data pages).</li>
+<li><strong>Heap</strong> - Unorganised set of data with no indexes.</li>
+<li><strong>Clustered Index</strong> - Leaf pages contain the actual data and physically ordered by the clustered index key (CIK).</li>
+<li><strong>Clustered Index Key (CIK)</strong> - Row identifier in clustered index and should be unique, narrow and static.</li>
+<li><strong>Uniqueifier</strong> - When clustered key has duplicate rows SQL server adds a 4-byte internal integer to these duplicates.</li>
+<li><strong>Non-Clustered Index</strong> - No data, stores indexes columns and clustering key. Less pages to search through.</li>
+<li><strong>Covering Index</strong> - Non-clustered index with all information required to cover a query by using included columns.</li>
+<li><strong>Filtered Index</strong> - Where clause on the index to filter the rows so B-tree smaller. Can be used in conjunction with sparse columns.</li>
+<li><strong>Primary XML Index</strong> - Builds a nodes table with each element in the document has a row in the nodes table.</li>
+<li><strong>Secondary XML Index</strong> - Path, property and value index types. Must have primary first.</li>
+<li><strong>Spatial Index</strong> - For geography and geometry data types.</li>
+<li><strong>Full-text Index</strong> - For efficient searching of text data, one per table.</li>
+<li><strong>Columnstore Index</strong> - Does not use B-tree, uses column-orientated storage and good for data warehouse.</li>
+<li><strong>Statistics</strong> - Value distribution on SQL objects.</li>
+<li><strong>Cardinality</strong> - Number of rows that exist for given value.</li>
+<li><strong>FILLFACTOR</strong> - How much free space gets left on leaf nodes of index.</li>
+<li><strong>Fragmentation</strong> - Logical ordering based on the key does not match the physical ordering within the data file.</li>
+<li><strong>REORGANISE (index)</strong> - Fragmentation 10% to 30%, always online, requires 8KB space, single threaded only.</li>
+<li><p><strong>REBUILD (index)</strong> - Fragmentation above 30%, long-term locks, can do with ONLINE clause, requires entire copy of index space-wise, can use parallel.</p>
 </li>
-<li><p><strong>SQL Server Profiler</strong> - Provides a GUI for SQL Trace activity going on in SQL database engine, incurs overhead which can be significant.</p>
+<li><p><strong>Transaction</strong> - Batch of processes whereby either all or none of the processes are committed depending on success of failure of the whole transaction.  </p>
 </li>
-<li><strong>SQL Profiler Category</strong> - Related event classes.</li>
-<li><strong>SQL Profiler Event</strong> - Action that occurs in SQL server defined by attributes.</li>
-<li><strong>SQL Profiler Commonly Used Event Groups</strong> - Locks, performance, security audit, Stored Procedures and TSQL.</li>
-<li><strong>SQL Trace</strong> - Uses system stored procedures to creates traces in SQL database engine. More lightweight than profiler.</li>
-<li><p><strong>Default Trace</strong> - This runs on SQL server start and has the trace ID of 1. Captures key events and can be disabled using sp_configure. Helps DBAs with key issues.</p>
-</li>
-<li><p><strong>Dynamic Management Objects (DMO)</strong> - Dynamic management views (DMVs) and dynamic management functions (DMFs) to monitor SQL server.</p>
-</li>
-<li><strong>Activity Monitor</strong> - Available through SSMS and can identify what is currently happening on the server.</li>
-<li><strong>Server Process ID (SPID)</strong> - Unique id for tasks occurring in database engine.</li>
-<li><strong>sys.dm_exec Objects</strong> - Connections, sessions, requests and executions.</li>
-<li><strong>sys.dm_os Objects</strong> - Operating system info.</li>
-<li><strong>sys.dm_tran Objects</strong> - Transaction management.</li>
-<li><strong>sys.dm_io Objects</strong> - I/O processes.</li>
-<li><p><strong>sys.dm_db Objects</strong> - Database scoped information.</p>
-</li>
-<li><p><strong>Data Collector</strong> - One central point to collect information about SQL server. Can collect from DMVs, DMFs, or metrics of entire server.</p>
-</li>
-<li><strong>Management Data Warehouse (MDW)</strong> - Storage area for data collector.</li>
-<li><strong>MDW Roles</strong> - mdw_admin, mdw_writer, mdw_reader.</li>
-<li><strong>Data Collector Roles</strong> -  dc_admin, dc_operator, dc_proxy.</li>
-<li><strong>Server Activity Report</strong> - Waits, locks, latches and memory from DMVs. Collected Every 15 minutes, kept for 14 days.</li>
-<li><strong>Disk Usage Report</strong> -  Disk usage. Every 6 hours, kept for 2 years. Good for capacity planning.</li>
-<li><p><strong>Query Statistics Report</strong> -   Expensive queries. Collected Every 15 minutes via SSIS as so big, kept for 14 days.</p>
-</li>
-<li><p><strong>PhysicalDisk: % Disk Time</strong> - Time disk is busy with reading and writing.</p>
-</li>
-<li><strong>PhysicalDisk: Current Disk Queue Length</strong> - Requests waiting for system access (1.5 to 2 spindles on disk).</li>
-<li><strong>PhysicalDisk: Avg. Disk Queue Length</strong> - Average requests waiting for system access.</li>
-<li><strong>Memory: Page Faults/sec</strong> - Make sure disk issues not caused by paging.</li>
-<li><strong>SQL Server: Buffer Manager: Page read/sec</strong> - Isolate I/O created by SQL Server. Writing pages to disk.</li>
-<li><strong>SQL Server: Buffer Manager: Page writes/sec</strong> -  Isolate I/O created by SQL Server. Reading pages from disk.</li>
-<li><strong>Memory: Available Bytes</strong> - Bytes available for processes.</li>
-<li><strong>Memory: Pages/sec</strong> -</li>
-<li><strong>Process: Working Set</strong> - Isolate SQL memory usage. Amount of memory process uses.</li>
-<li><strong>SQL Server: Buffer Manager: Buffer Cache Hit Ratio</strong> - Isolate SQL memory usage. Application specific. 90% or more best. Add RAM until there.</li>
-<li><strong>SQL Server: Buffer Manager: Total Pages</strong> - Isolate SQL memory usage.</li>
-<li><strong>SQL Server: Buffer Manager: Total Server Memory (KB)</strong> - Isolate SQL memory usage. If this consistently higher than server memory, add more RAM.</li>
-<li><strong>Processor: % Privileged Time</strong> - CPU time on execution such as processing SQL server I/O requests. If this high may need better disk subsystem.</li>
-<li><strong>Processor: % User Time</strong> - Time spent on user processors such as SQL server.</li>
-<li><strong>Processor: % Processor Queue Length</strong> - Threads waiting for processor time. May need faster or more processors if this consistently high.</li>
+<li><strong>ACID</strong> - Atomic, consistent, isolation and durability. Transactions help ensure this.</li>
+<li><strong>Multi-Granular Locking</strong> - SQL server locks the minimum resources to achieve its goal.</li>
+<li><strong>Lock Types</strong> - Shared (S), Update (U), Exclusive (X), Intent, Schema, Bulk Update (BU), Key-Range.</li>
+<li><strong>Isolation Level Characteristics</strong> - Dirty read, non-repeatable read, phantom read.  </li>
+<li><strong>ANSI Standard Isolation Levels</strong> - SERIALIZABLE, REPEATABLE READ, READ COMMITTED (DEFAULT), READ UNCOMMITTED.</li>
+<li><strong>Microsoft SQL Server Isolation Level</strong> - READ COMMITTED SNAPSHOT, which requires enabling in database, uses versioning in tempdb. This can limit reader/writer blocking.</li>
+<li><strong>Deadlock Types</strong> - Conversion, writer-writer and reader-reader. Also can have cascading deadlocks.</li>
 </ul>
 <h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ul>
-<li>Minimise the number of counters with PerfMon.</li>
-<li>Run &gt; PerfMon. To start performance monitor. Then &gt; Add counters.</li>
-<li><p>Data collection sets can be scheduled.</p>
+<li>Clustered index good for large % of rows from table, return single row based on clustered index key, or range based data.</li>
+<li>Non-Clustered index good for queries return few rows, can be covered by index. Covering index can be more performant than clustered index as less I/O as less pages as B-tree smaller.</li>
+<li>Filtered indexes good with sparse column to locate non-null rows or when queries require small subset of rows selected often.  </li>
+<li>PATH secondary XML index good for .exit() XQUERY.</li>
+<li>PROPERTY secondary XML index good for search nodes with particular values.</li>
+<li>VALUE secondary XML index good for search descendant nodes for a given PATH.</li>
+<li>AUTO_UPDATE_STATISTICS, AUTO_UPDATE_STATISTICS_ASYNC and AUTO_CREATE_STATISTICS.</li>
+<li>SAMPLED, LIMITED and DETAILED can be passed to sys.dm_db_index_physical_stats.</li>
+<li>sys.dm_db_index_physical_stats shows fragmentation also.</li>
+<li>Fragmentation above 30% rebuild, 10% to 30% reorganise.</li>
+<li>You can schedule statistics updates or do in the GUI.</li>
+<li>Remember DMVs only store information since last restart, for example you may want to disable indexes first rather than delete.</li>
+<li><p>In SQL 2012 only XML and spatial are excluded from online index rebuilds.</p>
 </li>
-<li><p>SQL profiler being deprecated, use extended events instead.</p>
+<li><p>SQL can lock   -RID, KEY, PAGE, EXTENT, HEAP or B-TREE, TABLE, FILE, APPLCIATION, METADATA, ALLOCATION UNIT, DATABASE.</p>
 </li>
-<li>With SQL profiler you can filter and create templates.</li>
-<li>You can save SQL profiler trace to a file (.trc). You can save trace quick and examine so not to take up resources with profiler.</li>
-<li>It is recommended that traces are saved to another server, not the one being monitored.</li>
-<li>Common trace events - SQL:BatchComplete, Deadlock Graph, Audit Login.</li>
-<li><p>You can import traces into a SQL table to view or view through profiler.</p>
-</li>
-<li><p>Database DMOs require VIEW DATABASE STATE permissions and server DMOs require VIEW SERVER STATE permissions.</p>
-</li>
-<li>DMOs get cleared if system is restarted.</li>
-<li>Activity monitor has recent expensive queries section.</li>
-<li><p>dm_exec_requests view - looks fairly analagous to activity monitor main view and contains spid.</p>
-</li>
-<li><p>You can report on information collected by data collector, right click data collector, management data warehouse and reports.</p>
-</li>
-<li>Low volume data sent straight to MDW and high volume is cached first and sent via SSIS.</li>
-<li>Configure central management data warehouse &gt; Configure each server to send required data.</li>
-<li>Data collector under management node.</li>
-<li>300MB per day in typical configuration.</li>
-<li>Data collector config and logs written to msdb.</li>
-<li><p>Logging can be set by sp_syscollector_update_collection_set system procedure.</p>
-</li>
-<li><p>I/O - operating system coordinates SQL requests.</p>
-</li>
-<li>If disk time counters are high consider faster disk drives, move files to another server, add disks to RAID.</li>
-<li>Database engine tuning advisor when reads and writes causing issues, better indexes and coverage may be needed.</li>
-<li>More RAM if memory issues.</li>
-<li>Try and optimise application before spend on new hardware.</li>
+<li>Heaps are bad for concurrency as table locks can occur.</li>
+<li>Lock durations change based on lock mode and isolation level.</li>
+<li>Can identify blocking with blocking_Session_id of sys.dm_os_waiting_tasks or sys.dm_exec_requests.</li>
+<li>Can use the read only version of always on replica using the ApplicationIntent=ReadOnly in the connection string.</li>
+<li>Deadlocks raise a 1205 error.</li>
+<li>Trace flag 1222 newer version of deadlock trace. Trace has been deprecated.</li>
+<li>Use extended events to capture deadlock information.</li>
+<li>Use activity monitor to see processes, waiting tasks, data file I/O and recent expensive queries.</li>
+<li>sys.dm_os_wait_stats DMV to determine waits.</li>
+<li>Remember SQL server has a load of built in reports.</li>
+<li>Blocked_process column of system_health extended events also shows where blocking is occuring.</li>
 </ul>
-<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Import SQL Trace File from Profiler Output</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">IF OBJECT_ID('tempdb.. ##BaseLine') IS NOT NULL  </span><br><span class="line">DROP TABLE  ##BaseLine;</span><br><span class="line"></span><br><span class="line">SELECT * INTO ##BaseLine</span><br><span class="line">FROM fn_trace_gettable('C:\\temp\\70462.trc',default)</span><br><span class="line"></span><br><span class="line">SELECT * FROM ##BaseLine</span><br><span class="line">ORDER BY Duration DESC;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Wait Stats DMV</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> wait_type, wait_time_ms</span><br><span class="line"><span class="keyword">FROM</span> sys.dm_os_wait_stats;</span><br></pre></td></tr></table></figure></p>
-<p><strong>“Activity Monitor” DMV</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_exec_requests;</span><br></pre></td></tr></table></figure></p>
-<p><strong>DMV Combined to show tasks waiting over certain time</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> s.original_login_name, s.program_name, t.wait_type, t.wait_duration_ms</span><br><span class="line">  <span class="keyword">FROM</span> sys.dm_os_waiting_tasks t</span><br><span class="line">  <span class="keyword">JOIN</span> sys.dm_exec_sessions s</span><br><span class="line">  <span class="keyword">ON</span> t.session_id = s.session_id</span><br><span class="line">    <span class="keyword">WHERE</span> s.is_user_process = <span class="number">1</span></span><br><span class="line">    <span class="keyword">AND</span> t.wait_Duration_ms &gt; <span class="number">1000</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>DMV Missing Indexes of Recent Executions</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span></span><br><span class="line">(<span class="keyword">SELECT</span></span><br><span class="line">user_seeks * avg_total_user_cost * (avg_user_impact * <span class="number">0.01</span>) <span class="keyword">AS</span> index_advantage, migs.*</span><br><span class="line"><span class="keyword">FROM</span> sys.dm_db_missing_index_group_stats migs) <span class="keyword">AS</span> migs_adv</span><br><span class="line"><span class="keyword">JOIN</span> sys.dm_db_missing_index_groups <span class="keyword">as</span> mig <span class="keyword">ON</span></span><br><span class="line"> mig.index_group_handle = migs_adv.group_handle</span><br><span class="line"><span class="keyword">JOIN</span> sys.dm_db_missing_index_Details <span class="keyword">AS</span> <span class="keyword">mid</span> <span class="keyword">ON</span></span><br><span class="line">mig.index_handle = mid.index_handle</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> migs_adv.index_advantage;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Data Collector msdb Objects</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> msdb;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> fn_syscollector_get_execution_details();</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> fn_syscollector_get_execution_stats();</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> fn_syscollector_execution_log;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> fn_syscollector_execution_log_full;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> fn_syscollector_executionstats;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Create Columnstore Index</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> NONCLUSTERED COLUMNSTORE <span class="keyword">INDEX</span> IX_CS_TableName</span><br><span class="line">  <span class="keyword">ON</span> [SchemaName].[TableName]</span><br><span class="line">  (Col1, Col2, Col3, Col4);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Check to see if Stats are Auto Updated</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> OBJECT_NAME(object_id), <span class="keyword">name</span>, auto_created</span><br><span class="line"><span class="keyword">FROM</span> sys.Stats</span><br><span class="line"><span class="keyword">WHERE</span> auto_created = <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Create NonClustered Index</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> NONCLUSTERED  <span class="keyword">INDEX</span> IX_TableName</span><br><span class="line">  <span class="keyword">ON</span> [SchemaName].[TableName]</span><br><span class="line">  (Col1, Col2, Col3, Col4);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Clustered Index (With Compression)</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> CLUSTERED  <span class="keyword">INDEX</span> IX_PartTabCol1</span><br><span class="line">  <span class="keyword">ON</span> [SchemaName].[TableName]</span><br><span class="line">  (Col1)</span><br><span class="line">  <span class="keyword">WITH</span> (DATA_COMPRESSION = PAGE <span class="keyword">ON</span> <span class="keyword">PARTITIONS</span>(<span class="number">1</span>)</span><br><span class="line">, DATA_COMPRESSION = <span class="keyword">ROW</span> <span class="keyword">ON</span> <span class="keyword">PARTITIONS</span>(<span class="number">2</span> <span class="keyword">TO</span> <span class="number">4</span>));</span><br></pre></td></tr></table></figure></p>
+<p><strong>ALTER INDEX FILLFACTOR</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">INDEX</span> ALL <span class="keyword">ON</span> [SchemaName].[TableName] <span class="keyword">REBUILD</span></span><br><span class="line"><span class="keyword">WITH</span> (FILLFACTOR = <span class="number">80</span>);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Examples of Statistics Updates</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> FULLSCAN;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> FULLSCAN, <span class="keyword">INDEX</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> FULLSCAN, <span class="keyword">COLUMNS</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> <span class="keyword">SAMPLE</span> <span class="number">1000</span> <span class="keyword">ROWS</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> <span class="number">80</span> <span class="keyword">PERCENT</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Index DMVs</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_columns;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_details;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_groups;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_group_stats;</span><br></pre></td></tr></table></figure></p>
+<p><strong>SQL Snapshot Isolation</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [DatabaseName]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [DatabaseName] <span class="keyword">SET</span> ALLOW_SNAPSHOT_ISOLATION <span class="keyword">ON</span></span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">TRANSACTION</span> <span class="keyword">ISOLATION</span> <span class="keyword">LEVEL</span> <span class="keyword">SNAPSHOT</span>;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Determine Transaction Isolation Level</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [DatabaseName]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line">DBCC USEROPTIONS;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Clear Current Wait Stats</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [DatabaseName]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line">DBCC SQLPERF(<span class="string">'sys.dm_os_Wait_stats'</span>,<span class="keyword">CLEAR</span>);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Kill a process using SPID</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">KILL</span> <span class="number">100</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Kill a process with Time to End</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">KILL</span> <span class="number">100</span> <span class="keyword">WITH</span> STATUSONLY;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server/" data-id="ciwt7m7n4001rewka1ffhe6xc" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/" data-id="ciwt8vaph001diokag2egota3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exam-70462/">Exam 70462</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a></li></ul>
@@ -213,7 +185,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -224,6 +196,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/12/Passing-the-70462-Exam-and-Lessons-Learned/">Passing the 70462 Exam and Lessons Learned</a>
+          </li>
         
           <li>
             <a href="/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/">SQL 2012 Admin Exam 12 SQL Agent Backup and Restore</a>
@@ -241,10 +217,6 @@
             <a href="/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/">SQL 2012 Admin Exam 09 Clustering and AlwaysOn</a>
           </li>
         
-          <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-08-Mirroring-and-Replication/">SQL 2012 Admin Exam 08 Mirroring and Replication</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -254,7 +226,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -264,7 +236,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -283,7 +255,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 

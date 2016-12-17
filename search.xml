@@ -4,6 +4,24 @@
   
     
     <entry>
+      <title><![CDATA[Passing the 70462 Exam and Lessons Learned]]></title>
+      <url>www.datagriff.com/2016/12/Passing-the-70462-Exam-and-Lessons-Learned/</url>
+      <content type="html"><![CDATA[<p>Okay so I just about managed to pass my SQL Admin 70-462 exam and get my SQL 2012 MCSA (yay!), but I definitely didn’t make life easy for myself. I had planned to record videos of all the exercises in the <a href="https://www.amazon.co.uk/Training-Kit-Exam-70-462-Administering/dp/0735666075/ref=sr_1_1?ie=UTF8&amp;qid=1481978989&amp;sr=8-1&amp;keywords=70-462+training+kit_" target="_blank" rel="external">Training Kit Book</a>, along with <a href="http://www.datagriff.com/tags/Exam-70462/">blogging details about every chapter</a>, obviously combined with learning a load of new concepts, all in just over 30 days…</p>
+<h1 id="Lessons-Learned-about-Preparing-for-the-Exam"><a href="#Lessons-Learned-about-Preparing-for-the-Exam" class="headerlink" title="Lessons Learned about Preparing for the Exam"></a>Lessons Learned about Preparing for the Exam</h1><ul>
+<li>Don’t just take the exam questions that come with the training kit to give you confidence. I smashed this exam 4 days before the exam quite a few times thinking I was good to go. Then I remembered I had a <a href="https://www.cbtnuggets.com/" target="_blank" rel="external">cbtNuggets</a> subscription which also had practice exams. 3 Days before the exam and I had 40%! I quickly started cramming all the things I wasn’t up to speed on and luckily I got away with it. You can get other practice exams from <a href="http://www.measureup.com/" target="_blank" rel="external">measureup</a> too.</li>
+<li>Give yourself time to setup the test environment if you’re going to perform the exercises! This took me a good 2 weeks to setup before I even started the main exercises or revision. Luckily I found someone else’s blog to help, I blogged about the whole affair in my <a href="http://www.datagriff.com/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/">first blog for this exam</a>.</li>
+<li>Online <a href="https://www.youtube.com/watch?v=7c2FUqUySDE" target="_blank" rel="external">summary videos</a> are a great way to get some tips in the last week before your exam.</li>
+<li>I think carrying out exercises to cement the ideas in your mind are essential, but videoing them when you have limited time may not be the best idea! If you’re interested in my rushed endeavours you can see my playlist of the exercises <a href="https://www.youtube.com/playlist?list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1" target="_blank" rel="external">here</a>.</li>
+</ul>
+<h1 id="Lessons-Learned-about-Blogging"><a href="#Lessons-Learned-about-Blogging" class="headerlink" title="Lessons Learned about Blogging"></a>Lessons Learned about Blogging</h1><ul>
+<li>Don’t replace personal revision notes with blogging, use blogging to talk about something you’re passionate about. I’d planned on producing really good blogs on each chapter of SQL 2012 Administration for others to follow, and to also act as a good summary revision material for myself. I duly failed as I rushed to meet my exam deadline and ended up just producing rough notes with links to the videos.</li>
+<li>For a much better example of what I should have done (i.e. just a summary of my experience and lessons learned) check out this post from <a href="https://www.cathrinewilhelmsen.net/2015/05/26/preparing-for-and-taking-exam-70-462-administering-microsoft-sql-server-2012-databases/" target="_blank" rel="external">Catherine Wilhelmson</a> which is what I read in my run up to the exam and gave some great tips.</li>
+</ul>
+<p>Anyway I look forward to the new year, getting stuck into some exciting tech and blogging with passion and verbosity!</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[SQL 2012 Admin Exam 12 SQL Agent Backup and Restore]]></title>
       <url>www.datagriff.com/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/</url>
       <content type="html"><![CDATA[<h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>

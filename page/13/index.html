@@ -68,14 +68,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-SQLRelay2016DIYDBFromHome" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SQL-2012-Admin-Exam-01-Prepare-Environment" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/10/SQLRelay2016DIYDBFromHome/" class="article-date">
-  <time datetime="2016-10-02T15:06:37.000Z" itemprop="datePublished">2016-10-02</time>
+    <a href="/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/" class="article-date">
+  <time datetime="2016-10-23T13:07:01.000Z" itemprop="datePublished">2016-10-23</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Presentation/">Presentation</a>
+    <a class="article-category-link" href="/categories/SQL-Administration/">SQL Administration</a>
   </div>
 
   </div>
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/SQLRelay2016DIYDBFromHome/">SQL Relay 2016 - Build a Database for free with Team Services Online, SSDT and Azure</a>
+      <a class="article-title" href="/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/">SQL 2012 Admin Exam 01 Prepare Environment</a>
     </h1>
   
 
@@ -94,36 +94,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>I am speaking again at SQL Relay this year and I decided to cover some of the basics. It was only about 18 months ago I had never used source control, never used any cloud services and it all seemed quite beyond me… But it’s not!<br>The aim of my talk this year is to hopefully speed up this process for people who find themselves in a similar situation that I was in and show all the free tools and resources that are available to you.</p>
-<a href="/2016/10/SQLRelay2016DIYDBFromHome/zSQLRelay2016DIYDBFromHomeSlideShow.html" title="SQL Relay 2016 Presentation">SQL Relay 2016 Presentation</a>
-<p>The presentation covers the basics of the following:</p>
+        <p><strong>Introduction</strong></p>
+<p>So I’ve decided to take the <a href="https://www.microsoft.com/en-us/learning/exam-70-462.aspx" target="_blank" rel="external">SQL 2012 DBA 70-462 Exam</a>, it’s my last of the three for the MCSA and probably my weakest skill. I’ve given myself about 40 days from yesterday to get up to speed so this should be fun.</p>
+<p><strong>What this is about</strong></p>
 <ul>
-<li>Database design</li>
-<li>Work management</li>
-<li>Source control</li>
-<li>Infrastructure locally and in the cloud</li>
-<li>Database Development</li>
-<li>Deployment</li>
+<li>Resources</li>
+<li>Environment Setup: How fun this turned out to be!</li>
+<li>Command-Line: What I learned from above.</li>
 </ul>
-<h2 id="PreRequisites"><a href="#PreRequisites" class="headerlink" title="PreRequisites"></a>PreRequisites</h2><p>The demonstrations in the talk require the following:</p>
+<h3 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h3><p>Okay so I’m pretty much going to stick to my tried and tested - get the <a href="https://www.amazon.co.uk/Training-Kit-Exam-70-462-Administering-ebook/dp/B00IG2OS3Y/ref=sr_1_1?ie=UTF8&amp;qid=1477226838&amp;sr=8-1&amp;keywords=sql+70-462" target="_blank" rel="external">certification book</a>, <a href="https://www.microsoft.com/en-gb/learning/certification-exams.aspx" target="_blank" rel="external">book the exam</a> and get to work.<br>I’ll also watch the <a href="https://mva.microsoft.com/en-US/training-courses/administering-microsoft-sql-server-2012-jump-start-8259?l=70lJ0hKy_7704984382" target="_blank" rel="external">Microsoft Virtual Academy</a> stuff and anything else I find of interest on youtube (e.g. <a href="https://www.youtube.com/watch?v=rWwGPihzgOg" target="_blank" rel="external">Passing 70462</a>) as I go along.<br>Based on the book you’re also going to need the following downloads:</p>
 <ul>
-<li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a> &amp; <a href="https://github.com/" target="_blank" rel="external">Github Account</a> - For source control</li>
-<li><a href="https://www.visualstudio.com/team-services/" target="_blank" rel="external">Team Services Online Account</a> - For source control and Work Management</li>
-<li><a href="https://www.visualstudio.com/vs/community/" target="_blank" rel="external">Visual Studio Community Edition</a> - For code development and infrastructure</li>
-<li><a href="https://www.microsoft.com/en-gb/download/details.aspx?id=52679" target="_blank" rel="external">SQL Server Express</a> - For code development and infrastructure</li>
-<li><a href="https://azure.microsoft.com/en-gb/" target="_blank" rel="external">Azure Account</a> - For infrastructure</li>
-<li><a href="https://notepad-plus-plus.org/download/v6.9.2.html" target="_blank" rel="external">Notepad++</a>, <a href="https://atom.io/" target="_blank" rel="external">Atom</a> - These are both useful text editors</li>
+<li><a href="https://www.microsoft.com/en-GB/evalcenter/evaluate-windows-server-2012" target="_blank" rel="external">Windows Server 2012 Evaluation</a></li>
+<li><a href="https://www.microsoft.com/en-gb/download/details.aspx?id=29066" target="_blank" rel="external">SQL Server 2012 Evaluation</a></li>
+<li><a href="https://msftdbprodsamples.codeplex.com/releases/view/55330" target="_blank" rel="external">Adventureworks Database</a></li>
 </ul>
-<h2 id="Accompanying-Youtube-Videos"><a href="#Accompanying-Youtube-Videos" class="headerlink" title="Accompanying Youtube Videos"></a>Accompanying Youtube Videos</h2><p>I’ve pushed the boat out with this years talk and decided to make myself a youtube channel and playlist to demonstrate the tools used.<br><a href="https://www.youtube.com/playlist?list=PLA5YLvtN7pNPqa77xX-g0K5roN93BOAS2" target="_blank" rel="external">SQL Relay 2016 Demos</a></p>
-<h2 id="Accompanying-Github-Repository"><a href="#Accompanying-Github-Repository" class="headerlink" title="Accompanying Github Repository"></a>Accompanying Github Repository</h2><p>I’ve also created a more detail github code respository of the MyGymDB project which I hope to add to over time.<br>This includes a ReadMe file with further details and instructions to implement the database yourself.<br><a href="https://github.com/griff182uk/MyGymDB" target="_blank" rel="external">MyGymDB GitHub Repository</a></p>
+<h3 id="Environment-Setup"><a href="#Environment-Setup" class="headerlink" title="Environment Setup"></a>Environment Setup</h3><p>Based on the book instructions to setup the lab environment to be able to carry out the exercises… I think they expect you to be some kind of infrastructure architect off the bat. I can tell you this, I am most certainly not. This became quite painful for me and I though “Christ I haven’t even started the book and this has taken me forever!”.<br>So after failed attempts of creating the environment in <a href="http://www.sqlservercentral.com/articles/certification/128503/" target="_blank" rel="external">Azure</a> (Costs and Speed) and failed attempts at doing it myself - I found this wonderful <a href="https://toddkleinhans.wordpress.com/" target="_blank" rel="external">page</a> by, who is now a god in my mind, Todd Kleinhans. Thank you so much.</p>
+<p><strong>Just in case you missed it above, here again is the <a href="https://toddkleinhans.wordpress.com/" target="_blank" rel="external">page</a> with all the wonderful instructions.</strong></p>
+<p>So if you follow the instructions in the word document attached to the page above you’ll be fine.<br>Highlights from it include:</p>
+<ul>
+<li>Download the trial version of <a href="http://www.vmware.com/uk/products/workstation/workstation-evaluation.html" target="_blank" rel="external">VMWare Pro</a>, the free version doesn’t include snapshots. (yet another time constraint for me to get this done in 30 days!)</li>
+<li>Use <a href="https://www.microsoft.com/en-GB/evalcenter/evaluate-windows-server-2012" target="_blank" rel="external">Windows Server 2012</a> instead of 2008 - make sure change from default “update” to custom install during the installation or you’ll get stuck in an idiot loop like me.</li>
+<li>As soon as you’ve installed Windows create shortcuts for administrative tools and command prompt, I found the operating system layout a bit windows 8 and a bugger to navigate through.</li>
+<li>Make sure you tick DNS when installing the Domain Controller - this was a stupid mistake I made as I excitedly rushed through the instructions.</li>
+<li>Make sure click the “new forest” option in Active Directory Domain Services Configuration Wizard when configuring the domain controller.</li>
+<li>Be careful when copying and pasting the instructions for SQLA (yes it says this but I still managed to go on autopilot and mess it up)</li>
+<li>Basically… <strong>READ THE INSTRUCTIONS AND FOLLOW THEM ALL - THEY ARE GOOD.</strong>  </li>
+<li>Although I did have an issue with the SQLCORE installation and had to run the sysprep thing just like the other servers, this wasn’t explicitly mentioned in the instructions.</li>
+<li>Share your network drives for resources from your actual machine in the VM to make life easier.</li>
+</ul>
+<h3 id="Command-Line-I-learned-from-above"><a href="#Command-Line-I-learned-from-above" class="headerlink" title="Command-Line I learned from above"></a>Command-Line I learned from above</h3><p>Getting the name of the local area connection - this is not always Ethernet so check!<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh int ip show int</span><br></pre></td></tr></table></figure></p>
+<p>Change an IP address.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh interface ipv4 set address &quot;Local Area connection&quot; static 10.10.10.10 #Change IP Address</span><br></pre></td></tr></table></figure></p>
+<p>Okay I knew this one - getting the IP details for the machine you’re on.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure></p>
+<p>Getting the name of the computer.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname</span><br></pre></td></tr></table></figure></p>
+<p>Renaming a machine.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netdom renamecomputer %computername% /newname:DC</span><br></pre></td></tr></table></figure></p>
+<p>Join a machine to a network<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netdom join ComputerName /domain:domainname.com</span><br></pre></td></tr></table></figure></p>
+<p>Reboot a machine.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown /r /t 0</span><br></pre></td></tr></table></figure></p>
+<p>I don’t think this did anything but may need it if get failed to configure DHCP error…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh int ip reset</span><br></pre></td></tr></table></figure></p>
+<p>Force group policy update.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpupdate /force</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/10/SQLRelay2016DIYDBFromHome/" data-id="ciwt7m7na0021ewkah7d7s2td" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/10/SQL-2012-Admin-Exam-01-Prepare-Environment/" data-id="ciwt8vaoz000jioka5ntpno17" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure/">Azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Presentation/">Presentation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSDT/">SSDT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Team-Services/">Team Services</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Command-Line/">Command-Line</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exam-70462/">Exam 70462</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a></li></ul>
 
     </footer>
   </div>
@@ -135,7 +150,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/12/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/14/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/14/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -146,6 +161,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/12/Passing-the-70462-Exam-and-Lessons-Learned/">Passing the 70462 Exam and Lessons Learned</a>
+          </li>
         
           <li>
             <a href="/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/">SQL 2012 Admin Exam 12 SQL Agent Backup and Restore</a>
@@ -163,10 +182,6 @@
             <a href="/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/">SQL 2012 Admin Exam 09 Clustering and AlwaysOn</a>
           </li>
         
-          <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-08-Mirroring-and-Replication/">SQL 2012 Admin Exam 08 Mirroring and Replication</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -176,7 +191,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -186,7 +201,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -205,7 +220,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 

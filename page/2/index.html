@@ -68,10 +68,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-SQL-2012-Admin-Exam-11-Indexes-and-Concurrency" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/" class="article-date">
-  <time datetime="2016-11-19T14:07:16.000Z" itemprop="datePublished">2016-11-19</time>
+    <a href="/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/" class="article-date">
+  <time datetime="2016-11-25T19:13:09.000Z" itemprop="datePublished">2016-11-25</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/">SQL 2012 Admin Exam 11 Indexes and Concurrency</a>
+      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/">SQL 2012 Admin Exam 12 SQL Agent Backup and Restore</a>
     </h1>
   
 
@@ -94,83 +94,106 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
-<li><strong>B-Tree Structure</strong> - The balanced tree structure is how SQL indexes are architected made up of a root node, intermediate nodes and leaf nodes (Data pages).</li>
-<li><strong>Heap</strong> - Unorganised set of data with no indexes.</li>
-<li><strong>Clustered Index</strong> - Leaf pages contain the actual data and physically ordered by the clustered index key (CIK).</li>
-<li><strong>Clustered Index Key (CIK)</strong> - Row identifier in clustered index and should be unique, narrow and static.</li>
-<li><strong>Uniqueifier</strong> - When clustered key has duplicate rows SQL server adds a 4-byte internal integer to these duplicates.</li>
-<li><strong>Non-Clustered Index</strong> - No data, stores indexes columns and clustering key. Less pages to search through.</li>
-<li><strong>Covering Index</strong> - Non-clustered index with all information required to cover a query by using included columns.</li>
-<li><strong>Filtered Index</strong> - Where clause on the index to filter the rows so B-tree smaller. Can be used in conjunction with sparse columns.</li>
-<li><strong>Primary XML Index</strong> - Builds a nodes table with each element in the document has a row in the nodes table.</li>
-<li><strong>Secondary XML Index</strong> - Path, property and value index types. Must have primary first.</li>
-<li><strong>Spatial Index</strong> - For geography and geometry data types.</li>
-<li><strong>Full-text Index</strong> - For efficient searching of text data, one per table.</li>
-<li><strong>Columnstore Index</strong> - Does not use B-tree, uses column-orientated storage and good for data warehouse.</li>
-<li><strong>Statistics</strong> - Value distribution on SQL objects.</li>
-<li><strong>Cardinality</strong> - Number of rows that exist for given value.</li>
-<li><strong>FILLFACTOR</strong> - How much free space gets left on leaf nodes of index.</li>
-<li><strong>Fragmentation</strong> - Logical ordering based on the key does not match the physical ordering within the data file.</li>
-<li><strong>REORGANISE (index)</strong> - Fragmentation 10% to 30%, always online, requires 8KB space, single threaded only.</li>
-<li><p><strong>REBUILD (index)</strong> - Fragmentation above 30%, long-term locks, can do with ONLINE clause, requires entire copy of index space-wise, can use parallel.</p>
+        <h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>
+<li><a href="https://www.youtube.com/watch?v=etyataFYx08&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=61" target="_blank" rel="external">SQL 2012 Configure SQL Agent</a></li>
+<li><a href="https://www.youtube.com/watch?v=HjnnRYN3uI4&amp;t=36s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=62" target="_blank" rel="external">SQL 2012 Create Agent Job</a></li>
+<li><a href="https://www.youtube.com/watch?v=QL6_GvZkokY&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=63" target="_blank" rel="external">SQL 2012 Create Operator</a></li>
+<li><a href="https://www.youtube.com/watch?v=z2MtAQ4gx3k&amp;t=2s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=64" target="_blank" rel="external">SQL 2012 Create Alert</a></li>
+<li><a href="https://www.youtube.com/watch?v=EWyvEjr1wQo&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=65" target="_blank" rel="external">SQL 2012 Create Backup Device</a></li>
+<li><a href="https://www.youtube.com/watch?v=Urtcxw_tqG4&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=66" target="_blank" rel="external">SQL 2012 Perform Backups</a></li>
+<li><a href="https://www.youtube.com/watch?v=G9RgSGSCr4s&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=67" target="_blank" rel="external">SQL 2012 Restore a Database</a></li>
+</ul>
+<h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
+<li><strong>SQL Server Agent</strong> - Automates execution of jobs.</li>
+<li><strong>SQL Server Agent Service account</strong> - Requires logon as a service right, membership of windows 2000 compatible access security group at domain level, should not be member of local Administrators, must be member of SQL sysadmin server role.</li>
+<li><strong>SQLAgentUserRole</strong> - Least privileges, local jobs and scheduled jobs they own. No to multi-server.</li>
+<li><strong>SQLAgentReaderRole</strong> - Includes above and view properties and histories of all jobs and schedules. Yes to multi-server.</li>
+<li><strong>SQLAgentOperatorRole</strong> - As above and can start, stop, delete history of any local job. Also enable and disable schedules.</li>
+<li><strong>SQL Agent Error Log</strong> - Warnings and errors about sql agent. Found under sql agent.</li>
+<li><strong>Alerts</strong> - When certain condition met (performance, WMI events) can trigger an alert.</li>
+<li><strong>Job Activity Monitor</strong> - To monitor job activity!  </li>
+<li><p><strong>Operators</strong> - Who receive notifications. Email, pager notifications, net send.</p>
 </li>
-<li><p><strong>Transaction</strong> - Batch of processes whereby either all or none of the processes are committed depending on success of failure of the whole transaction.  </p>
+<li><p><strong>Full Database Backup</strong> - Everything backed up and all transactions during full backup.</p>
 </li>
-<li><strong>ACID</strong> - Atomic, consistent, isolation and durability. Transactions help ensure this.</li>
-<li><strong>Multi-Granular Locking</strong> - SQL server locks the minimum resources to achieve its goal.</li>
-<li><strong>Lock Types</strong> - Shared (S), Update (U), Exclusive (X), Intent, Schema, Bulk Update (BU), Key-Range.</li>
-<li><strong>Isolation Level Characteristics</strong> - Dirty read, non-repeatable read, phantom read.  </li>
-<li><strong>ANSI Standard Isolation Levels</strong> - SERIALIZABLE, REPEATABLE READ, READ COMMITTED (DEFAULT), READ UNCOMMITTED.</li>
-<li><strong>Microsoft SQL Server Isolation Level</strong> - READ COMMITTED SNAPSHOT, which requires enabling in database, uses versioning in tempdb. This can limit reader/writer blocking.</li>
-<li><strong>Deadlock Types</strong> - Conversion, writer-writer and reader-reader. Also can have cascading deadlocks.</li>
+<li><strong>Differential Backups</strong> - Backups what changed since last FULL, even if differentials in between. Always since last full.</li>
+<li><strong>Transaction Log Backups</strong> - Backs up changes since last transaction log backup and truncates transaction log.</li>
+<li><strong>File and FileGroup Backups</strong> - Backs up individual files and filegroups, must back up transaction log.</li>
+<li><strong>Copy-Only Backup</strong> - Functionally same as full or transaction log backups but do not mess up backup sequence.</li>
+<li><strong>Backup Compression</strong> - Saves disk space but increases CPU.</li>
+<li><strong>Recovery Point Objective (RPO)</strong> - Allowable data loss in event of failure.</li>
+<li><strong>Simple Recovery Mode</strong> - No transaction, no point in time, just last full backup.</li>
+<li><strong>Full Recovery Mode</strong> - Transaction logs and allows for point in time.</li>
+<li><strong>Bulk-Logged Recovery Mode</strong> - Special for bulk operations, minimises transaction log, no point in time recovery.</li>
+<li><strong>Database Checkpoint</strong> - writes modifies pages held in memory to disk and records in transaction log.</li>
+<li><p><strong>Media Set</strong> - single file, multiple files, tape, multiple tapes, up to 32 backup devices.</p>
+</li>
+<li><p><strong>RESTORE WITH RECOVERY</strong> - Restores database back to normal state.</p>
+</li>
+<li><strong>RESTORE WITH NORECOVERY</strong> - Restores database but not accessible.</li>
+<li><strong>RESTORE WITH STANDBY</strong> - Restores database in read-only mode for admins.</li>
+<li><strong>File Restore</strong> - Restore a database file.</li>
+<li><strong>Page Restore</strong> - restore small number of pages damaged where rest of database is not. Full or bulk-logged, offline or online, read/write filegroups only, only database pages (not transaction log).</li>
+<li><strong>Automatic Page Repair</strong> - AlwaysOn Availability Groups and database mirrors can repair own pages from health secondaries.</li>
 </ul>
 <h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ul>
-<li>Clustered index good for large % of rows from table, return single row based on clustered index key, or range based data.</li>
-<li>Non-Clustered index good for queries return few rows, can be covered by index. Covering index can be more performant than clustered index as less I/O as less pages as B-tree smaller.</li>
-<li>Filtered indexes good with sparse column to locate non-null rows or when queries require small subset of rows selected often.  </li>
-<li>PATH secondary XML index good for .exit() XQUERY.</li>
-<li>PROPERTY secondary XML index good for search nodes with particular values.</li>
-<li>VALUE secondary XML index good for search descendant nodes for a given PATH.</li>
-<li>AUTO_UPDATE_STATISTICS, AUTO_UPDATE_STATISTICS_ASYNC and AUTO_CREATE_STATISTICS.</li>
-<li>SAMPLED, LIMITED and DETAILED can be passed to sys.dm_db_index_physical_stats.</li>
-<li>sys.dm_db_index_physical_stats shows fragmentation also.</li>
-<li>Fragmentation above 30% rebuild, 10% to 30% reorganise.</li>
-<li>You can schedule statistics updates or do in the GUI.</li>
-<li>Remember DMVs only store information since last restart, for example you may want to disable indexes first rather than delete.</li>
-<li><p>In SQL 2012 only XML and spatial are excluded from online index rebuilds.</p>
-</li>
-<li><p>SQL can lock   -RID, KEY, PAGE, EXTENT, HEAP or B-TREE, TABLE, FILE, APPLCIATION, METADATA, ALLOCATION UNIT, DATABASE.</p>
-</li>
-<li>Heaps are bad for concurrency as table locks can occur.</li>
-<li>Lock durations change based on lock mode and isolation level.</li>
-<li>Can identify blocking with blocking_Session_id of sys.dm_os_waiting_tasks or sys.dm_exec_requests.</li>
-<li>Can use the read only version of always on replica using the ApplicationIntent=ReadOnly in the connection string.</li>
-<li>Deadlocks raise a 1205 error.</li>
-<li>Trace flag 1222 newer version of deadlock trace. Trace has been deprecated.</li>
-<li>Use extended events to capture deadlock information.</li>
-<li>Use activity monitor to see processes, waiting tasks, data file I/O and recent expensive queries.</li>
-<li>sys.dm_os_wait_stats DMV to determine waits.</li>
-<li>Remember SQL server has a load of built in reports.</li>
-<li>Blocked_process column of system_health extended events also shows where blocking is occuring.</li>
+<li>SQL Agent setting configured through SQL Server configuration manager.</li>
+<li>For multi server job processing Agent service account needs to be in the TargetServerRole in msdb.</li>
+<li>Restart agent to apply config changes.</li>
+<li>SQL Agent Mail - Right click agent &gt; click alerts &gt; enable mail profile tick &gt; select DB mail &gt; restart agent service.</li>
+<li>SQL Agent Alert - Right-click alerts under agent &gt; enter details in general page e.g. alert name, counter, value, condition for alert &gt; Response tab is kicking off job etc &gt; Options - can e-mail, pager or net send message.</li>
+<li>You can specify event for specific error number, severity and error contains message text.</li>
+<li>You can configure jobs on a schedule, or when sql starts, or when CPU falls below idle threshold.  </li>
+<li>Operator - right-click operators under sql agent node &gt; new operator &gt; name and address of operator.</li>
+<li>Multi Server jobs - right click agent &gt; choose multi server administration &gt; make this a master &gt; master server operator information &gt; configure target servers &gt; master server login credentials create a new login.</li>
+<li>Target servers report to master servers.</li>
 </ul>
-<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Create Columnstore Index</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> NONCLUSTERED COLUMNSTORE <span class="keyword">INDEX</span> IX_CS_TableName</span><br><span class="line">  <span class="keyword">ON</span> [SchemaName].[TableName]</span><br><span class="line">  (Col1, Col2, Col3, Col4);</span><br></pre></td></tr></table></figure></p>
-<p><strong>Check to see if Stats are Auto Updated</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> OBJECT_NAME(object_id), <span class="keyword">name</span>, auto_created</span><br><span class="line"><span class="keyword">FROM</span> sys.Stats</span><br><span class="line"><span class="keyword">WHERE</span> auto_created = <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>Create NonClustered Index</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> NONCLUSTERED  <span class="keyword">INDEX</span> IX_TableName</span><br><span class="line">  <span class="keyword">ON</span> [SchemaName].[TableName]</span><br><span class="line">  (Col1, Col2, Col3, Col4);</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Clustered Index (With Compression)</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> CLUSTERED  <span class="keyword">INDEX</span> IX_PartTabCol1</span><br><span class="line">  <span class="keyword">ON</span> [SchemaName].[TableName]</span><br><span class="line">  (Col1)</span><br><span class="line">  <span class="keyword">WITH</span> (DATA_COMPRESSION = PAGE <span class="keyword">ON</span> <span class="keyword">PARTITIONS</span>(<span class="number">1</span>)</span><br><span class="line">, DATA_COMPRESSION = <span class="keyword">ROW</span> <span class="keyword">ON</span> <span class="keyword">PARTITIONS</span>(<span class="number">2</span> <span class="keyword">TO</span> <span class="number">4</span>));</span><br></pre></td></tr></table></figure></p>
-<p><strong>ALTER INDEX FILLFACTOR</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">INDEX</span> ALL <span class="keyword">ON</span> [SchemaName].[TableName] <span class="keyword">REBUILD</span></span><br><span class="line"><span class="keyword">WITH</span> (FILLFACTOR = <span class="number">80</span>);</span><br></pre></td></tr></table></figure></p>
-<p><strong>Examples of Statistics Updates</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> FULLSCAN;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> FULLSCAN, <span class="keyword">INDEX</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> FULLSCAN, <span class="keyword">COLUMNS</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> <span class="keyword">SAMPLE</span> <span class="number">1000</span> <span class="keyword">ROWS</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> <span class="number">80</span> <span class="keyword">PERCENT</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Index DMVs</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_columns;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_details;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_groups;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_group_stats;</span><br></pre></td></tr></table></figure></p>
-<p><strong>SQL Snapshot Isolation</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [DatabaseName]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [DatabaseName] <span class="keyword">SET</span> ALLOW_SNAPSHOT_ISOLATION <span class="keyword">ON</span></span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">TRANSACTION</span> <span class="keyword">ISOLATION</span> <span class="keyword">LEVEL</span> <span class="keyword">SNAPSHOT</span>;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
-<p><strong>Determine Transaction Isolation Level</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [DatabaseName]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line">DBCC USEROPTIONS;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
-<p><strong>Clear Current Wait Stats</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [DatabaseName]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line">DBCC SQLPERF(<span class="string">'sys.dm_os_Wait_stats'</span>,<span class="keyword">CLEAR</span>);</span><br></pre></td></tr></table></figure></p>
-<p><strong>Kill a process using SPID</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">KILL</span> <span class="number">100</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Kill a process with Time to End</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">KILL</span> <span class="number">100</span> <span class="keyword">WITH</span> STATUSONLY;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>You cannot backup offline data.</li>
+<li>Altering a database to add a file during a backup will not complete until after backup completes.</li>
+<li>Resource governor could be used to limit CPU during compressed backup operation.</li>
+<li>System databases SIMPLE recovery by default.</li>
+<li>Backup master and msdb regularly. Model only when change it. Tempdb always regenerated so no need to backup.</li>
+<li>Replication - publisher - backup master, msdb and publication databases.</li>
+<li>Replication - Distributor - backup master, msdb and distribution databases.</li>
+<li>Replication - Subscriber - backup master, msdb and subscription databases.</li>
+<li>Can only backup primary with mirroring and cannot use BACKUP LOG WITH NORECOVERY.</li>
+<li>AlwaysOn backup options - Prefer Secondary (default, primary still possible), secondary only, primary, any replica (has preference settings).</li>
+<li>Can change target recovery (Checkpoint) time at instance in server properties (Database settings) or using sp_configure.</li>
+<li>Backups can go to local volumes, network shares, compatible tapes.</li>
+<li>Add media set SSMS - Server Objects Node &gt; New Backup Device &gt; Provide device name (or path)</li>
+<li>Perform backup - SSMS &gt; right-click Database &gt; Tasks &gt; Back Up &gt; Name backup set &gt; existing backup device or create &gt; backup to new or existing media set &gt; option to checksum &gt; option to compress.</li>
+<li><p>You can see backup events in log file history.</p>
+</li>
+<li><p>Restore - SSMS - perform tail log backup (checkbox in backup options) &gt; Right-click db to restore &gt; if backups were done in SSMS or maintenance plan will auto populate to get to most recent &gt; You can click timeline button to get to a point in time &gt; RECOVERY, NORECOVERY or STANDBY &gt;  </p>
+</li>
+<li>Remember take tail-log backup before a restore of a restore from full backup.</li>
+<li>File Restore - tail-log backup if possible otherwise complete restore &gt; restore most recent backup that includes file &gt; restore differential backups &gt; restore transaction logs in sequence</li>
+<li>You can perform online secondary filegroup restores as long as primary is online.  </li>
+<li>Page Restores - Right-click db &gt; tasks &gt; restore &gt; check database pages to find corrupt &gt; Ok to restore those that are corrupt.</li>
+<li>Can only restore database with TDE when have certificate and private key. Make sure include both of these in backup strategy for TDE databases. Once restored if certificate not present need to restore this too.</li>
+<li>When restore databases involved in replication you must restore master and msdb on instance too.</li>
+</ul>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>SQL Agent Scripts</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sp_add_job <span class="comment">--creates job</span></span><br><span class="line">sp_add_jobstep <span class="comment">--creates job step</span></span><br><span class="line">sp_add_schedule <span class="comment">--creates schedule</span></span><br><span class="line">sp_attach_schedule <span class="comment">--attaches schedule to existing job</span></span><br><span class="line">sp_add_jobserver <span class="comment">--Adds job to server</span></span><br><span class="line">sp_msx_enlist <span class="comment">--execute on target server to enlist target server in master server</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Enable Instance Backup Compression</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EXEC sys.sp_configure [<span class="keyword">backup</span> compression <span class="keyword">default</span>],<span class="number">1</span>;</span><br><span class="line">GO</span><br><span class="line">RECONFIGURE WITH OVERRIDE;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Alter Availability Group Backup Settings</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">AVAILABILITY</span> <span class="keyword">GROUP</span> [AG_NAME] <span class="keyword">SET</span> ( AUTOMATED_BACUP_PREFERENCE = SEONDARY_ONLY);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Alter Checkpoint Time at Database Level</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [DBName] <span class="keyword">SET</span> TARGET_RECOVERY_TIME = <span class="number">1</span>; <span class="comment">--in minutes</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Add Backup Device</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXEC sp_addumpdevice 'disk', 'BackupName','c:\\<span class="keyword">backup</span>\\backupname.bak<span class="string">';</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Full Backup</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BACKUP</span> <span class="keyword">DATABASE</span> [DBName] <span class="keyword">to</span> [BackupName]; <span class="comment">--device already exists</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Differential Backup</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BACKUP</span> <span class="keyword">DATABASE</span> [DBName] <span class="keyword">to</span> [BackupName] <span class="keyword">WITH</span> DIFFERENTIAL; <span class="comment">--device already exists</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Log Backup</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BACKUP</span> <span class="keyword">LOG</span> [DBName] <span class="keyword">to</span> [BackupName] <span class="keyword">WITH</span> DIFFERENTIAL; <span class="comment">--device already exists</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>DMV Backup History</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> msdb.dbo.backupset;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Restore Database Pages</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RESTORE</span> <span class="keyword">DATABASE</span> [DBNAME] PAGE=<span class="string">'2:42, 2:81'</span> <span class="keyword">FROM</span> FileBackupName <span class="keyword">WITH</span> NORECOVERY; <span class="comment">--restores pages</span></span><br><span class="line"><span class="keyword">RESTORE</span> <span class="keyword">LOG</span> DBName <span class="keyword">FROM</span> log_backup1 <span class="keyword">WITH</span> NORECOVERY; <span class="comment">--restores most recent log</span></span><br><span class="line"><span class="keyword">BACKUP</span> <span class="keyword">LOG</span> DBName <span class="keyword">TO</span> log_backup_new <span class="comment">--takes another log backup</span></span><br><span class="line"><span class="keyword">RESTORE</span> <span class="keyword">LOG</span> <span class="keyword">FROM</span> log_backup_new <span class="keyword">WITH</span> <span class="keyword">RECOVERY</span>; <span class="comment">--restores log backup just taken and back online</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Automatic Page Repair DMVs</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_hadr_auto_page_repair; <span class="comment">--for AlwaysOn Availability Groups</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_mirroring_auto_page_repair; <span class="comment">--for mirroring</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Automatic Page Repair DMVs</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_hadr_auto_page_repair; <span class="comment">--for AlwaysOn Availability Groups</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_mirroring_auto_page_repair; <span class="comment">--for mirroring</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Restore Master Database</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RESTORE</span> <span class="keyword">DATABASE</span> <span class="keyword">master</span> <span class="keyword">FROM</span> BackupDevice <span class="keyword">WITH</span> <span class="keyword">REPLACE</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Rebuild System Databases</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setup /Q /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER</span><br></pre></td></tr></table></figure></p>
+<p><strong>Check Database Properties</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> databasepropertyex(<span class="string">'databasename'</span>,<span class="string">'Status'</span>); <span class="comment">--Whether ONLINE, OFFLINE, RESTORING, RECOVERING, SUSPECT, EMERGENCY</span></span><br><span class="line"><span class="keyword">SELECT</span> databasepropertyex(<span class="string">'databasename'</span>,<span class="string">'UserAccess'</span>); <span class="comment">--SINGLE_USER, RESTRICTED_USER, MULTI_USER</span></span><br><span class="line"><span class="keyword">SELECT</span> databasepropertyex(<span class="string">'databasename'</span>,<span class="string">'Updateability'</span>); <span class="comment">--READ_WRITE, READ_ONLY</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/" data-id="ciwt7m7n3001oewkaexy3x0cf" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/" data-id="ciwt8vapk001iioka39pvoxza" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exam-70462/">Exam 70462</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a></li></ul>
@@ -185,7 +208,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -196,6 +219,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/12/Passing-the-70462-Exam-and-Lessons-Learned/">Passing the 70462 Exam and Lessons Learned</a>
+          </li>
         
           <li>
             <a href="/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/">SQL 2012 Admin Exam 12 SQL Agent Backup and Restore</a>
@@ -213,10 +240,6 @@
             <a href="/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/">SQL 2012 Admin Exam 09 Clustering and AlwaysOn</a>
           </li>
         
-          <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-08-Mirroring-and-Replication/">SQL 2012 Admin Exam 08 Mirroring and Replication</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -226,7 +249,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -236,7 +259,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -255,7 +278,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 

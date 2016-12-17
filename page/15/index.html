@@ -68,14 +68,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-AzureSQLPaaS" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Github404ErrorCNAME" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/09/AzureSQLPaaS/" class="article-date">
-  <time datetime="2016-09-05T19:41:51.000Z" itemprop="datePublished">2016-09-05</time>
+    <a href="/2016/09/Github404ErrorCNAME/" class="article-date">
+  <time datetime="2016-09-17T16:28:56.000Z" itemprop="datePublished">2016-09-17</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Azure/">Azure</a>
+    <a class="article-category-link" href="/categories/Git/">Git</a>
   </div>
 
   </div>
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/AzureSQLPaaS/">Azure Create SQL Database</a>
+      <a class="article-title" href="/2016/09/Github404ErrorCNAME/">Github IO Page 404 Error Hexo CNAME</a>
     </h1>
   
 
@@ -94,55 +94,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Azure-Create-SQL-Database"><a href="#Azure-Create-SQL-Database" class="headerlink" title="Azure Create SQL Database"></a>Azure Create SQL Database</h2><p>Please note if you want to go straight to the official azure documentation, please go <a href="https://azure.microsoft.com/en-gb/documentation/articles/sql-database-get-started/" target="_blank" rel="external">here</a>. It’s probably more up to date than this already! :)</p>
-<p>In this quick example we’re going to see how to create a SQL database in Azure using the PaaS offering. This stands for platform as a service and is a complete service provided by Microsoft. It does have it’s limitations but is a great way to spin up a database to play with no concerns over infrastructure or software administration. This is any idea for any new applications you may have or just to have some fun!</p>
+        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Unless you ensure your CNAME file with the name of your domain is in your github io repository root folder, you’ll get a 404 error on the domain of your github io page.<br>When deploying in Hexo this file gets overwritten unless you place it in the source folder of your raw Hexo files.</p>
 <p><strong>What we’re going to do:</strong></p>
 <ul>
-<li>We’re going to make sure you have an <a href="https://azure.microsoft.com/en-gb/" target="_blank" rel="external">azure</a> account</li>
-<li>Create a SQL Database in Azure</li>
-<li>Connect to the SQL Database via SSMS</li>
+<li>Ensure the CNAME file is in the Hexo source folder with domain name</li>
+<li>Ensure this CNAME file is the root folder of the Hexo output</li>
+<li>Ensure this CNAME file is in the root of your github io repository</li>
 </ul>
-<h3 id="Get-yourself-an-Azure-Account"><a href="#Get-yourself-an-Azure-Account" class="headerlink" title="Get yourself an Azure Account"></a>Get yourself an Azure Account</h3><p>Don’t fear the Azure! Get yourself over to <a href="https://azure.microsoft.com/en-gb/" target="_blank" rel="external">azure</a> and set yourself up an account. It will ask for bank details but you get a load of credit free at the start and if you have an MSDN license you have even more. You can also cap your spending limit. See the screenshot below to allay your fears… We’ll revisit this at the end as I would guess this would be the biggest sticking point for most people when approaching Azure. It’s all good…</p>
-<h3 id="Create-a-SQL-Database-in-Azure"><a href="#Create-a-SQL-Database-in-Azure" class="headerlink" title="Create a SQL Database in Azure"></a>Create a SQL Database in Azure</h3><p>When logged in to your Azure portal use search tool and type in SQL Database.</p>
-<img src="/2016/09/AzureSQLPaaS/01_Search.png" alt="Search SQL Database Azure Portal" title="Search SQL Database Azure Portal">
-<p>Pick SQL Database</p>
-<img src="/2016/09/AzureSQLPaaS/PickSQLDatabase.PNG" alt="Pick SQL Database" title="Pick SQL Database">
-<p>then click Create</p>
-<img src="/2016/09/AzureSQLPaaS/02_Create.PNG" alt="Create SQL Database Azure" title="Create SQL Database Azure">
-<p>Enter in the  database details. This includes the database name, setting up a new resource group (if don’t already have one), setting your collation and selecting your developer pricing benefit package. Remember to select the basic pricing tier to save your credits. You’ll also need to configure a logical server for this database to live which you will see in the next section.<br>P.s in the Select source section you can choose a sample database rather than a blank one if you want some ready made data!</p>
-<img src="/2016/09/AzureSQLPaaS/03_ConfigureDatabase.PNG" alt="Configure SQL Database Azure" title="Configure SQL Database Azure">
-<p>Click the Configure Server settings and create a new server (if don’t already have one).</p>
-<img src="/2016/09/AzureSQLPaaS/04_ConfigureServerSettings.PNG" alt="Click Configure Server Settings Azure" title="Click Configure Server Settings Azure">
-<img src="/2016/09/AzureSQLPaaS/05_CreateNewServer.PNG" alt="Create Logical Server Azure" title="Create Logical Server Azure">
-<p>Set the name of your logical server. Create a server admin login and a password, <strong>you’ll need these later to logon to your database so remember this!</strong> Leave the rest as default then just to get along…</p>
-<img src="/2016/09/AzureSQLPaaS/06_ServerDetails.PNG" alt="Configure Logical Server Details" title="Configure Logical Server Details">
-<p>Now that you are back to your configure database page after configuring your server, click create! Have a look in your notifications and you will see it deploying.</p>
-<img src="/2016/09/AzureSQLPaaS/07_DeployStartedUnderNotifications.PNG" alt="Validating Deployment" title="Validating Deployment">
-<p>Once this is done, we can look at connecting in the next step!</p>
-<h3 id="Connect-to-the-SQL-Database-via-SSMS"><a href="#Connect-to-the-SQL-Database-via-SSMS" class="headerlink" title="Connect to the SQL Database via SSMS"></a>Connect to the SQL Database via SSMS</h3><p>In Azure go back to your homepage and pick SQL databases. You will see the list of your SQL databases. Pick the one you want to create a connection to (the one you just made).</p>
-<img src="/2016/09/AzureSQLPaaS/YourSQLDatabases.PNG" alt="Go to your SQL Databases" title="Go to your SQL Databases">
-<p>Now you need to ensure that your local PC is going to be able to connect to your database so click the Set Server Firewall tab at the top in the database settings.</p>
-<img src="/2016/09/AzureSQLPaaS/SetServerFirewall.PNG" alt="Set Firewall" title="Set Firewall">
-<p>Click add client IP.</p>
-<img src="/2016/09/AzureSQLPaaS/AddClientIP.PNG" alt="Add Client IP" title="Add Client IP">
-<p>This will then save your IP address to allow connection.</p>
-
-<p>And finally you will get a success…</p>
-<img src="/2016/09/AzureSQLPaaS/FirewallSuccess.PNG" alt="Firewall Success" title="Firewall Success">
-<p>Now you have set the firewall rules, go back to your database settings and get the full name of your database. This is the one that ends with database.windows.net and you can hover over the end of it and just click copy.</p>
-<img src="/2016/09/AzureSQLPaaS/CopyServerName.PNG" alt="Copy full path of database" title="Copy full path of database">
-<p>Open SSMS and paste in the full path, ensure SQL authentication is chosen and use the admin account and password you created earlier.</p>
-<img src="/2016/09/AzureSQLPaaS/SSMSConnect.PNG" alt="SSMS Connect Dialog" title="SSMS Connect Dialog">
-<p>Hey presto! There’s your database in the cloud!</p>
-<img src="/2016/09/AzureSQLPaaS/SSMSConnected.PNG" alt="SSMS Connected to database in the Cloud" title="SSMS Connected to database in the Cloud">
+<h3 id="CNAME-in-hexo-source-folder"><a href="#CNAME-in-hexo-source-folder" class="headerlink" title="CNAME in hexo source folder"></a>CNAME in hexo source folder</h3><p>First ensure that you place a CNAME file in the source folder of your raw hexo folder with the name of your domain contained in the file. <strong>Note</strong> there is no file extension for the CNAME file.</p>
+<img src="/2016/09/Github404ErrorCNAME/CNAMESourceFolder.PNG" alt="CNAME in Hexo Source Folder" title="CNAME in Hexo Source Folder">
+<h3 id="CNAME-in-hexo-output-root-folder"><a href="#CNAME-in-hexo-output-root-folder" class="headerlink" title="CNAME in hexo output root folder"></a>CNAME in hexo output root folder</h3><p>Then after you have done the Hexo generate command, ensure that you can see the CNAME file in the root of your  output folder.</p>
+<img src="/2016/09/Github404ErrorCNAME/CNAMEOutputFolder.PNG" alt="CNAME in root of Hexo Output Folder" title="CNAME in root of Hexo Output Folder">
+<h3 id="CNAME-in-root-folder-of-Github-IO-Repository"><a href="#CNAME-in-root-folder-of-Github-IO-Repository" class="headerlink" title="CNAME in root folder of Github IO Repository"></a>CNAME in root folder of Github IO Repository</h3><p>Then after you have done the Hexo deploy command (using git) to your github IO repository, ensure the CNAME file is there.</p>
+<img src="/2016/09/Github404ErrorCNAME/CNAMEGitHubIO.PNG" alt="CNAME in root folder of Github IO repo" title="CNAME in root folder of Github IO repo">
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/09/AzureSQLPaaS/" data-id="ciwt7m7kx0001ewkasxvnjvrq" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/09/Github404ErrorCNAME/" data-id="ciwt8vaov000biokand77mqar" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure/">Azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Starting-Up/">Starting Up</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blogging/">Blogging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Source-Control/">Source Control</a></li></ul>
 
     </footer>
   </div>
@@ -154,7 +126,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/14/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/16/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/14/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/16/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -165,6 +137,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/12/Passing-the-70462-Exam-and-Lessons-Learned/">Passing the 70462 Exam and Lessons Learned</a>
+          </li>
         
           <li>
             <a href="/2016/11/SQL-2012-Admin-Exam-12-SQL-Agent-Backup-and-Restore/">SQL 2012 Admin Exam 12 SQL Agent Backup and Restore</a>
@@ -182,10 +158,6 @@
             <a href="/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/">SQL 2012 Admin Exam 09 Clustering and AlwaysOn</a>
           </li>
         
-          <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-08-Mirroring-and-Replication/">SQL 2012 Admin Exam 08 Mirroring and Replication</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -195,7 +167,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -205,7 +177,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -224,7 +196,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
