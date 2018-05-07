@@ -7,14 +7,14 @@
       <title><![CDATA[SQL Server XML]]></title>
       <url>www.datagriff.com/2018/05/SQLServerXML/</url>
       <content type="html"><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ol>
-<li><a href="#1.0-What-is-XML">What is XML? What is its structure? What is well-formed XML?</a></li>
-<li><a href="#2.0-XQuery">Demonstrate some XQuery</a></li>
-<li><a href="#3.0-Generate-some-test-data-for-Dogs-arriving-in-Kennels-in-relational-format">Generate some test data for dogs entering kennels in a table</a></li>
-<li><a href="#4.0-Show-XML-FOR-Option-Functionality">Show XML FOR functionality</a></li>
-<li><a href="#5.0-Create-XML-Schema-using-a-Relational-Table-Structure">Create XML schema from Relational Table</a></li>
-<li><a href="#6.0-Prove-Create-XML-Schema-Works">Shows XML Schema Validation Works</a></li>
-<li><a href="#7.0-Import-Data-from-XML-Files-into-SQL-Table">Import XML into SQL Table using MERGE</a></li>
-<li><a href="#8.0-Turning-rows-into-a-csv-group">Create CSV from Row Data</a></li>
+<li><a href="##1.0-What-is-XML">What is XML? What is its structure? What is well-formed XML?</a></li>
+<li><a href="##2.0-XQuery">Demonstrate some XQuery</a></li>
+<li><a href="##3.0-Generate-some-test-data-for-Dogs-arriving-in-Kennels-in-relational-format">Generate some test data for dogs entering kennels in a table</a></li>
+<li><a href="##4.0-Show-XML-FOR-Option-Functionality">Show XML FOR functionality</a></li>
+<li><a href="##5.0-Create-XML-Schema-using-a-Relational-Table-Structure">Create XML schema from Relational Table</a></li>
+<li><a href="##6.0-Prove-Create-XML-Schema-Works">Shows XML Schema Validation Works</a></li>
+<li><a href="##7.0-Import-Data-from-XML-Files-into-SQL-Table">Import XML into SQL Table using MERGE</a></li>
+<li><a href="##8.0-Turning-rows-into-a-csv-group">Create CSV from Row Data</a></li>
 </ol>
 <h2 id="0-0-Create-Database-and-Schema"><a href="#0-0-Create-Database-and-Schema" class="headerlink" title="0.0 Create Database and Schema"></a>0.0 Create Database and Schema</h2><p>Execute the below on your sql server to create the required database. </p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [<span class="keyword">Master</span>]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> SYS.databases <span class="keyword">WHERE</span> <span class="keyword">name</span> = <span class="string">'XMLDemo'</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> [XMLDemo];</span><br><span class="line"><span class="keyword">END</span> </span><br><span class="line"><span class="keyword">GO</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">USE</span> [XMLDemo]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">DECLARE</span> @<span class="keyword">sql</span> <span class="keyword">NVARCHAR</span>(<span class="number">255</span>) = <span class="string">''</span>;</span><br><span class="line">IF SCHEMA_ID('tools') IS NULL</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SET</span> @<span class="keyword">Sql</span> = <span class="string">'CREATE SCHEMA [import];'</span>;</span><br><span class="line">EXEC sp_executesql @sql;</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
