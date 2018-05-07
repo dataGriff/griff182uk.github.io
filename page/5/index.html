@@ -68,10 +68,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SQL-2012-Admin-Exam-11-Indexes-and-Concurrency" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/" class="article-date">
-  <time datetime="2016-11-12T14:28:01.000Z" itemprop="datePublished">2016-11-12</time>
+    <a href="/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/" class="article-date">
+  <time datetime="2016-11-19T14:07:16.000Z" itemprop="datePublished">2016-11-19</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/">SQL 2012 Admin Exam 09 Clustering and AlwaysOn</a>
+      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/">SQL 2012 Admin Exam 11 Indexes and Concurrency</a>
     </h1>
   
 
@@ -94,99 +94,83 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Two more high availability options with clustering and the new super duper AlwaysOn!</p>
-<p>Right I’m not going to lie to you.. I failed to get the cluster to work and so my AlwaysOn was scuppered as well as it required windows clustering. Unfortunately my exam deadline was tight so I just had to move on. I caught up with AlwaysOn by watching some cbtNuggets online and also looked at how it was setup in work. The only exercises I have failed on gutted! Still here are some notes on clustering and AlwaysOn, not my strongest subjects!</p>
-<h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>
-<li><a href="https://www.youtube.com/watch?v=HXBve36imJg&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=46" target="_blank" rel="external">SQL 2012 Add Cluster User and Logon as a Service Right</a></li>
-<li><a href="https://www.youtube.com/watch?v=LOxo6-m7S3k&amp;t=25s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=47" target="_blank" rel="external">SQL 2012 Advanced Cluster Preparation</a></li>
-<li><a href="https://www.youtube.com/watch?v=LOxo6-m7S3k&amp;t=25s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=47" target="_blank" rel="external">SQL 2012 Create DNS Record for Cluster</a></li>
-<li><a href="https://www.youtube.com/watch?v=1TUpu5Az7BM&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=49" target="_blank" rel="external">SQL 2012 Create ISCSI Targets and Disks</a></li>
-<li><a href="https://www.youtube.com/watch?v=pLZAuKdcIfc&amp;t=4s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=50" target="_blank" rel="external">SQL 2012 Install ISCSI Target</a></li>
-<li><a href="https://www.youtube.com/watch?v=vga9MiV-1fA&amp;t=6s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=51" target="_blank" rel="external">SQL 2012 Initalise Volumes and Create Simple Volumes</a></li>
-<li><a href="https://www.youtube.com/watch?v=79Oq_bGUDe8&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=52" target="_blank" rel="external">SQL 2012 ISCSI Initiator to Target</a></li>
-<li><a href="https://www.youtube.com/watch?v=MG9uJVpeWp8&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=53" target="_blank" rel="external">SQL 2012 Organisational Unit and Firewall Rules</a></li>
-<li><a href="https://www.youtube.com/watch?v=DgZKQ9kRsto&amp;t=5s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=55" target="_blank" rel="external">SQL 2012 AlwaysOn Firewall Rules</a></li>
-</ul>
-<h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
-<li><strong>Clustering</strong> - High availability which stores database files on shared  (e.g. SAN) where if one instance fails another takes over.</li>
-<li><strong>iSCSI Software</strong> - Required when setting up a virtual machine SAN. Configure in administrative tools.</li>
-<li><strong>iSCSI Target</strong> - Computer that will act as the shared storage for virtual machines.</li>
-<li><strong>Logical Unit Number (LUN)</strong> - Need a LUN for quorum information and database files.   </li>
-<li><strong>Stretch Cluster</strong> - Geographically dispersed cluster.   </li>
-<li><strong>Multi-Subnet Failover Clustering</strong> - Each node on different TCP/IP subnet and does not use shared storage.    </li>
-<li><p><strong>Quorum Failure</strong> - Caused by communications failure in cluster or issues with the configuration.  </p>
+        <h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
+<li><strong>B-Tree Structure</strong> - The balanced tree structure is how SQL indexes are architected made up of a root node, intermediate nodes and leaf nodes (Data pages).</li>
+<li><strong>Heap</strong> - Unorganised set of data with no indexes.</li>
+<li><strong>Clustered Index</strong> - Leaf pages contain the actual data and physically ordered by the clustered index key (CIK).</li>
+<li><strong>Clustered Index Key (CIK)</strong> - Row identifier in clustered index and should be unique, narrow and static.</li>
+<li><strong>Uniqueifier</strong> - When clustered key has duplicate rows SQL server adds a 4-byte internal integer to these duplicates.</li>
+<li><strong>Non-Clustered Index</strong> - No data, stores indexes columns and clustering key. Less pages to search through.</li>
+<li><strong>Covering Index</strong> - Non-clustered index with all information required to cover a query by using included columns.</li>
+<li><strong>Filtered Index</strong> - Where clause on the index to filter the rows so B-tree smaller. Can be used in conjunction with sparse columns.</li>
+<li><strong>Primary XML Index</strong> - Builds a nodes table with each element in the document has a row in the nodes table.</li>
+<li><strong>Secondary XML Index</strong> - Path, property and value index types. Must have primary first.</li>
+<li><strong>Spatial Index</strong> - For geography and geometry data types.</li>
+<li><strong>Full-text Index</strong> - For efficient searching of text data, one per table.</li>
+<li><strong>Columnstore Index</strong> - Does not use B-tree, uses column-orientated storage and good for data warehouse.</li>
+<li><strong>Statistics</strong> - Value distribution on SQL objects.</li>
+<li><strong>Cardinality</strong> - Number of rows that exist for given value.</li>
+<li><strong>FILLFACTOR</strong> - How much free space gets left on leaf nodes of index.</li>
+<li><strong>Fragmentation</strong> - Logical ordering based on the key does not match the physical ordering within the data file.</li>
+<li><strong>REORGANISE (index)</strong> - Fragmentation 10% to 30%, always online, requires 8KB space, single threaded only.</li>
+<li><p><strong>REBUILD (index)</strong> - Fragmentation above 30%, long-term locks, can do with ONLINE clause, requires entire copy of index space-wise, can use parallel.</p>
 </li>
-<li><p><strong>AlwaysOn Availability Group</strong> - Collection of user databases called availability databases. Can have up to four read-write secondary replicas and one or more read-only secondary replicas.</p>
+<li><p><strong>Transaction</strong> - Batch of processes whereby either all or none of the processes are committed depending on success of failure of the whole transaction.  </p>
 </li>
-<li><strong>AlwaysOn Availability Databases</strong> - User databases that can fail over together.  </li>
-<li><strong>AlwaysOn Asynchrynous-commit Mode</strong> - Primary does not wait for secondary to commit log. Has minimum transaction latency and good when replicas in geographically dispersed locations.</li>
-<li><strong>AlwaysOn Synchrynous-commit Mode</strong> - Primary waits for secondary to commit log. Has higher transaction latency but minimal data loss.</li>
-<li><strong>Automatic Failover</strong> - The current primary and one secondary must be configured with failover mode set to AUTOMATIC, the secondary must be SYNCHRYNOUS, and there is not data loss.</li>
-<li><strong>Planned Manual Failover</strong> - Initiated by a DBA for example when maintenance needs to occur. One secondary needs to be in SYNCHRONIZED state and primary and replica in Synchrynous-commit mode. Has no data loss.</li>
-<li><strong>Forced Manual Failover</strong> - Possible data. Use when no secondary in SYNCHRONIZED state.</li>
-<li><strong>Failover Availability Group Wizard</strong> - Right-click availability group on secondary server in SSMS and click failover to start this manual failover.</li>
-<li><strong>Readable Secondary Replicas</strong> - Service read-only access. Can be configured Yes, No and read-intent. Yes allows all connections but only for read access but read-intent only allows read connections.</li>
-<li><strong>Availability Group Listener</strong> - Network connectivity endpoint for an availability group. Client connects to listener which routes to the primary replica. One listener per availability group.  </li>
+<li><strong>ACID</strong> - Atomic, consistent, isolation and durability. Transactions help ensure this.</li>
+<li><strong>Multi-Granular Locking</strong> - SQL server locks the minimum resources to achieve its goal.</li>
+<li><strong>Lock Types</strong> - Shared (S), Update (U), Exclusive (X), Intent, Schema, Bulk Update (BU), Key-Range.</li>
+<li><strong>Isolation Level Characteristics</strong> - Dirty read, non-repeatable read, phantom read.  </li>
+<li><strong>ANSI Standard Isolation Levels</strong> - SERIALIZABLE, REPEATABLE READ, READ COMMITTED (DEFAULT), READ UNCOMMITTED.</li>
+<li><strong>Microsoft SQL Server Isolation Level</strong> - READ COMMITTED SNAPSHOT, which requires enabling in database, uses versioning in tempdb. This can limit reader/writer blocking.</li>
+<li><strong>Deadlock Types</strong> - Conversion, writer-writer and reader-reader. Also can have cascading deadlocks.</li>
 </ul>
 <h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ul>
-<li>Clustering on enterprise supports 16 nodes, BI and standard edition supports 2 nodes.</li>
-<li>Windows server failover cluster must work before sql server cluster can.</li>
-<li>Configure failover cluster - Connect each node to shared storage &gt; Fail Over Manager Console &gt; Create a Cluster &gt; Add nodes &gt; Name and IP of cluster &gt; Confirm to create.</li>
-<li>Install SQL Failover Cluster - .Net Framework 3.5.1 Installed &gt; SQL Setup.exe on first node &gt; Advanced Cluster Preparation &gt; Select features for cluster &gt; Instance Properties &gt; Disk Space &gt; Domain Account for Service Account &gt; Install.. Do this on all nodes.</li>
-<li>Complete SQL Cluster - SQL Setup.exe &gt; Advanced Cluster Completion &gt; Instance and SQL Network Name (must be different from any existing instance) &gt; Name cluster resource group &gt; select disk for default drive of databases &gt; IP address for cluster resource &gt; collation &gt; Auth Mode and SA &gt; Install</li>
-<li>You only need to complete the SQL cluster on the node that has control of the hardware.</li>
-<li>Manual Failover - Administrative Tools &gt; Failover Cluster Manager &gt; SQLRG Node &gt; Move to another node &gt; SQLCRG to SQL-X &gt; Verify SQLCRG on SQL-X Node.</li>
-<li>Can use powershell to move from one node to another.</li>
-<li>If failed node is irreparable evict it through failover cluster manager. Fix hardware and then re-add to cluster.</li>
-<li>When creating a new cluster you must be logged in with a domain account! Won’t work otherwise.</li>
-</ul>
-<h3 id="Notes-when-creating-windows-cluster…"><a href="#Notes-when-creating-windows-cluster…" class="headerlink" title="Notes when creating windows cluster…"></a>Notes when creating windows cluster…</h3><ul>
-<li>I had a lot of difficulty with this.</li>
-<li>Ensure get all these <a href="https://technet.microsoft.com/en-us/library/dd573342(v=ws.10" target="_blank" rel="external">firewall rules</a>.aspx) in place. I did them on the DC machine and in the group policy object that goes to all the computers in the network.</li>
-<li>Do some gpupdate /force in command prompt. Do some reboots.</li>
-<li>Remove and re-add the cluster in DNS if need to.</li>
-<li>Don’t forget to reboot machines after Advanced Cluster Preparation!</li>
-<li><p>Sacrifice a lamb.  </p>
+<li>Clustered index good for large % of rows from table, return single row based on clustered index key, or range based data.</li>
+<li>Non-Clustered index good for queries return few rows, can be covered by index. Covering index can be more performant than clustered index as less I/O as less pages as B-tree smaller.</li>
+<li>Filtered indexes good with sparse column to locate non-null rows or when queries require small subset of rows selected often.  </li>
+<li>PATH secondary XML index good for .exit() XQUERY.</li>
+<li>PROPERTY secondary XML index good for search nodes with particular values.</li>
+<li>VALUE secondary XML index good for search descendant nodes for a given PATH.</li>
+<li>AUTO_UPDATE_STATISTICS, AUTO_UPDATE_STATISTICS_ASYNC and AUTO_CREATE_STATISTICS.</li>
+<li>SAMPLED, LIMITED and DETAILED can be passed to sys.dm_db_index_physical_stats.</li>
+<li>sys.dm_db_index_physical_stats shows fragmentation also.</li>
+<li>Fragmentation above 30% rebuild, 10% to 30% reorganise.</li>
+<li>You can schedule statistics updates or do in the GUI.</li>
+<li>Remember DMVs only store information since last restart, for example you may want to disable indexes first rather than delete.</li>
+<li><p>In SQL 2012 only XML and spatial are excluded from online index rebuilds.</p>
 </li>
-<li><p>AlwaysOn only in SQL 2012 enterprise.</p>
+<li><p>SQL can lock   -RID, KEY, PAGE, EXTENT, HEAP or B-TREE, TABLE, FILE, APPLCIATION, METADATA, ALLOCATION UNIT, DATABASE.</p>
 </li>
-<li>AlwaysOn must be on windows server failover cluster and cannot be domain controller.</li>
-<li>Deploying AlwaysOn Availability Groups - Create mirroring endpoint &gt; enable AlwaysOn &gt; Create Availability Group &gt; Create Listener &gt; Create Secondary Replica.</li>
-<li>Can only be one mirroring endpoint per instance. (check sys.database_mirroring_endpoints)</li>
-<li>Can use mirroring endpoints when using windows authentication but must use certificates if using local account.</li>
-<li>Enable AlwaysOn - Configuration Manager &gt; SQL Services node &gt; Go to Instance &gt; Enable AlwaysOn &gt; Restart</li>
-<li>Create Availability Group - SSMS of Primary &gt; Expand AlwaysOn Availability Node &gt; Right-Click Availability Groups &gt; Name AG &gt; Select User Databases &gt; Add Replicas &gt; Specify Network Share &gt; all done except configure listener &gt; complete wizard.</li>
-<li>Add Listener - SSMS &gt; AlwaysOn Node &gt; Expand AG &gt; Right-Click Create Listener &gt; Specify DNS name and TCP Port &gt; Select DHCP or Static IP.</li>
-<li>Max number of replicas is 4, with one primary. So 5 in total.</li>
-<li>Failover occurs per replica.  </li>
-<li>Can only add replicas if primary online, you can connect to new replica, replica can connect to mirroring endpoint of primary, AlwaysOn enabled on replica.</li>
-<li>Only one failover cluster partner can hold replica, failover cluster supports only manual failover</li>
-<li>If using AlwaysOn with failover cluster must use backup and restore to prepare secondary database rather than join to availability group.</li>
-<li>Listener must have unique DNS name.</li>
+<li>Heaps are bad for concurrency as table locks can occur.</li>
+<li>Lock durations change based on lock mode and isolation level.</li>
+<li>Can identify blocking with blocking_Session_id of sys.dm_os_waiting_tasks or sys.dm_exec_requests.</li>
+<li>Can use the read only version of always on replica using the ApplicationIntent=ReadOnly in the connection string.</li>
+<li>Deadlocks raise a 1205 error.</li>
+<li>Trace flag 1222 newer version of deadlock trace. Trace has been deprecated.</li>
+<li>Use extended events to capture deadlock information.</li>
+<li>Use activity monitor to see processes, waiting tasks, data file I/O and recent expensive queries.</li>
+<li>sys.dm_os_wait_stats DMV to determine waits.</li>
+<li>Remember SQL server has a load of built in reports.</li>
+<li>Blocked_process column of system_health extended events also shows where blocking is occuring.</li>
 </ul>
-<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Configure iSCSI Software Target</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">netsh advfirewall firewall add rule name = Microsoft iSCSI Software Target Service-TCP-3260&quot; dir=in action=allow protocol=TCP localport=3260</span><br><span class="line"></span><br><span class="line">netsh advfirewall firewall add rule name = Microsoft iSCSI Software Target Service-TCP-135&quot; dir=in action=allow protocol=TCP localport=135</span><br><span class="line"></span><br><span class="line">netsh advfirewall firewall add rule name = Microsoft iSCSI Software Target Service-UDP-138&quot; dir=in action=allow protocol=UDP localport=138</span><br><span class="line"></span><br><span class="line">netsh advfirewall firewall add rule name = Microsoft iSCSI Software Target Service-TCP-3260&quot; dir=in action=allow program=&quot;&quot;%SYtemRoot%\System32\WinTarget.exe&quot; TCP &quot;&quot;enable=yes</span><br><span class="line"></span><br><span class="line">netsh advfirewall firewall add rule name = Microsoft iSCSI Software Target Service-TCP-3260&quot; dir=in action=allow program=&quot;&quot;%SYtemRoot%\System32\WTStatusProxy.exe&quot; TCP &quot;&quot;enable=yes</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Windows Failover Cluster</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Add-WindowsFeature Failover-Clustering</span><br></pre></td></tr></table></figure></p>
-<p><strong>Move Cluster Nodes</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Move-ClusterGroup SQLCRG SQL-D</span><br></pre></td></tr></table></figure></p>
-<p><strong>Set Primary Database to Full Recovery for Mirroring</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [<span class="keyword">Master</span>];</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [DatabaseName] <span class="keyword">SET</span> <span class="keyword">RECOVERY</span> <span class="keyword">FULL</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Alter Availability Group</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">AVAILABILITY</span> <span class="keyword">GROUP</span> AvailabiltyGroupName MODEIFY REPLICA <span class="keyword">ON</span> <span class="string">'SQLInstanceName\\AlwaysOn'</span></span><br><span class="line">  <span class="keyword">WITH</span> (AVAILABILITY_MODE = SYNCHRYNOUS_COMMIT);</span><br></pre></td></tr></table></figure></p>
-<p><strong>Availability Group Manual Failover</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">AVAILABILITY</span> <span class="keyword">GROUP</span> AvailabiltyGroupName <span class="keyword">FAILOVER</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Availability Group Manual Failover Powershell</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Switch-SqlAvailabilityGroup - Path SQLSERVER:\SQL\SQLInstanceToFailoverToName\AlwaysOn\AvailabilityGroups\AvailabiltyGroupName</span><br></pre></td></tr></table></figure></p>
-<p><strong>Availability Group Manual Failover Forced</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">AVAILABILITY</span> <span class="keyword">GROUP</span> AvailabiltyGroupName FORCE_FAILOVER_ALLOW_DATA_LOSS;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Availability Group Manual Failover Forced Powershell</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Switch-SqlAvailabilityGroup - Path SQLSERVER:\SQL\SQLInstanceToFailoverToName\AlwaysOn\AvailabilityGroups\AvailabiltyGroupName - AllowDataLoss</span><br></pre></td></tr></table></figure></p>
-<p><strong>Availability Group Read Only</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p><strong>Create AlwaysOnEndpoint Powershell</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$endpoint = New-SqlHadrEndpoint AlwaysOnEndpoint -Port 7028 -Path SQLSERVER:\SQL\SQLMACHINENAME\SQLINSTANCENAME</span><br></pre></td></tr></table></figure></p>
-<p><strong>Start AlwaysOnEndpoint Powershell</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-SqlHadrEndpoint -InputObject $endpoint -State &quot;Started&quot;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Enable AlwaysOn Powershell</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enable-SqlAlwaysOn - Path SQLSERVER:\SQL\SQLMACHINENAME\SQLINSTANCENAME</span><br></pre></td></tr></table></figure></p>
-<p><strong>Create Availability Group</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">AVAILABILITY</span> <span class="keyword">GROUP</span> AvailabiltyGroupName  </span><br><span class="line">  <span class="keyword">FOR</span></span><br><span class="line">      <span class="keyword">DATABASE</span> DatabaseName</span><br><span class="line">      REPLICA <span class="keyword">ON</span></span><br><span class="line">      <span class="string">'SQLMachineName1\\Instancename'</span> <span class="keyword">WITH</span></span><br><span class="line">      (</span><br><span class="line">          ENDPOINT_URL = <span class="string">'TCP://SQLMachineName.DomainName.com:7030'</span>,</span><br><span class="line">          AVAILABILITY_MODE = ASYNSCHRYNOUS_COMMIT,</span><br><span class="line">          FAILOVER_MODE = <span class="keyword">MANUAL</span></span><br><span class="line">      ),</span><br><span class="line">        <span class="string">'SQLMachineName2\\Instancename'</span> <span class="keyword">WITH</span></span><br><span class="line">      (</span><br><span class="line">          ENDPOINT_URL = <span class="string">'TCP://SQLMachineName2.DomainName.com:7030'</span>,</span><br><span class="line">          AVAILABILITY_MODE = ASYNSCHRYNOUS_COMMIT,</span><br><span class="line">          FAILOVER_MODE = <span class="keyword">MANUAL</span></span><br><span class="line">      )    </span><br><span class="line"><span class="keyword">GO</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>Availability Group Add Listener</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">AVAILABILITY</span> <span class="keyword">GROUP</span> [AGName]</span><br><span class="line">  <span class="keyword">ADD</span> LISTENER <span class="string">'ListenerName'</span> (<span class="keyword">WITH</span> IP ((<span class="string">'10.0.0.222'</span>,<span class="string">'255.0.0.0'</span>)), PORT=<span class="number">7028</span>);</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
-<p><strong>Availability Group Add Listener Powershell</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">New-SqlAvailabillityGroupListener -Name ListenerName -StaticIP &apos;10.0.0.222&apos;/&apos;255.0.0.0&apos; -Port 7030 -Path SQLSERER:\SQL\SQLMachineName\ALWAYSON\AvailabilityGroups\AGName</span><br></pre></td></tr></table></figure></p>
-<p><strong>Add Secondary Replica</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">AVAILABILITY</span> <span class="keyword">GROUP</span> [AGName] <span class="keyword">JOIN</span>;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
-<p><strong>Add Secondary Replica Powershell</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Join-SqlAvailabilityGroup = Path SERVER:\SQL\SQLMachineName\AlwaysOn -Name &apos;AGName&apos;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Create Columnstore Index</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> NONCLUSTERED COLUMNSTORE <span class="keyword">INDEX</span> IX_CS_TableName</span><br><span class="line">  <span class="keyword">ON</span> [SchemaName].[TableName]</span><br><span class="line">  (Col1, Col2, Col3, Col4);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Check to see if Stats are Auto Updated</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> OBJECT_NAME(object_id), <span class="keyword">name</span>, auto_created</span><br><span class="line"><span class="keyword">FROM</span> sys.Stats</span><br><span class="line"><span class="keyword">WHERE</span> auto_created = <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Create NonClustered Index</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> NONCLUSTERED  <span class="keyword">INDEX</span> IX_TableName</span><br><span class="line">  <span class="keyword">ON</span> [SchemaName].[TableName]</span><br><span class="line">  (Col1, Col2, Col3, Col4);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create Clustered Index (With Compression)</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> CLUSTERED  <span class="keyword">INDEX</span> IX_PartTabCol1</span><br><span class="line">  <span class="keyword">ON</span> [SchemaName].[TableName]</span><br><span class="line">  (Col1)</span><br><span class="line">  <span class="keyword">WITH</span> (DATA_COMPRESSION = PAGE <span class="keyword">ON</span> <span class="keyword">PARTITIONS</span>(<span class="number">1</span>)</span><br><span class="line">, DATA_COMPRESSION = <span class="keyword">ROW</span> <span class="keyword">ON</span> <span class="keyword">PARTITIONS</span>(<span class="number">2</span> <span class="keyword">TO</span> <span class="number">4</span>));</span><br></pre></td></tr></table></figure></p>
+<p><strong>ALTER INDEX FILLFACTOR</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">INDEX</span> ALL <span class="keyword">ON</span> [SchemaName].[TableName] <span class="keyword">REBUILD</span></span><br><span class="line"><span class="keyword">WITH</span> (FILLFACTOR = <span class="number">80</span>);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Examples of Statistics Updates</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> FULLSCAN;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> FULLSCAN, <span class="keyword">INDEX</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> FULLSCAN, <span class="keyword">COLUMNS</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> <span class="keyword">SAMPLE</span> <span class="number">1000</span> <span class="keyword">ROWS</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">STATISTICS</span> schemaname.tablename <span class="keyword">WITH</span> <span class="number">80</span> <span class="keyword">PERCENT</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Index DMVs</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_columns;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_details;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_groups;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_db_missing_index_group_stats;</span><br></pre></td></tr></table></figure></p>
+<p><strong>SQL Snapshot Isolation</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [DatabaseName]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [DatabaseName] <span class="keyword">SET</span> ALLOW_SNAPSHOT_ISOLATION <span class="keyword">ON</span></span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">TRANSACTION</span> <span class="keyword">ISOLATION</span> <span class="keyword">LEVEL</span> <span class="keyword">SNAPSHOT</span>;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Determine Transaction Isolation Level</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [DatabaseName]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line">DBCC USEROPTIONS;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
+<p><strong>Clear Current Wait Stats</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [DatabaseName]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line">DBCC SQLPERF(<span class="string">'sys.dm_os_Wait_stats'</span>,<span class="keyword">CLEAR</span>);</span><br></pre></td></tr></table></figure></p>
+<p><strong>Kill a process using SPID</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">KILL</span> <span class="number">100</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Kill a process with Time to End</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">KILL</span> <span class="number">100</span> <span class="keyword">WITH</span> STATUSONLY;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/" data-id="ciwt8vapc0014iokaa5zsp2nl" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/" data-id="cjgwe3fzf001jw8ka22vokzqc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exam-70462/">Exam 70462</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a></li></ul>
@@ -201,7 +185,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/6/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/6/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -212,6 +196,14 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/05/SQLServerXML/">SQLServerXML</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/BIML-a-Stage-ETL/">BIML a Stage ETL</a>
+          </li>
         
           <li>
             <a href="/2016/12/Passing-the-70462-Exam-and-Lessons-Learned/">Passing the 70462 Exam and Lessons Learned</a>
@@ -225,14 +217,6 @@
             <a href="/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/">SQL 2012 Admin Exam 11 Indexes and Concurrency</a>
           </li>
         
-          <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server/">SQL 2012 Admin Exam 10 Troubleshooting SQL Server</a>
-          </li>
-        
-          <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/">SQL 2012 Admin Exam 09 Clustering and AlwaysOn</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -242,7 +226,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/BIML/">BIML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -252,7 +236,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIML/">BIML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Warehouse/">Data Warehouse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSIS/">SSIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -262,7 +246,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 17.14px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 18.57px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 15.71px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14.29px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 18.57px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 12.86px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 15.71px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.43px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/BIML/" style="font-size: 10px;">BIML</a> <a href="/tags/Blogging/" style="font-size: 17.14px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Data-Warehouse/" style="font-size: 10px;">Data Warehouse</a> <a href="/tags/Exam-70462/" style="font-size: 18.57px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 15.71px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14.29px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 18.57px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/SSIS/" style="font-size: 10px;">SSIS</a> <a href="/tags/Source-Control/" style="font-size: 12.86px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 15.71px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.43px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
     </div>
   </div>
 
@@ -271,7 +255,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -284,7 +268,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 Richard Griffiths<br>
+      &copy; 2018 Richard Griffiths<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

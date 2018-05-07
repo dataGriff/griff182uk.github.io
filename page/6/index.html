@@ -68,10 +68,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-SQL-2012-Admin-Exam-08-Mirroring-and-Replication" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/11/SQL-2012-Admin-Exam-08-Mirroring-and-Replication/" class="article-date">
-  <time datetime="2016-11-12T09:39:37.000Z" itemprop="datePublished">2016-11-12</time>
+    <a href="/2016/11/SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server/" class="article-date">
+  <time datetime="2016-11-19T11:27:23.000Z" itemprop="datePublished">2016-11-19</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-08-Mirroring-and-Replication/">SQL 2012 Admin Exam 08 Mirroring and Replication</a>
+      <a class="article-title" href="/2016/11/SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server/">SQL 2012 Admin Exam 10 Troubleshooting SQL Server</a>
     </h1>
   
 
@@ -94,76 +94,111 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>So we’re going to dip into some high availability options with mirroring and replication. High availability refers to making sure that your databases remain available when the primary fails. Rather handy!</p>
+        <p>Today I’m going to be looking at troubleshooting SQL server for the exam looking at performance monitor, profiler and data collector.</p>
 <h3 id="Video-Exercises"><a href="#Video-Exercises" class="headerlink" title="Video Exercises"></a>Video Exercises</h3><ul>
-<li><a href="https://www.youtube.com/watch?v=xR7dzuI500Q&amp;index=40&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1" target="_blank" rel="external">SQL 2012 Mirroring Firewalls and Certificates</a></li>
-<li><a href="https://www.youtube.com/watch?v=14vihg6GL6s&amp;index=44&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;t=2s" target="_blank" rel="external">SQL 2012 Database Mirroring Preparation</a></li>
-<li><a href="https://www.youtube.com/watch?v=umcvUHq5WJY&amp;index=51&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;t=8s" target="_blank" rel="external">SQL 2012 Initiate Mirroring</a></li>
-<li><a href="https://www.youtube.com/watch?v=zxp0OwtVsKk&amp;index=58&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;t=3s" target="_blank" rel="external">SQL 2012 Replication Preparation</a></li>
-<li><a href="https://www.youtube.com/watch?v=qMJcUbAqWTA&amp;index=64&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;t=2s" target="_blank" rel="external">SQL 2012 Configure Snapshot Replication</a></li>
-<li><a href="https://www.youtube.com/watch?v=Ifv0jZx-HCI&amp;index=67&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;t=2s" target="_blank" rel="external">SQL 2012 Transactional Replication and Monitor</a></li>
+<li><a href="https://www.youtube.com/watch?v=wKkQYYmC82Q&amp;t=4s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=56" target="_blank" rel="external">SQL 2012 Performance Monitor</a></li>
+<li><a href="https://www.youtube.com/watch?v=wKkQYYmC82Q&amp;t=4s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=56" target="_blank" rel="external">SQL 2012 Profiler</a></li>
+<li><a href="https://www.youtube.com/watch?v=-Uq6S7H9vOc&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=58" target="_blank" rel="external">SQL 2012 Profiler Query Trace File</a></li>
+<li><a href="https://www.youtube.com/watch?v=iIFsO0vH6PM&amp;t=3s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=59" target="_blank" rel="external">SQL 2012 DMVs and Activity Monitor</a></li>
+<li><a href="https://www.youtube.com/watch?v=GodD1evwGYQ&amp;t=5s&amp;list=PLA5YLvtN7pNP2t5SXqdyVfxvtla7oUwC1&amp;index=60" target="_blank" rel="external">SQL 2012 Configure Master Data Warehouse</a></li>
 </ul>
 <h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><ul>
-<li><strong>Mirroring</strong> - Principal server has all transactions replicated through transaction logs to a single mirrored database and keeping them in sync.</li>
-<li><strong>Mirroring High-Safety Mode</strong> - Failover can occur without data loss but can have higher transaction latency. (SAFETY OPTION = FULL)</li>
-<li><strong>Mirroring High-Performance Mode</strong> - Data loss can occur but primary doesn’t wait to confirm secondary has received transaction so lower latency. (SAFETY OPTION = OFF). Only enterprise supports this.</li>
-<li><strong>Mirroring Manual Failover</strong> - Often used to perform updates on principal which require a restart.</li>
-<li><strong>Mirroring Automatic Failover</strong> - Requires a witness and occurs when principal cannot be contacted.</li>
-<li><strong>Mirroring Forced Service</strong> - Possible data loss where DBA forces mirror to become principal when principal cannot be contacted.</li>
-<li><strong>sys.database_mirroring</strong> - Catalog view to see operating mode of mirror.</li>
-<li><p><strong>Database Mirroring Monitor</strong> - See state of data being transferred between principal and secondary and connection status of witness. This can be launched under tasks of the principal database.</p>
+<li><strong>Performance Monitor (PerfMon)</strong> - Captures counters from hardware, operating system and applications. A counter object can be monitored using counters, where there can be multiple counters if multiple resources have the same type of counters, each one being a counter instance.</li>
+<li><strong>Data Collector Set</strong> - Reusable sets of data collectors. These can contain performance counters, event trace data and system configuration information like registry key values.</li>
+<li><strong>Key SQL Server PerfMon Metrics</strong> - CPU, Memory, File I/O, Locking, blocking, or deadlocking and Networking.</li>
+<li><strong>Key System PerfMon Metrics</strong> - System processor queue length, network interface output queue length and physical disk Avg. Queue Length.</li>
+<li><p><strong>System Process Queue Length</strong> - Number of system requests waiting for a processor.</p>
 </li>
-<li><p><strong>Replication</strong> - Replicates objects and data between databases using a publisher, articles, publications, a distributor, a subscriber and an agent.</p>
+<li><p><strong>SQL Server Profiler</strong> - Provides a GUI for SQL Trace activity going on in SQL database engine, incurs overhead which can be significant.</p>
 </li>
-<li><strong>Snapshot Replication</strong> - Complete refreshes of data. Good when infrequent changes, small changes over short period. Requires a snapshot folder that publisher can write to and subscriber can read from.  (max 32,767 articles, 1000 columns).</li>
-<li><strong>Snapshot Agent</strong> - Uses bcp to create snapshot.</li>
-<li><strong>Transactional Replication</strong> - Incremental updates keeping subscriber and publisher in sync as much as possible. Can actually publish from an Oracle database. Changes must be applied in same order as at publisher.  (max 32,767 articles, 1000 columns).</li>
-<li><strong>Peer-to-Peer Replication</strong> - Peer nodes reads and writes to other nodes. Requires partitioning of data and conflicts are not resolved. You cannot filter, each instance requires own distribution database and must be enterprise.</li>
-<li><strong>Merge Replication</strong> - Good for applications where conflicts might occur which need resolving like mobile applications. Uses triggers to track changes and publisher and subscriber exchange rows to resolve. Subscriber can be offline then push back. Non-SQL nodes may be involved. Does not have to be transactionally consistent. A conflict resolution priority logic gets configured. (max 256 articles, 246 columns).</li>
-<li><strong>Replication Monitor</strong> - Ummm… Enables you to monitor replication! Can add publishers, configure alerts.<ul>
-<li><strong>NOT FOR REPLICATION</strong> - Clause allows you to deal with constraints like foreign keys, triggers, identity columns for inserts, updates and deletes in replication.</li>
-</ul>
+<li><strong>SQL Profiler Category</strong> - Related event classes.</li>
+<li><strong>SQL Profiler Event</strong> - Action that occurs in SQL server defined by attributes.</li>
+<li><strong>SQL Profiler Commonly Used Event Groups</strong> - Locks, performance, security audit, Stored Procedures and TSQL.</li>
+<li><strong>SQL Trace</strong> - Uses system stored procedures to creates traces in SQL database engine. More lightweight than profiler.</li>
+<li><p><strong>Default Trace</strong> - This runs on SQL server start and has the trace ID of 1. Captures key events and can be disabled using sp_configure. Helps DBAs with key issues.</p>
 </li>
-<li><strong>Heterogenous Data</strong> - Only snapshot and transactional replication for this. Oracle can publish to SQL Server 2012 and SQL Server 2012 to Oracle. Cannot subscribe to IBM DB2 publication butt can publish.</li>
+<li><p><strong>Dynamic Management Objects (DMO)</strong> - Dynamic management views (DMVs) and dynamic management functions (DMFs) to monitor SQL server.</p>
+</li>
+<li><strong>Activity Monitor</strong> - Available through SSMS and can identify what is currently happening on the server.</li>
+<li><strong>Server Process ID (SPID)</strong> - Unique id for tasks occurring in database engine.</li>
+<li><strong>sys.dm_exec Objects</strong> - Connections, sessions, requests and executions.</li>
+<li><strong>sys.dm_os Objects</strong> - Operating system info.</li>
+<li><strong>sys.dm_tran Objects</strong> - Transaction management.</li>
+<li><strong>sys.dm_io Objects</strong> - I/O processes.</li>
+<li><p><strong>sys.dm_db Objects</strong> - Database scoped information.</p>
+</li>
+<li><p><strong>Data Collector</strong> - One central point to collect information about SQL server. Can collect from DMVs, DMFs, or metrics of entire server.</p>
+</li>
+<li><strong>Management Data Warehouse (MDW)</strong> - Storage area for data collector.</li>
+<li><strong>MDW Roles</strong> - mdw_admin, mdw_writer, mdw_reader.</li>
+<li><strong>Data Collector Roles</strong> -  dc_admin, dc_operator, dc_proxy.</li>
+<li><strong>Server Activity Report</strong> - Waits, locks, latches and memory from DMVs. Collected Every 15 minutes, kept for 14 days.</li>
+<li><strong>Disk Usage Report</strong> -  Disk usage. Every 6 hours, kept for 2 years. Good for capacity planning.</li>
+<li><p><strong>Query Statistics Report</strong> -   Expensive queries. Collected Every 15 minutes via SSIS as so big, kept for 14 days.</p>
+</li>
+<li><p><strong>PhysicalDisk: % Disk Time</strong> - Time disk is busy with reading and writing.</p>
+</li>
+<li><strong>PhysicalDisk: Current Disk Queue Length</strong> - Requests waiting for system access (1.5 to 2 spindles on disk).</li>
+<li><strong>PhysicalDisk: Avg. Disk Queue Length</strong> - Average requests waiting for system access.</li>
+<li><strong>Memory: Page Faults/sec</strong> - Make sure disk issues not caused by paging.</li>
+<li><strong>SQL Server: Buffer Manager: Page read/sec</strong> - Isolate I/O created by SQL Server. Writing pages to disk.</li>
+<li><strong>SQL Server: Buffer Manager: Page writes/sec</strong> -  Isolate I/O created by SQL Server. Reading pages from disk.</li>
+<li><strong>Memory: Available Bytes</strong> - Bytes available for processes.</li>
+<li><strong>Memory: Pages/sec</strong> -</li>
+<li><strong>Process: Working Set</strong> - Isolate SQL memory usage. Amount of memory process uses.</li>
+<li><strong>SQL Server: Buffer Manager: Buffer Cache Hit Ratio</strong> - Isolate SQL memory usage. Application specific. 90% or more best. Add RAM until there.</li>
+<li><strong>SQL Server: Buffer Manager: Total Pages</strong> - Isolate SQL memory usage.</li>
+<li><strong>SQL Server: Buffer Manager: Total Server Memory (KB)</strong> - Isolate SQL memory usage. If this consistently higher than server memory, add more RAM.</li>
+<li><strong>Processor: % Privileged Time</strong> - CPU time on execution such as processing SQL server I/O requests. If this high may need better disk subsystem.</li>
+<li><strong>Processor: % User Time</strong> - Time spent on user processors such as SQL server.</li>
+<li><strong>Processor: % Processor Queue Length</strong> - Threads waiting for processor time. May need faster or more processors if this consistently high.</li>
 </ul>
 <h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ul>
-<li>Mirroring to be deprecated.</li>
-<li>Automatic failover is possible with mirroring with a witness instance.</li>
-<li>Mirroring can’t have FILESTREAM, distributed transactions, system databases, can’t rename.</li>
-<li>Mirroring must have FULL recovery and must be started with a restore of database with NO RECOVERY.</li>
-<li>Mirroring requires traffic on port 7024.</li>
-<li>Mirroring requires an appropriate login on primary, secondary and witness. If it’s a service account from primary then this will be needed on secondary etc.</li>
-<li>Mirroring steps - Restore with No Recovery &gt; Necessary Logins &gt; Right-click primary &gt; Task and mirror &gt; Security Wizard &gt; Select and configure Witness &gt; Setup listener port &gt; use login that has CREATE ENDPOINT permissions for a secondary server &gt; Same for witness &gt; Confirm service accounts for each instance of Principal, secondary and witness  </li>
-<li>If not configured with  domain account must use certificate authentication for mirroring.</li>
-<li>Can only do certificate configured login mirroring using T-SQL not through GUI.  </li>
-<li>You can disable automatic failover by changing to high performance (asynchronous) or high safety without failover (asynchronous).</li>
-<li>Mirror upgrade - High safety no auto failover &gt; full backup principal &gt; DBCC CHECKDB &gt; Upgrade mirror &gt; Manual failover &gt; upgrade witness &gt; Resume mirror &gt; switch back to high safety with failover &gt; upgrade new mirror instance.</li>
-<li><p>Witness and principal service accounts require access to secondary so set these logins up there.</p>
+<li>Minimise the number of counters with PerfMon.</li>
+<li>Run &gt; PerfMon. To start performance monitor. Then &gt; Add counters.</li>
+<li><p>Data collection sets can be scheduled.</p>
 </li>
-<li><p>Replication must be installed.</p>
+<li><p>SQL profiler being deprecated, use extended events instead.</p>
 </li>
-<li>Snapshot replication - Expand publisher replication node &gt; choose local as distributor &gt; configure SQL agent service &gt; specify network share &gt; choose database to publish &gt; choose snapshot replication &gt; choose articles (tables, procedures etc) &gt; option to filter data &gt; create snapshot immediately &gt; choose snapshot agent account &gt; can choose to script publication &gt; name publication.</li>
-<li>Configure subscription - Right click Replication\Local Subscriptions &gt; Select Publisher &gt; Run agent as subscriber &gt; New database as subscriber &gt; Select distributor &gt; Run continuously for schedule &gt; Initialise immediately &gt; Create subscription</li>
-<li>Transactional replication - Expand publisher replication node &gt; choose database to publish &gt; choose transactional replication &gt; choose articles (tables, procedures etc) &gt; option to filter data &gt; create snapshot immediately &gt; choose snapshot agent account and log reader agent &gt; can choose to script publication &gt; create publication.</li>
-<li>Peer-to-Peer replication - Expand publisher replication node &gt; choose local instance as distributor &gt; sql agent start automatically &gt; configure network share &gt; choose database or objects &gt; choose peer-to-peer replication &gt; choose articles &gt; specify log reader agent &gt; name and create publication.</li>
-<li>Merge replication - Expand publisher replication node &gt; choose local instance as distributor &gt; configure network share &gt; choose database &gt; choose merge replication &gt; choose SQL 2008 or later &gt; choose articles &gt; don’t filter rows &gt; specify snapshot agent &gt; provide credentials for agent &gt; name and create publication.</li>
-<li>Snapshot replication default every hour for creation schedule.</li>
+<li>With SQL profiler you can filter and create templates.</li>
+<li>You can save SQL profiler trace to a file (.trc). You can save trace quick and examine so not to take up resources with profiler.</li>
+<li>It is recommended that traces are saved to another server, not the one being monitored.</li>
+<li>Common trace events - SQL:BatchComplete, Deadlock Graph, Audit Login.</li>
+<li><p>You can import traces into a SQL table to view or view through profiler.</p>
+</li>
+<li><p>Database DMOs require VIEW DATABASE STATE permissions and server DMOs require VIEW SERVER STATE permissions.</p>
+</li>
+<li>DMOs get cleared if system is restarted.</li>
+<li>Activity monitor has recent expensive queries section.</li>
+<li><p>dm_exec_requests view - looks fairly analagous to activity monitor main view and contains spid.</p>
+</li>
+<li><p>You can report on information collected by data collector, right click data collector, management data warehouse and reports.</p>
+</li>
+<li>Low volume data sent straight to MDW and high volume is cached first and sent via SSIS.</li>
+<li>Configure central management data warehouse &gt; Configure each server to send required data.</li>
+<li>Data collector under management node.</li>
+<li>300MB per day in typical configuration.</li>
+<li>Data collector config and logs written to msdb.</li>
+<li><p>Logging can be set by sp_syscollector_update_collection_set system procedure.</p>
+</li>
+<li><p>I/O - operating system coordinates SQL requests.</p>
+</li>
+<li>If disk time counters are high consider faster disk drives, move files to another server, add disks to RAID.</li>
+<li>Database engine tuning advisor when reads and writes causing issues, better indexes and coverage may be needed.</li>
+<li>More RAM if memory issues.</li>
+<li>Try and optimise application before spend on new hardware.</li>
 </ul>
-<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Set Primary Database to Full Recovery for Mirroring</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [<span class="keyword">Master</span>];</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [DatabaseName] <span class="keyword">SET</span> <span class="keyword">RECOVERY</span> <span class="keyword">FULL</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Initiate Mirroring Backup and Restore Pattern</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Backup Principal</span></span><br><span class="line"><span class="keyword">BACKUP</span> <span class="keyword">DATABASE</span> [DatabaseName] <span class="keyword">TO</span> DISK N<span class="string">'FilePath\\DatabaseName.bak'</span> <span class="keyword">WITH</span> <span class="keyword">FORMAT</span>;</span><br><span class="line">GO</span><br><span class="line"><span class="comment">--Restore to secondary</span></span><br><span class="line"><span class="keyword">RESTORE</span> <span class="keyword">DATABASE</span> [DatabaseName]</span><br><span class="line">  <span class="keyword">FROM</span> DISK =  <span class="string">'FilePath\\DatabaseName.bak'</span></span><br><span class="line">  <span class="keyword">WITH</span> NORECOVERY</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="comment">--Back On Principal</span></span><br><span class="line"><span class="keyword">BACKUP</span> <span class="keyword">LOG</span> [DatabaseName]</span><br><span class="line">  <span class="keyword">TO</span> DISK<span class="string">'FilePath\\DatabaseName.trn'</span></span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="comment">--Restore to secondary</span></span><br><span class="line"><span class="keyword">RESTORE</span> <span class="keyword">LOG</span> [DatabaseName]</span><br><span class="line">  <span class="keyword">FROM</span> DISK<span class="string">'FilePath\\DatabaseName.trn'</span></span><br><span class="line">  <span class="keyword">WITH</span> <span class="keyword">FILE</span>=<span class="number">1</span>, NORECOVERY</span><br><span class="line"><span class="keyword">GO</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>Configure Witness Endpoint from Principal</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [<span class="keyword">Master</span>];</span><br><span class="line"><span class="comment">--On principal</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [DatabaseName]</span><br><span class="line">  <span class="keyword">SET</span> WITNESS = <span class="string">'CTP//WITNESINSTANCENAME:7024'</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Prepare for Mirroring Pattern</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">MASTER</span> <span class="keyword">KEY</span> ENCRYPTION <span class="keyword">BY</span> <span class="keyword">PASSWORD</span> = <span class="string">'P@$$w0rd'</span>;</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> CERTIFICATE SQL_A_CERT <span class="keyword">WITH</span> SUBJECT = <span class="string">'SQL A Certificate'</span>;</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> ENDPOINT endpoint_mirroring  </span><br><span class="line">    STATE = STARTED  </span><br><span class="line">    <span class="keyword">AS</span> TCP ( LISTENER_PORT = <span class="number">7024</span>,</span><br><span class="line">	LISTENER_IP=ALL )  </span><br><span class="line">    <span class="keyword">FOR</span> DATABASE_MIRRORING (  </span><br><span class="line">       <span class="keyword">AUTHENTICATION</span> = CERTIFICATE SQL_A_CERT,</span><br><span class="line">	   	<span class="keyword">ROLE</span> = ALL</span><br><span class="line">       );  </span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">BACKUP</span> CERTIFICATE SQL_A_CERT</span><br><span class="line"><span class="keyword">TO</span> <span class="keyword">FILE</span> = <span class="string">'c:\\backup\\SQL_A_CERT.cer'</span></span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">PRIVATE</span> <span class="keyword">KEY</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">FILE</span>=<span class="string">'SQL_A_CERT'</span>,</span><br><span class="line">    ENCRYPTION <span class="keyword">BY</span> <span class="keyword">PASSWORD</span> = <span class="string">'P@$$w0rd'</span></span><br><span class="line"></span><br><span class="line">);</span><br><span class="line">GO</span><br></pre></td></tr></table></figure></p>
-<p><strong>Start Mirroring Pattern</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">master</span>;</span><br><span class="line"><span class="keyword">CREATE</span> LOGIN SQL_B_LOGIN <span class="keyword">WITH</span> <span class="keyword">PASSWORD</span> = <span class="string">'P@$$w0rd'</span>;</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> SQL_B_USER <span class="keyword">FOR</span> LOGIN SQL_B_LOGIN;</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> CERTIFICATE SQL_B_CERT</span><br><span class="line">AUTHORIZATION SQL_B_USER</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">FILE</span> = <span class="string">'c:\\backup\\SQL_B_CERT - Copy.cer'</span>;</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">CONNECT</span> <span class="keyword">ON</span> ENDPOINT:: Endpoint_Mirroring <span class="keyword">TO</span> [SQL_B_Login];</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> AdventureMirror</span><br><span class="line">	<span class="keyword">SET</span> PARTNER = <span class="string">'TCP://sqlb.contoso.com:7024'</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Mirror Manual Failover</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [<span class="keyword">Master</span>];</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [DatabaseName] <span class="keyword">SET</span> PARTNER <span class="keyword">FAILOVER</span>;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Mirror DMVs</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mirroring_safety_level_desc;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mirroring_witness_name;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mirroring_witness_state_desc;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Monitor Mirroring Stored Procedures</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sp_dbmmonitoraddmonitoring</span><br><span class="line">sp_dbmmonitordropmonitoring</span><br><span class="line">sp_dbmmonitorchangemonitoring</span><br><span class="line">sp_dbmmonitorresults</span><br></pre></td></tr></table></figure></p>
-<p><strong>Change mirroring to Synchrynous (high-safety)</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [<span class="keyword">master</span>]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [AdventureMirror] <span class="keyword">SET</span> SAFETY <span class="keyword">FULL</span></span><br><span class="line"><span class="keyword">GO</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>Change mirroring to Aynchrynous (high-performance)</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [<span class="keyword">master</span>]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> [AdventureMirror] <span class="keyword">SET</span> SAFETY <span class="keyword">OFF</span></span><br><span class="line"><span class="keyword">GO</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><strong>Import SQL Trace File from Profiler Output</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">IF OBJECT_ID('tempdb.. ##BaseLine') IS NOT NULL  </span><br><span class="line">DROP TABLE  ##BaseLine;</span><br><span class="line"></span><br><span class="line">SELECT * INTO ##BaseLine</span><br><span class="line">FROM fn_trace_gettable('C:\\temp\\70462.trc',default)</span><br><span class="line"></span><br><span class="line">SELECT * FROM ##BaseLine</span><br><span class="line">ORDER BY Duration DESC;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Wait Stats DMV</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> wait_type, wait_time_ms</span><br><span class="line"><span class="keyword">FROM</span> sys.dm_os_wait_stats;</span><br></pre></td></tr></table></figure></p>
+<p><strong>“Activity Monitor” DMV</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sys.dm_exec_requests;</span><br></pre></td></tr></table></figure></p>
+<p><strong>DMV Combined to show tasks waiting over certain time</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> s.original_login_name, s.program_name, t.wait_type, t.wait_duration_ms</span><br><span class="line">  <span class="keyword">FROM</span> sys.dm_os_waiting_tasks t</span><br><span class="line">  <span class="keyword">JOIN</span> sys.dm_exec_sessions s</span><br><span class="line">  <span class="keyword">ON</span> t.session_id = s.session_id</span><br><span class="line">    <span class="keyword">WHERE</span> s.is_user_process = <span class="number">1</span></span><br><span class="line">    <span class="keyword">AND</span> t.wait_Duration_ms &gt; <span class="number">1000</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>DMV Missing Indexes of Recent Executions</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span></span><br><span class="line">(<span class="keyword">SELECT</span></span><br><span class="line">user_seeks * avg_total_user_cost * (avg_user_impact * <span class="number">0.01</span>) <span class="keyword">AS</span> index_advantage, migs.*</span><br><span class="line"><span class="keyword">FROM</span> sys.dm_db_missing_index_group_stats migs) <span class="keyword">AS</span> migs_adv</span><br><span class="line"><span class="keyword">JOIN</span> sys.dm_db_missing_index_groups <span class="keyword">as</span> mig <span class="keyword">ON</span></span><br><span class="line"> mig.index_group_handle = migs_adv.group_handle</span><br><span class="line"><span class="keyword">JOIN</span> sys.dm_db_missing_index_Details <span class="keyword">AS</span> <span class="keyword">mid</span> <span class="keyword">ON</span></span><br><span class="line">mig.index_handle = mid.index_handle</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> migs_adv.index_advantage;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Data Collector msdb Objects</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> msdb;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> fn_syscollector_get_execution_details();</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> fn_syscollector_get_execution_stats();</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> fn_syscollector_execution_log;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> fn_syscollector_execution_log_full;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> fn_syscollector_executionstats;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-08-Mirroring-and-Replication/" data-id="ciwt8vapa0011iokar4aladrd" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2016/11/SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server/" data-id="cjgwe3fza0018w8kans0mzew7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exam-70462/">Exam 70462</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a></li></ul>
@@ -178,7 +213,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/7/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/7/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -189,6 +224,14 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/05/SQLServerXML/">SQLServerXML</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/BIML-a-Stage-ETL/">BIML a Stage ETL</a>
+          </li>
         
           <li>
             <a href="/2016/12/Passing-the-70462-Exam-and-Lessons-Learned/">Passing the 70462 Exam and Lessons Learned</a>
@@ -202,14 +245,6 @@
             <a href="/2016/11/SQL-2012-Admin-Exam-11-Indexes-and-Concurrency/">SQL 2012 Admin Exam 11 Indexes and Concurrency</a>
           </li>
         
-          <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-10-Troubleshooting-SQL-Server/">SQL 2012 Admin Exam 10 Troubleshooting SQL Server</a>
-          </li>
-        
-          <li>
-            <a href="/2016/11/SQL-2012-Admin-Exam-09-Clustering-and-AlwaysOn/">SQL 2012 Admin Exam 09 Clustering and AlwaysOn</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -219,7 +254,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Azure/">Azure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/BIML/">BIML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Presentation/">Presentation</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL-Administration/">SQL Administration</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Visual-Studio/">Visual Studio</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -229,7 +264,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIML/">BIML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blogging/">Blogging</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command-Line/">Command-Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Warehouse/">Data Warehouse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exam-70462/">Exam 70462</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Presentation/">Presentation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Administration/">SQL Administration</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSDT/">SSDT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSIS/">SSIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source-Control/">Source Control</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Starting-Up/">Starting Up</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Team-Services/">Team Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Machines/">Virtual Machines</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YAML/">YAML</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -239,7 +274,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/Blogging/" style="font-size: 17.14px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Exam-70462/" style="font-size: 18.57px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 15.71px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14.29px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 18.57px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/Source-Control/" style="font-size: 12.86px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 15.71px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.43px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
+      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/BIML/" style="font-size: 10px;">BIML</a> <a href="/tags/Blogging/" style="font-size: 17.14px;">Blogging</a> <a href="/tags/Command-Line/" style="font-size: 10px;">Command-Line</a> <a href="/tags/Data-Warehouse/" style="font-size: 10px;">Data Warehouse</a> <a href="/tags/Exam-70462/" style="font-size: 18.57px;">Exam 70462</a> <a href="/tags/Git/" style="font-size: 15.71px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14.29px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SQL-Administration/" style="font-size: 18.57px;">SQL Administration</a> <a href="/tags/SSDT/" style="font-size: 10px;">SSDT</a> <a href="/tags/SSIS/" style="font-size: 10px;">SSIS</a> <a href="/tags/Source-Control/" style="font-size: 12.86px;">Source Control</a> <a href="/tags/Starting-Up/" style="font-size: 15.71px;">Starting Up</a> <a href="/tags/Team-Services/" style="font-size: 10px;">Team Services</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/Visual-Studio/" style="font-size: 11.43px;">Visual Studio</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/YAML/" style="font-size: 10px;">YAML</a>
     </div>
   </div>
 
@@ -248,7 +283,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -261,7 +296,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 Richard Griffiths<br>
+      &copy; 2018 Richard Griffiths<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
