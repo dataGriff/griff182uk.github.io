@@ -5,31 +5,28 @@
   
   <title>SQL Server XML | dataGriff</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Overview
+  <meta name="description" content="The following post aims to give an good introduction and exercise around XML in SQL server. 
+Overview
 What is XML? What is its structure? What is well-formed XML?
 Demonstrate some XQuery
-Generate some test data for dogs entering kennels in a table
-Show XML FOR functionality
-Create XML schema">
+Generate some">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL Server XML">
 <meta property="og:url" content="www.datagriff.com/2018/05/SQLServerXML/index.html">
 <meta property="og:site_name" content="dataGriff">
-<meta property="og:description" content="Overview
+<meta property="og:description" content="The following post aims to give an good introduction and exercise around XML in SQL server. 
+Overview
 What is XML? What is its structure? What is well-formed XML?
 Demonstrate some XQuery
-Generate some test data for dogs entering kennels in a table
-Show XML FOR functionality
-Create XML schema">
-<meta property="og:updated_time" content="2018-05-07T15:33:10.022Z">
+Generate some">
+<meta property="og:updated_time" content="2018-05-07T15:38:17.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL Server XML">
-<meta name="twitter:description" content="Overview
+<meta name="twitter:description" content="The following post aims to give an good introduction and exercise around XML in SQL server. 
+Overview
 What is XML? What is its structure? What is well-formed XML?
 Demonstrate some XQuery
-Generate some test data for dogs entering kennels in a table
-Show XML FOR functionality
-Create XML schema">
+Generate some">
   
     <link rel="alternate" href="/atom.xml" title="dataGriff" type="application/atom+xml">
   
@@ -108,15 +105,16 @@ Create XML schema">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ol>
-<li><a href="##1.0-what-is-xML">What is XML? What is its structure? What is well-formed XML?</a></li>
-<li><a href="##2.0-xquery">Demonstrate some XQuery</a></li>
-<li><a href="##3.0-generate-some-test-data-for-dogs-arriving-in-kennels-in-relational-format">Generate some test data for dogs entering kennels in a table</a></li>
-<li><a href="##4.0-show-xml-for-option-functionality">Show XML FOR functionality</a></li>
-<li><a href="##5.0-create-xml-schema-using-a-relational-table-structure">Create XML schema from Relational Table</a></li>
-<li><a href="##6.0-prove-create-xml-schema-works">Shows XML Schema Validation Works</a></li>
-<li><a href="##7.0-import-data-from-xml-files-into-sql-table">Import XML into SQL Table using MERGE</a></li>
-<li><a href="##8.0-turning-rows-into-a-csv-group">Create CSV from Row Data</a></li>
+        <p>The following post aims to give an good introduction and exercise around XML in SQL server. </p>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ol>
+<li><a href="#1.0-what-is-xml">What is XML? What is its structure? What is well-formed XML?</a></li>
+<li><a href="#2.0-xquery">Demonstrate some XQuery</a></li>
+<li><a href="#3.0-generate-some-test-data-for-dogs-arriving-in-kennels-in-relational-format">Generate some test data for dogs entering kennels in a table</a></li>
+<li><a href="#4.0-show-xml-for-option-functionality">Show XML FOR functionality</a></li>
+<li><a href="#5.0-create-xml-schema-using-a-relational-table-structure">Create XML schema from Relational Table</a></li>
+<li><a href="#6.0-prove-create-xml-schema-works">Shows XML Schema Validation Works</a></li>
+<li><a href="#7.0-import-data-from-xml-files-into-sql-table">Import XML into SQL Table using MERGE</a></li>
+<li><a href="#8.0-turning-rows-into-a-csv-group">Create CSV from Row Data</a></li>
 </ol>
 <h2 id="0-0-Create-Database-and-Schema"><a href="#0-0-Create-Database-and-Schema" class="headerlink" title="0.0 Create Database and Schema"></a>0.0 Create Database and Schema</h2><p>Execute the below on your sql server to create the required database. </p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> [<span class="keyword">Master</span>]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> SYS.databases <span class="keyword">WHERE</span> <span class="keyword">name</span> = <span class="string">'XMLDemo'</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> [XMLDemo];</span><br><span class="line"><span class="keyword">END</span> </span><br><span class="line"><span class="keyword">GO</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">USE</span> [XMLDemo]</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">DECLARE</span> @<span class="keyword">sql</span> <span class="keyword">NVARCHAR</span>(<span class="number">255</span>) = <span class="string">''</span>;</span><br><span class="line">IF SCHEMA_ID('tools') IS NULL</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SET</span> @<span class="keyword">Sql</span> = <span class="string">'CREATE SCHEMA [import];'</span>;</span><br><span class="line">EXEC sp_executesql @sql;</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
@@ -182,7 +180,7 @@ Create XML schema">
       
     </div>
     <footer class="article-footer">
-      <a data-url="www.datagriff.com/2018/05/SQLServerXML/" data-id="cjgweoogw001z7skaotltv6jn" class="article-share-link">Share</a>
+      <a data-url="www.datagriff.com/2018/05/SQLServerXML/" data-id="cjgwev5qq001wagka6e7eod2p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XML/">XML</a></li></ul>
